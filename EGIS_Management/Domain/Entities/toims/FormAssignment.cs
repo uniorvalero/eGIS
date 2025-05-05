@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.toims
 {
-    [Table("FormAssignments", Schema = "Setup")]
     public class FormAssignment
     {
         [Key] public int Id { get; set; }
