@@ -1,0 +1,6 @@
+@bpltas.api_HostAddress = http://localhost:5042
+
+GET {{bpltas.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

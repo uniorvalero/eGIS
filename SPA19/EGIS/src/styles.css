@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-image: url('assets/images/egis_watermark.png');
+    background-size: cover; /* Ensures the image covers the entire page */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+
+}
+
+h1 { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
