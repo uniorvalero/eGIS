@@ -1,6 +1,6 @@
 import {
   isPlatformBrowser
-} from "./chunk-MVDLSZXZ.js";
+} from "./chunk-FRISPFX3.js";
 import {
   ElementRef,
   Injectable,
@@ -8,9 +8,9 @@ import {
   inject,
   setClassMetadata,
   ɵɵdefineInjectable
-} from "./chunk-ZTTHBA5O.js";
+} from "./chunk-XMN47SEZ.js";
 
-// ../node_modules/@angular/cdk/fesm2022/element-bed495ef.mjs
+// node_modules/@angular/cdk/fesm2022/element-bed495ef.mjs
 function coerceNumberProperty(value, fallbackValue = 0) {
   if (_isNumberValue(value)) {
     return Number(value);
@@ -24,7 +24,7 @@ function coerceElement(elementOrRef) {
   return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
 }
 
-// ../node_modules/@angular/cdk/fesm2022/platform-666e117b.mjs
+// node_modules/@angular/cdk/fesm2022/platform-666e117b.mjs
 var hasV8BreakIterator;
 try {
   hasV8BreakIterator = typeof Intl !== "undefined" && Intl.v8BreakIterator;
@@ -91,4 +91,4 @@ export {
   coerceElement,
   Platform
 };
-//# sourceMappingURL=chunk-2WMDBIM6.js.map
+//# sourceMappingURL=chunk-MT4FGPIJ.js.map
