@@ -27,6 +27,22 @@ namespace TOIMS.API.Controllers
             return Ok();
         }
 
+        [HttpGet("GetDetailsByMasterCode")]
+        public IActionResult GetDetailsByMasterCode(int code)
+        {
+            try
+            {
+                Console.WriteLine($"Received Code: {code}");
+                var result = _unitofwork.SubCode.GetDetailsByMasterCode(code);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

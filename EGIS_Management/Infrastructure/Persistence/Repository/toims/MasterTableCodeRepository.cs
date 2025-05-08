@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repository
 {
@@ -6,6 +7,7 @@ namespace Infrastructure.Persistence.Repository
     {
         public MasterTableCodeRepository(EGISManagementDbContext dbContext) : base(dbContext)
         {
+            
         }
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MastersubcodeService } from '../../services/mastersubcode.service';
@@ -10,6 +10,7 @@ import { MatDialog} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { IMasterSubcode } from '../../models/submastercode';
 import { MasterSubCodeDialogComponent } from '../../master-sub-code-dialog/master-sub-code-dialog.component';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
@@ -27,6 +28,8 @@ import { MasterSubCodeDialogComponent } from '../../master-sub-code-dialog/maste
   styleUrl: './master-subcode.component.css'
 })
 export class MasterSubcodeComponent implements OnInit {
+   masterCode!: number;
+   masterCodeDescription!: string;
 
   displayedColumns: string[] = ['id','code','subcode', 'description','actions']
   dataSource!: MatTableDataSource<IMasterSubcode>;
@@ -35,19 +38,24 @@ export class MasterSubcodeComponent implements OnInit {
   @ViewChild(MatSort) sort!:MatSort;
   @ViewChild(MatTable) table!:MatTable<IMasterSubcode>;
 
-  constructor(private mastersubcodeService: MastersubcodeService, private dialog: MatDialog){
+  constructor(private route: ActivatedRoute, private mastersubcodeService: MastersubcodeService, private dialog: MatDialog){
   }
   ngOnInit(): void {
+    console.log('MasterCode:', this.masterCode, 'Description:', this.masterCodeDescription);
+    this.route.params.subscribe((params: Params) => {
+      this.masterCode = params['code'];
+      this.masterCodeDescription = params['description'];
+    });
     this.loadMasterSubCode();
   }
 
   loadMasterSubCode(): void{
-    this.mastersubcodeService.getMasteSubCodes().subscribe((mscodes) =>
+    this.mastersubcodeService.getMasterSubCodes(this.masterCode).subscribe((mscodes) =>
       {   
          this.dataSource = new MatTableDataSource(mscodes);
          this.dataSource.paginator = this.paginator;
          this.dataSource.sort = this.sort;
-         
+          
       });
   }
 

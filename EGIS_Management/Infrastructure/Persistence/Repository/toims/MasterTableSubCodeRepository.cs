@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repository
 {
@@ -6,6 +7,11 @@ namespace Infrastructure.Persistence.Repository
     {
         public MasterTableSubCodeRepository(EGISManagementDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public async Task<IEnumerable<MasterTableSubCode>> GetDetailsByMasterCode(int code)
+        {
+            return await _dbContext.MasterTableSubCodes.Include(r => r.Code == code).ToListAsync();
         }
     }
 }
