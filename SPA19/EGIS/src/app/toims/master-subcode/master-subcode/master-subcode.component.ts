@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MastersubcodeService } from '../../services/mastersubcode.service';
@@ -30,6 +30,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class MasterSubcodeComponent implements OnInit {
    masterCode!: number;
    masterCodeDescription!: string;
+   showSubCode: boolean = false;
 
   displayedColumns: string[] = ['id','code','subcode', 'description','actions']
   dataSource!: MatTableDataSource<IMasterSubcode>;
@@ -38,15 +39,23 @@ export class MasterSubcodeComponent implements OnInit {
   @ViewChild(MatSort) sort!:MatSort;
   @ViewChild(MatTable) table!:MatTable<IMasterSubcode>;
 
-  constructor(private route: ActivatedRoute, private mastersubcodeService: MastersubcodeService, private dialog: MatDialog){
+  constructor(private route: ActivatedRoute, private mastersubcodeService: MastersubcodeService, private dialog: MatDialog, private router: Router){
   }
   ngOnInit(): void {
     console.log('MasterCode:', this.masterCode, 'Description:', this.masterCodeDescription);
     this.route.params.subscribe((params: Params) => {
       this.masterCode = params['code'];
       this.masterCodeDescription = params['description'];
+      this.mastersubcodeService.getMasterSubCodes(this.masterCode).subscribe({
+        next: (data) => {
+          this.dataSource = new MatTableDataSource(data);
+        },
+        error: (err) => {
+          console.error('Error fetching master subcodes:', err);
+        }
     });
-    this.loadMasterSubCode();
+    });
+    //this.loadMasterSubCode();
   }
 
   loadMasterSubCode(): void{
@@ -55,7 +64,6 @@ export class MasterSubcodeComponent implements OnInit {
          this.dataSource = new MatTableDataSource(mscodes);
          this.dataSource.paginator = this.paginator;
          this.dataSource.sort = this.sort;
-          
       });
   }
 
@@ -93,5 +101,10 @@ export class MasterSubcodeComponent implements OnInit {
           this.loadMasterSubCode();
         })
       }
+    }
+
+    goToMasterCode(): void {
+      this.router.navigate(['/mainlayout/master']);
+      this.showSubCode = true; 
     }
 }

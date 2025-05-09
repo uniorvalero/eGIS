@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Infrastructure.Persistence.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace TOIMS.API.Controllers
 {
@@ -17,23 +18,37 @@ namespace TOIMS.API.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> Create(MasterTableSubCode tableSubCode)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
-            }
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-            await _unitofwork.SubCode.CreateAsync(tableSubCode);
-            await _unitofwork.CommitAsync();
-            return Ok();
+                // Check for duplicate Subcode
+                var isDuplicate = await _unitofwork.SubCode.IsSubcodeDuplicateAsync(tableSubCode.Subcode);
+                if (isDuplicate)
+                {
+                    return BadRequest("Duplicate Subcode: A record with the same Subcode already exists.");
+                }
+
+                await _unitofwork.SubCode.CreateAsync(tableSubCode);
+                await _unitofwork.CommitAsync();
+                return Ok();
+            }
+            catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("UNIQUE") == true)
+            {
+                return BadRequest("Duplicate Subcode: A record with the same Subcode already exists.");
+            }
         }
 
-        [HttpGet("GetDetailsByMasterCode")]
-        public IActionResult GetDetailsByMasterCode(int code)
+        [HttpGet("GetCode")]
+        public async Task<IActionResult> GetCode(int code)
         {
             try
             {
                 Console.WriteLine($"Received Code: {code}");
-                var result = _unitofwork.SubCode.GetDetailsByMasterCode(code);
+                var result = await _unitofwork.SubCode.GetDetailsByMasterCodeAsync(code); // Added 'await' here
                 return Ok(result);
             }
             catch (Exception ex)

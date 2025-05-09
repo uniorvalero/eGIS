@@ -9,9 +9,13 @@ namespace Infrastructure.Persistence.Repository
         {
         }
 
-        public async Task<IEnumerable<MasterTableSubCode>> GetDetailsByMasterCode(int code)
+        public async Task<IEnumerable<MasterTableSubCode>> GetDetailsByMasterCodeAsync(int code)
         {
-            return await _dbContext.MasterTableSubCodes.Include(r => r.Code == code).ToListAsync();
+            return await _dbContext.Set<MasterTableSubCode>().Where(r => r.Code == code).ToListAsync();
+        }
+        public async Task<bool> IsSubcodeDuplicateAsync(int subcode)
+        {
+            return await _dbContext.MasterTableSubCodes.AnyAsync(x => x.Subcode == subcode);
         }
     }
 }

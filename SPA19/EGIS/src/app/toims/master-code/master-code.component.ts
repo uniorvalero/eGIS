@@ -11,7 +11,6 @@ import {MatDialog} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MasterCodeDialogComponent } from '../master-code-dialog/master-code-dialog.component';
 import { Router } from '@angular/router';
-import { MasterSubcodeComponent } from '../master-subcode/master-subcode/master-subcode.component';
 
 @Component({
   selector: 'app-master-code',
@@ -93,6 +92,6 @@ export class MasterCodeComponent implements OnInit {
     this.router.navigate([`/mainlayout/mastersubcode`, code, description]);
     this.selectedMasterCode = code;
     this.selectedDescription = description;
-    this.showSubCode = true; // Show MasterSubcodeComponent
+    this.showSubCode = true; 
   }
 }
