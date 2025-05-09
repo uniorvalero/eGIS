@@ -10,6 +10,7 @@ import { MatDialog} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { IMasterSubcode } from '../../models/submastercode';
 import { MasterSubCodeDialogComponent } from '../../master-sub-code-dialog/master-sub-code-dialog.component';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
@@ -27,6 +28,9 @@ import { MasterSubCodeDialogComponent } from '../../master-sub-code-dialog/maste
   styleUrl: './master-subcode.component.css'
 })
 export class MasterSubcodeComponent implements OnInit {
+   masterCode!: number;
+   masterCodeDescription!: string;
+   showSubCode: boolean = false;
 
   displayedColumns: string[] = ['id','code','subcode', 'description','actions']
   dataSource!: MatTableDataSource<IMasterSubcode>;
@@ -35,19 +39,31 @@ export class MasterSubcodeComponent implements OnInit {
   @ViewChild(MatSort) sort!:MatSort;
   @ViewChild(MatTable) table!:MatTable<IMasterSubcode>;
 
-  constructor(private mastersubcodeService: MastersubcodeService, private dialog: MatDialog){
+  constructor(private route: ActivatedRoute, private mastersubcodeService: MastersubcodeService, private dialog: MatDialog, private router: Router){
   }
   ngOnInit(): void {
-    this.loadMasterSubCode();
+    console.log('MasterCode:', this.masterCode, 'Description:', this.masterCodeDescription);
+    this.route.params.subscribe((params: Params) => {
+      this.masterCode = params['code'];
+      this.masterCodeDescription = params['description'];
+      this.mastersubcodeService.getMasterSubCodes(this.masterCode).subscribe({
+        next: (data) => {
+          this.dataSource = new MatTableDataSource(data);
+        },
+        error: (err) => {
+          console.error('Error fetching master subcodes:', err);
+        }
+    });
+    });
+    //this.loadMasterSubCode();
   }
 
   loadMasterSubCode(): void{
-    this.mastersubcodeService.getMasteSubCodes().subscribe((mscodes) =>
+    this.mastersubcodeService.getMasterSubCodes(this.masterCode).subscribe((mscodes) =>
       {   
          this.dataSource = new MatTableDataSource(mscodes);
          this.dataSource.paginator = this.paginator;
          this.dataSource.sort = this.sort;
-         
       });
   }
 
@@ -85,5 +101,10 @@ export class MasterSubcodeComponent implements OnInit {
           this.loadMasterSubCode();
         })
       }
+    }
+
+    goToMasterCode(): void {
+      this.router.navigate(['/mainlayout/master']);
+      this.showSubCode = true; 
     }
 }

@@ -40,10 +40,9 @@ export class MasterSubCodeDialogComponent implements OnInit {
     this.isEditMode=!!data.id;
     this.form=this.fb.group({
       id:[data.id],
-      code:[this.mastercodeSelected || '',[Validators.required]],
+      code:[this.mastercodeSelected],
       subcode:[data.subcode || '', [Validators.required]],
       description:[data.description || '',[Validators.required]],
-     
     })
   }
 

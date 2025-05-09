@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { createMasterCodeDto, IMastercode } from '../models/mastercode';
 import { environment } from '../../environment/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { environment } from '../../environment/environment';
 export class MastercodeService {
   
   readonly apibaseurl = environment.apibaseURL;
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getMasteCodes():Observable<IMastercode[]>{
     return this.http.get<IMastercode[]>(this.apibaseurl + '/MasterTableCode');
@@ -25,10 +26,8 @@ export class MastercodeService {
     return this.http.post<createMasterCodeDto>(this.apibaseurl + '/MasterTableCode' + '/Create',data);
   }
 
-  
   deleteMasterCode(id:number):Observable<void>{
     
     return this.http.delete<void>(`${this.apibaseurl + '/MasterTableCode'}/${id}`);
   }
-
 }

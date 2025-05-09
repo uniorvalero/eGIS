@@ -14,8 +14,9 @@ export class MastersubcodeService {
  
   constructor(private http:HttpClient) { }
 
-  getMasteSubCodes():Observable<IMasterSubcode[]>{
-    return this.http.get<IMasterSubcode[]>(this.apibaseurl + '/MasterTableSubCode');
+  getMasterSubCodes(code: number):Observable<IMasterSubcode[]>{
+    const params = { code: code};
+    return this.http.get<IMasterSubcode[]>(this.apibaseurl + '/MasterTableSubCode/GetCode/', { params });
   }
 
   updateMasterSubCode(mscode:IMasterSubcode):Observable<void>{
