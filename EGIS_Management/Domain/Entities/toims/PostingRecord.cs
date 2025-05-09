@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.toims
 {
-    [Table("PostingRecords", Schema = "Transaction")]
     public class PostingRecord
     {
         [Key] public int Id { get; set; }
