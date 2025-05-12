@@ -50,9 +50,14 @@ export const routes: Routes = [
          import('./toims/estimatedrevenue/estimatedrevenue.component').then(m => m.EstimatedrevenueComponent),
       },
       {
-        path: 'managingtemplate"',
+        path: 'managingtemplate',
         loadComponent: () =>
          import('./toims/managingtemplate/managingtemplate.component').then(m => m.ManagingtemplateComponent),
+      },
+      {
+        path: 'formissuance',
+        loadComponent: () =>
+          import('./toims/form-issuance/form-issuance.component').then(m => m.FormIssuanceComponent),
       }
     ]
   }

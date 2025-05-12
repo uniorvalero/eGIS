@@ -15,22 +15,22 @@ namespace Infrastructure.Persistence.Repository.toims
         }
         public async Task CreateAsync(BillingTransactionDetail detail)
         {
-            await _dbContext.BillingTransactionDetails.AddAsync(detail);
+            await _dbContext.BillingTransactionDetail.AddAsync(detail);
         }
 
         public async Task<IEnumerable<BillingTransactionDetail>> GetAllAsync()
         {
-            return await _dbContext.BillingTransactionDetails.ToListAsync();
+            return await _dbContext.BillingTransactionDetail.ToListAsync();
         }
 
         public async Task<BillingTransactionDetail> GetByIdAsync(int id)
         {
-            return await _dbContext.BillingTransactionDetails.FirstOrDefaultAsync(d => d.Id == id);
+            return await _dbContext.BillingTransactionDetail.FirstOrDefaultAsync(d => d.Id == id);
         }
 
         public async Task DeleteAsync(BillingTransactionDetail detail)
         {
-            _dbContext.BillingTransactionDetails.Remove(detail);
+            _dbContext.BillingTransactionDetail.Remove(detail);
             await Task.CompletedTask;
         }
     }

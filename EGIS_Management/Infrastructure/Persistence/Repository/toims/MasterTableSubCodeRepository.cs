@@ -15,7 +15,7 @@ namespace Infrastructure.Persistence.Repository
         }
         public async Task<bool> IsSubcodeDuplicateAsync(int subcode)
         {
-            return await _dbContext.MasterTableSubCodes.AnyAsync(x => x.Subcode == subcode);
+            return await _dbContext.MasterTableSubCode.AnyAsync(x => x.Subcode == subcode);
         }
     }
 }
