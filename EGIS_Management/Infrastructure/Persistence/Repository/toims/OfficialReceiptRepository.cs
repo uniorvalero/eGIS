@@ -12,17 +12,17 @@ namespace Infrastructure.Persistence.Repository.toims
 
         public async Task<IEnumerable<OfficialReceipt>> GetAllAsync()
         {
-            return await _dbContext.OfficialReceipts.Include(r => r.Details).ToListAsync();
+            return await _dbContext.OfficialReceipt.Include(r => r.Details).ToListAsync();
         }
 
         public async Task<OfficialReceipt> GetByIdAsync(int id)
         {
-            return await _dbContext.OfficialReceipts.Include(r => r.Details).FirstOrDefaultAsync(r => r.Id == id);
+            return await _dbContext.OfficialReceipt.Include(r => r.Details).FirstOrDefaultAsync(r => r.Id == id);
         }
 
         public async Task CreateAsync(OfficialReceipt receipt)
         {
-            await _dbContext.OfficialReceipts.AddAsync(receipt);
+            await _dbContext.OfficialReceipt.AddAsync(receipt);
         }
     }
 }

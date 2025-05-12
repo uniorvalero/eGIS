@@ -29,7 +29,8 @@ export class MasterCodeDialogComponent {
     private fb: FormBuilder,
     private dialogRef:MatDialogRef<MasterCodeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data:IMastercode
-  ){
+  )
+  {
     this.isEditMode=!!data.id;
     this.form=this.fb.group({
       id:[data.id],

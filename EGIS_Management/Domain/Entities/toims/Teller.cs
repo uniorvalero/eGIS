@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Entities.toims;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
@@ -11,6 +12,6 @@ namespace Domain.Entities
         public string Name { get; set; }
         public string Designation { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-
+        public ICollection<FormIssuance> FormIssuance { get; set; }
     }
 }

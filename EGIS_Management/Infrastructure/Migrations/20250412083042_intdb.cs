@@ -12,7 +12,7 @@ namespace Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Banks",
+                name: "Bank",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -27,11 +27,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Banks", x => x.Id);
+                    table.PrimaryKey("PK_Bank", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Barangays",
+                name: "Barangay",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -47,11 +47,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Barangays", x => x.Id);
+                    table.PrimaryKey("PK_Barangay", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Billings",
+                name: "Billing",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -68,11 +68,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Billings", x => x.Id);
+                    table.PrimaryKey("PK_Billing", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CollectionCodes",
+                name: "CollectionCode",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -83,11 +83,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CollectionCodes", x => x.Id);
+                    table.PrimaryKey("PK_CollectionCode", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CollectionSummaries",
+                name: "CollectionSummary",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -104,11 +104,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CollectionSummaries", x => x.Id);
+                    table.PrimaryKey("PK_CollectionSummary", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "EstimatedRevenues",
+                name: "EstimatedRevenue",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -120,11 +120,31 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EstimatedRevenues", x => x.Id);
+                    table.PrimaryKey("PK_EstimatedRevenue", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ManagingTemplates",
+                name: "FormIssuance",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    StartReceipt = table.Column<int>(type: "int", nullable: false),
+                    EndReceipt = table.Column<int>(type: "int", nullable: false),
+                    Char = table.Column<string>(type: "nvarchar(10)", nullable: false),
+                    TellerCode = table.Column<int>(type: "int", nullable: false),
+                    FinalDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    DateAssigned = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FormIssuance", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ManagingTemplate",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -137,11 +157,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ManagingTemplates", x => x.Id);
+                    table.PrimaryKey("PK_ManagingTemplate", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MasterTableCodes",
+                name: "MasterTableCode",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -152,11 +172,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MasterTableCodes", x => x.Id);
+                    table.PrimaryKey("PK_MasterTableCode", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MasterTableSubCodes",
+                name: "MasterTableSubCode",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -168,7 +188,7 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MasterTableSubCodes", x => x.Id);
+                    table.PrimaryKey("PK_MasterTableSubCode", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -239,7 +259,7 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tellers",
+                name: "Teller",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -252,7 +272,7 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tellers", x => x.Id);
+                    table.PrimaryKey("PK_Teller", x => x.Id);
                 });
         }
 
@@ -260,31 +280,34 @@ namespace Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Banks");
+                name: "Bank");
 
             migrationBuilder.DropTable(
-                name: "Barangays");
+                name: "Barangay");
 
             migrationBuilder.DropTable(
-                name: "Billings");
+                name: "Billing");
 
             migrationBuilder.DropTable(
-                name: "CollectionCodes");
+                name: "CollectionCode");
 
             migrationBuilder.DropTable(
-                name: "CollectionSummaries");
+                name: "CollectionSummarie");
 
             migrationBuilder.DropTable(
-                name: "EstimatedRevenues");
+                name: "EstimatedRevenue");
 
             migrationBuilder.DropTable(
-                name: "ManagingTemplates");
+                name: "FormIssuance");
 
             migrationBuilder.DropTable(
-                name: "MasterTableCodes");
+                name: "ManagingTemplate");
 
             migrationBuilder.DropTable(
-                name: "MasterTableSubCodes");
+                name: "MasterTableCode");
+
+            migrationBuilder.DropTable(
+                name: "MasterTableSubCode");
 
             migrationBuilder.DropTable(
                 name: "OfficialReceipt");
@@ -299,7 +322,7 @@ namespace Infrastructure.Migrations
                 name: "RevenueCodeParent");
 
             migrationBuilder.DropTable(
-                name: "Tellers");
+                name: "Teller");
         }
     }
 }

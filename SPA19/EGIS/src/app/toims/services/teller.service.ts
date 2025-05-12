@@ -3,7 +3,6 @@ import { environment } from '../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { createTellerDto, ITeller } from '../models/teller';
-import { CreateComputedOptions } from '@angular/core';    
 
 @Injectable({
   providedIn: 'root'
