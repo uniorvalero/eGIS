@@ -1,0 +1,44 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;  /* Centers the form fields horizontally */
+    justify-content: center;  /* Centers the form fields vertically */
+    height: 100%;
+    padding: 10px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: center;  /* Centers the buttons horizontally */
+    gap: 8px;
+    grid-column: span 2; /* Ensure buttons span both columns */
+  }
+  
+  mat-dialog-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;  /* Adjust the height to suit your needs */
+  }
+  
+ .dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  mat-form-field {
+    width: 100%;  /* Ensure form fields use the full width of the container */
+  }
+
+  @media (max-width: 600px) {
+  .form-container {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
+}
+  

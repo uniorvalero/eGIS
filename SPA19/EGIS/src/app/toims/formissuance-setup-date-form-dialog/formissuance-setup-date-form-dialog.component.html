@@ -1,0 +1,25 @@
+<div class="setup-dialog-container">
+  <h2 class="dialog-title">Setup of Date and Form</h2>
+
+  <div class="calendar-container">
+    <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+  </div>
+
+  <div class="today-display">
+    <p>Today: {{ selectedDate | date: 'MM/dd/yyyy' }}</p>
+  </div>
+
+  <div class="form-container">
+    <mat-form-field appearance="outline" class="form-select">
+      <mat-label>Form</mat-label>
+      <mat-select [(value)]="selectedForm">
+        <mat-option *ngFor="let form of forms" [value]="form">{{ form }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="dialog-actions">
+    <button mat-raised-button color="primary" (click)="onSave()">OK</button>
+    <button mat-raised-button color="warn" mat-dialog-close>Exit</button>
+  </div>
+</div>

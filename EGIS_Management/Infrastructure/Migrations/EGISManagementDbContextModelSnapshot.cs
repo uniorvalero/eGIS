@@ -24,11 +24,11 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity<OfficialReceipt>()
-                .HasMany(x => x.Details)
-                .WithOne(x => x.OfficialReceipt)
-                .HasForeignKey(x => x.OfficialReceiptId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<OfficialReceipt>()
+            //    .HasMany(x => x.Details)
+            //    .WithOne(x => x.OfficialReceipt)
+            //    .HasForeignKey(x => x.OfficialReceiptId)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<BillingTransaction>()
                 .HasMany(x => x.Details)
@@ -37,10 +37,32 @@ namespace Infrastructure.Migrations
                 .OnDelete(DeleteBehavior.Cascade);
 
             //modelBuilder.Entity<FormIssuance>()
-            //    .HasMany(x => x.Teller)
             //    .WithOne(x => x.FormIssuance)
             //    .HasForeignKey(x => x.TellerCode)
             //    .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity("Domain.Entities.BatchReceipt", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<int>("ReceiptId")
+                    .IsRequired()
+                    .HasColumnType("int");
+
+                b.Property<DateOnly>("BatchDate")
+                    .HasColumnType("datetime2");
+
+                b.Property<DateTime>("CreatedAt")
+                    .HasColumnType("datetime2");
+
+                b.HasKey("Id");
+
+                b.ToTable("BatchReceipt");
+            });
 
             modelBuilder.Entity("Domain.Entities.Barangay", b =>
                 {
@@ -83,7 +105,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Barangays");
+                    b.ToTable("Barangay");
                 });
 
             modelBuilder.Entity("Domain.Entities.CollectionCode", b =>
@@ -107,7 +129,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CollectionCodes");
+                    b.ToTable("CollectionCode");
                 });
 
             modelBuilder.Entity("Domain.Entities.CollectionSummary", b =>
@@ -150,7 +172,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CollectionSummaries");
+                    b.ToTable("CollectionSummary");
                 });
 
             modelBuilder.Entity("Domain.Entities.EstimatedRevenue", b =>
@@ -177,7 +199,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EstimatedRevenues");
+                    b.ToTable("EstimatedRevenue");
                 });
 
             modelBuilder.Entity("Domain.Entities.ManagingTemplate", b =>
@@ -208,7 +230,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ManagingTemplates");
+                    b.ToTable("ManagingTemplate");
                 });
 
             modelBuilder.Entity("Domain.Entities.MasterTableCode", b =>
@@ -231,7 +253,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MasterTableCodes");
+                    b.ToTable("MasterTableCode");
                 });
 
             modelBuilder.Entity("Domain.Entities.MasterTableSubCode", b =>
@@ -257,7 +279,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MasterTableSubCodes");
+                    b.ToTable("MasterTableSubCode");
                 });
 
             modelBuilder.Entity("Domain.Entities.OfficialReceipt", b =>
@@ -268,32 +290,50 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Char")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ORNo")
+                    b.Property<int>("ReceiptNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("Payor")
-                        .IsRequired()
+                    b.Property<string>("Char")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Payor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateIssue")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("OfficialReceipt");
                 });
+
+            modelBuilder.Entity("Domain.Entities.OfficialReceiptDetail", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<int>("ReceiptNumber")
+                    .HasColumnType("int");
+
+                b.Property<string>("Code")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Description")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<double>("Amount")
+                    .HasColumnType("double");
+
+                b.HasKey("Id");
+
+                b.ToTable("OfficialReceiptDetail");
+            });
 
             modelBuilder.Entity("Domain.Entities.RevenueCodeChild", b =>
                 {
@@ -409,7 +449,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tellers");
+                    b.ToTable("Teller");
                 });
 
             modelBuilder.Entity("Domain.Entities.bpltas.Bank", b =>
@@ -448,7 +488,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Banks");
+                    b.ToTable("Bank");
                 });
 
             modelBuilder.Entity("Domain.Entities.bpltas.Billing", b =>
@@ -524,6 +564,9 @@ namespace Infrastructure.Migrations
                     .HasColumnType("date");
 
                 b.Property<DateTime>("DateAssigned")
+                    .HasColumnType("date");
+
+                b.Property<DateTime>("CreatedAt")
                     .HasColumnType("datetime2");
 
                 b.HasKey("Id");

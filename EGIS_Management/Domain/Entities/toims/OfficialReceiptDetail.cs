@@ -11,10 +11,11 @@ namespace Domain.Entities.toims
     public class OfficialReceiptDetail
     {
         [Key] public int Id { get; set; }
-        [ForeignKey("OfficialReceipt")] public int OfficialReceiptId { get; set; }
-        public string AccountCode { get; set; }
-        public string AccountDescription { get; set; }
-        public decimal Amount { get; set; }
-        public OfficialReceipt OfficialReceipt { get; set; }
+
+        [ForeignKey("OfficialReceipt")] 
+        public int ReceiptNumber { get; set; }
+        public string Code { get; set; }
+        public string Description { get; set; }
+        public double Amount { get; set; }
     }
 }

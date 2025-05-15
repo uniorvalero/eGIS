@@ -12,21 +12,21 @@ export class FormissuanceService {
   constructor(private http:HttpClient) { }
 
   getFormIssuances():Observable<IFormIssuance[]>{
-    return this.http.get<IFormIssuance[]>(this.apibaseurl + '/Teller');
+    return this.http.get<IFormIssuance[]>(this.apibaseurl + '/FormIssuanceTransaction');
   }
 
   updateFormIssuances(data:IFormIssuance):Observable<void>{
-    return this.http.put<void>(`${this.apibaseurl + '/Teller'}/${data.id}`,data);
+    return this.http.put<void>(`${this.apibaseurl + '/FormIssuanceTransaction'}/${data.id}`,data);
   }
 
   createFormIssuance(data:createDto):Observable<createDto>{
     data.id= 0;
-    return this.http.post<createDto>(this.apibaseurl + '/Teller' + '/Create',data);
+    return this.http.post<createDto>(this.apibaseurl + '/FormIssuanceTransaction' + '/Create',data);
   }
 
   
   deleteFormIssuance(id:number):Observable<void>{
     
-    return this.http.delete<void>(`${this.apibaseurl + '/Teller'}/${id}`);
+    return this.http.delete<void>(`${this.apibaseurl + '/FormIssuanceTransaction'}/${id}`);
   }
 }

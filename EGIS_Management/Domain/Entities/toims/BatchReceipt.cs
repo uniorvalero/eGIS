@@ -12,7 +12,8 @@ namespace Domain.Entities.toims
     {
         [Key] public int Id { get; set; }
         public DateTime BatchDate { get; set; }
-        public ICollection<OfficialReceipt> Receipts { get; set; }
+        [ForeignKey("OfficialReceipt")] public int OfficialReceiptId { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 
 }

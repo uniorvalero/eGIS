@@ -35,9 +35,14 @@ export class FormIssuanceDialogComponent {
     this.isEditMode=!!data.id;
     this.form=this.fb.group({
       id:[data.id],
-      booknumber:[data.booknumber],
+      booknumber:[data.booknumber || '', [Validators.required]],
       quantity:[data.quantity || '', [Validators.required]],
       startreceipt:[data.startreceipt || '',[Validators.required]],
+      endreceipt:[data.endreceipt || '',[Validators.required]],
+      char:[data.char || '',[Validators.required]],
+      tellercode:[data.tellercode || '',[Validators.required]],
+      tellername:[data.tellername || '',[Validators.required]],
+      finaldate:[data.finaldate || '',[Validators.required]],
     })
   }
 

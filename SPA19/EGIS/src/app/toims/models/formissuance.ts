@@ -11,4 +11,4 @@ export interface IFormIssuance {
 
  }
 
- export type createDto =Omit<IFormIssuance,'booknumber'|'Quantity'|'startreceipt'|'endreceipt'|'char'|'tellercode'|'tellername'|'finaldate'>; 
+ export type createDto =Omit<IFormIssuance,'booknumber'|'quantity'|'startreceipt'|'endreceipt'|'char'|'tellercode'|'tellername'|'finaldate'>; 

@@ -10,6 +10,8 @@ import { MatTableModule, MatTableDataSource, MatTable } from '@angular/material/
 import { FormissuanceService } from '../services/formissuance.service';
 import { FormIssuanceDialogComponent } from '../form-issuance-dialog/form-issuance-dialog.component';
 import { MatSelectChange } from '@angular/material/select';
+import { FormissuanceSetupDateFormDialogComponent } from '../formissuance-setup-date-form-dialog/formissuance-setup-date-form-dialog.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-form-issuance',
@@ -21,13 +23,14 @@ import { MatSelectChange } from '@angular/material/select';
     MatPaginator,
     MatButtonModule,
     MatIconModule,
+    MatDatepickerModule,
   ],
   templateUrl: './form-issuance.component.html',
   styleUrl: './form-issuance.component.css'
 })
 export class FormIssuanceComponent implements OnInit{
 
-  displayedColumns: string[] = ['booknumber','Quantity','startreceipt','endreceipt','char','tellercode','tellername','finaldate']
+  displayedColumns: string[] = ['booknumber','quantity','startreceipt','endreceipt','char','tellercode','tellername','finaldate']
   dataSource!: MatTableDataSource<IFormIssuance>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;
@@ -67,6 +70,18 @@ export class FormIssuanceComponent implements OnInit{
     });
   }
 
+  openSetupDialog(): void {
+    const dialogRef = this.dialog.open(FormissuanceSetupDateFormDialogComponent, {
+      width: '400px',
+    });
+
+  dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Selected Date:', result.selectedDate);
+        console.log('Selected Form:', result.selectedForm);
+      }
+    });
+  }
   deleteFormIssuance(id:number){
     if(confirm('Are you sure you want to delete this Estimated Revenue?')){
       this.formIssuanceService.deleteFormIssuance(id).subscribe(()=>{

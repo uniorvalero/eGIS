@@ -3,6 +3,7 @@ using Domain.Entities.toims;
 using Infrastructure.Persistence.Repository;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace TOIMS.API.Controllers
 {
@@ -18,27 +19,30 @@ namespace TOIMS.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromBody] FormIssuance data)
+        public async Task<IActionResult> Create(FormIssuance data)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                // Check for duplicate Subcode
+                var isDuplicate = await _unitofwork.FormIssuance.IsCodeDuplicateAsync(data.BookNumber);
+                if (isDuplicate)
+                {
+                    return BadRequest("Duplicate Code: A record with the same BookNumber already exists.");
+                }
+
+                await _unitofwork.FormIssuance.CreateAsync(data);
+                await _unitofwork.CommitAsync();
+                return Ok();
             }
-
-            var createDTO = new FormIssuance()
+            catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("UNIQUE") == true)
             {
-                BookNumber = data.BookNumber,
-                Quantity = data.Quantity,   
-                StartReceipt = data.StartReceipt,
-                EndReceipt = data.EndReceipt,
-                Char = data.Char,
-                Teller = data.Teller,
-                FinalDate = data.FinalDate            
-            };
-
-            await _unitofwork.FormIssuance.CreateAsync(createDTO);
-            await _unitofwork.CommitAsync();
-            return Ok();
+                return BadRequest("Duplicate Code: A record with the same BookNumber already exists.");
+            }
         }
 
         [HttpGet]
@@ -81,7 +85,6 @@ namespace TOIMS.API.Controllers
                 createDto.StartReceipt = data.StartReceipt;
                 createDto.EndReceipt = data.EndReceipt;
                 createDto.Char = data.Char;
-                createDto.Teller = data.Teller;
 
                 _unitofwork.FormIssuance.Update(createDto);
 
