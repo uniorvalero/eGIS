@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain.Entities.toims;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -28,6 +29,21 @@ namespace Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Bank", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BatchReceipt",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BatchDate = table.Column<DateOnly>(type: "datetime", nullable: false),
+                    ReceiptId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BatchReceipt", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,7 +152,8 @@ namespace Infrastructure.Migrations
                     Char = table.Column<string>(type: "nvarchar(10)", nullable: false),
                     TellerCode = table.Column<int>(type: "int", nullable: false),
                     FinalDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    DateAssigned = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateAssigned = table.Column<DateOnly>(type: "date", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -197,16 +214,31 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ORNo = table.Column<int>(type: "int", nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Amount = table.Column<double>(type: "float", nullable: false),
+                    ReceiptNumber = table.Column<int>(type: "int", nullable: false),
                     Char = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Payor = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Payor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateIssue = table.Column<DateOnly>(type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OfficialReceipt", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OfficialReceiptDetail",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReceiptNumber = table.Column<int>(type: "int", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Amount = table.Column<double>(type: "float", nullable: false),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OfficialReceipDetail", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -311,6 +343,9 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "OfficialReceipt");
+
+            migrationBuilder.DropTable(
+                name: "OfficialReceiptDetail");
 
             migrationBuilder.DropTable(
                 name: "RevenueCodeChild");

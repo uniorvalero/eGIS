@@ -9,6 +9,6 @@ namespace Infrastructure.Persistence.Repository.toims
 {
     public interface IFormIssuanceRepository : IGenericRepository<FormIssuance>
     {
-        // Add custom methods if needed
+        Task<bool> IsCodeDuplicateAsync(string code);
     }
 }

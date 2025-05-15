@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { createMasterCodeDto, IMastercode } from '../models/mastercode';
 import { environment } from '../../environment/environment';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
 export class MastercodeService {
   
   readonly apibaseurl = environment.apibaseURL;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   getMasteCodes():Observable<IMastercode[]>{
     return this.http.get<IMastercode[]>(this.apibaseurl + '/MasterTableCode');

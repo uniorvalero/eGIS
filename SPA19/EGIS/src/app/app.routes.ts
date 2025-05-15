@@ -55,6 +55,16 @@ export const routes: Routes = [
          import('./toims/managingtemplate/managingtemplate.component').then(m => m.ManagingtemplateComponent),
       },
       {
+        path: 'officialreceipt',
+        loadComponent: () =>
+          import('./toims/officialreceipttransaction/officialreceipttransaction.component').then(m => m.OfficialreceipttransactionComponent),
+      },
+      {
+        path: 'officialreceiptdetails/:code/:description',
+        loadComponent: () =>
+          import('./toims/officialreceipttransaction-details/officialreceipttransaction-details.component').then(m => m.OfficialreceipttransactionDetailsComponent),
+      },
+      {
         path: 'formissuance',
         loadComponent: () =>
           import('./toims/form-issuance/form-issuance.component').then(m => m.FormIssuanceComponent),

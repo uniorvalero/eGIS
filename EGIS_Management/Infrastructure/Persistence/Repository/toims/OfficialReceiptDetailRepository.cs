@@ -1,4 +1,5 @@
-﻿using Domain.Entities.toims;
+﻿using Domain.Entities;
+using Domain.Entities.toims;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repository.toims
@@ -9,19 +10,15 @@ namespace Infrastructure.Persistence.Repository.toims
         {
         }
 
-        public async Task<IEnumerable<OfficialReceiptDetail>> GetAllAsync()
+        public async Task<IEnumerable<OfficialReceiptDetail>> GetDetailsByORIdAsync(int orID)
         {
-            return await _dbContext.OfficialReceiptDetail.Include(r => r.OfficialReceipt).ToListAsync();
+            return await _dbContext.Set<OfficialReceiptDetail>().Where(r => r.ReceiptNumber == orID).ToListAsync();
         }
 
-        public async Task<OfficialReceiptDetail> GetByIdAsync(int id)
+        public async Task<bool> IsCodeDuplicateAsync(string code)
         {
-            return await _dbContext.OfficialReceiptDetail.Include(r => r.OfficialReceipt).FirstOrDefaultAsync(r => r.Id == id);
+            return await _dbContext.OfficialReceiptDetail.AnyAsync(x => x.Code == code);
         }
 
-        public async Task CreateAsync(OfficialReceiptDetail receipt)
-        {
-            await _dbContext.OfficialReceiptDetail.AddAsync(receipt);
-        }
     }
 }

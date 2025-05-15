@@ -18,7 +18,7 @@ namespace Domain.Entities.toims
         public string Char { get; set; }
         [ForeignKey("Teller")] public int TellerCode { get; set; }
         public DateOnly FinalDate { get; set; }
-        public DateTime DateAssigned { get; set; }
-        public Teller Teller { get; set; }
+        public DateOnly DateAssigned { get; set; }
+        public DateTime createdAt { get; set; } = DateTime.Now;
     }
 }
