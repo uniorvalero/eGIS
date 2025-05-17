@@ -2,7 +2,8 @@
   <div>
       <h1 class="text-2xl font-bold">Official Receipt Entry</h1>
       <button mat-raised-button color="primary" (click)="openDialog()">Add Official Receipt</button>
-  </div>
+      
+    </div>
   <div>
     <mat-form-field class="full-width">
       <mat-label>Filter</mat-label>
@@ -12,9 +13,14 @@
   
   <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
-        <ng-container matColumnDef="receiptnumber">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="receiptNumber">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Receipt Number </th>
-            <td mat-cell *matCellDef="let row"> {{row.receiptnumber}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.receiptNumber}} </td>
         </ng-container>
     
        <ng-container matColumnDef="char">
@@ -30,13 +36,13 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef> Action </th>
           <td mat-cell *matCellDef="let row" class="space-x-2">
-            <button mat-icon-button color="primary" (click)="openOfficialReceiptDetails(row.code, row.description)">
-              <mat-icon>open</mat-icon>
+            <button mat-icon-button color="primary" matTooltip="Open OR details" (click)="openOfficialReceiptDetails(row.code, row.description)">
+              <mat-icon>open_in_new</mat-icon>
             </button>
-            <button mat-icon-button color="primary" (click)="openDialog(row)">
+            <button mat-icon-button color="primary" matTooltip="Edit OR" (click)="openDialog(row)">
                 <mat-icon>edit</mat-icon>
             </button> 
-            <button mat-icon-button color="primary" (click)="deleteOfficialReceipt(row.id)">
+            <button mat-icon-button color="primary" matTooltip="Delete OR" (click)="deleteOfficialReceipt(row.id)">
                 <mat-icon>delete</mat-icon>
             </button> 
           </td>

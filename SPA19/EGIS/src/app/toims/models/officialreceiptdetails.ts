@@ -6,4 +6,4 @@ export interface IOfficialReceiptDetails {
     amount : number;
  }
 
- export type createOfficialReceiptDetailDto =Omit<IOfficialReceiptDetails,'officialreceiptid'|'code'|'description'|'amount'>;
+ export type createOfficialReceiptDetailDto =Omit<IOfficialReceiptDetails,'receiptnumber'|'code'|'description'|'amount'>;

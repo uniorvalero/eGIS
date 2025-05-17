@@ -10,6 +10,7 @@ import { MatTableModule, MatTableDataSource, MatTable } from '@angular/material/
 import { Router } from '@angular/router';
 import { OfficialreceipttransactionService } from '../services/officialreceipttransaction.service';
 import { OfficialreceipttransactionDialogComponent } from '../officialreceipttransaction-dialog/officialreceipttransaction-dialog.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-officialreceipttransaction',
@@ -21,6 +22,7 @@ import { OfficialreceipttransactionDialogComponent } from '../officialreceipttra
     MatPaginator,
     MatButtonModule,
     MatIconModule,
+    MatTooltipModule,
   ],
   templateUrl: './officialreceipttransaction.component.html',
   styleUrl: './officialreceipttransaction.component.css'
@@ -30,7 +32,7 @@ export class OfficialreceipttransactionComponent implements OnInit{
   selectedORId!: number;
   selectedDescription!: string;
 
-  displayedColumns: string[] = ['receiptnumber', 'char', 'payor','actions']
+  displayedColumns: string[] = ['id','receiptNumber', 'char', 'payor','actions']
   dataSource!: MatTableDataSource<IOfficialReceipt>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;

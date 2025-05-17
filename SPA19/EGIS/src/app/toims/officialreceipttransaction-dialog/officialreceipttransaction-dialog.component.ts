@@ -32,7 +32,7 @@ export class OfficialreceipttransactionDialogComponent {
     this.isEditMode=!!data.id;
     this.form=this.fb.group({
       id:[data.id],
-      receiptnumber:[data.receiptnumber || '',[Validators.required]],
+      receiptnumber:[data.receiptNumber || '',[Validators.required]],
       char:[data.char || '',[Validators.required]],
       payor:[data.payor || '',[Validators.required]],
     })

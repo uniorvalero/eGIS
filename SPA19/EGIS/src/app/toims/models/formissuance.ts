@@ -8,7 +8,6 @@ export interface IFormIssuance {
     tellercode : number;
     tellername : string;
     finaldate : Date;
-
  }
 
  export type createDto =Omit<IFormIssuance,'booknumber'|'quantity'|'startreceipt'|'endreceipt'|'char'|'tellercode'|'tellername'|'finaldate'>; 
