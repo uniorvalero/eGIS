@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { createMasterSubCodeDto, IMasterSubcode } from '../models/submastercode';
+import { createMasterSubCodeDto, IMasterSubcode } from '../models/mastersubcode';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
 
@@ -27,7 +27,6 @@ export class MastersubcodeService {
     data.id= 0;
     return this.http.post<createMasterSubCodeDto>(this.apibaseurl + '/MasterTableSubCode' + '/Create',data);
   }
-
   
   deleteMasterSubCode(id:number):Observable<void>{
     

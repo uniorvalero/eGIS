@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IOfficialReceipt } from '../models/officialreceipt';
 import { IOfficialReceiptDetails } from '../models/officialreceiptdetails';
 import { OfficialreceipttransactiondetailsService } from '../services/officialreceipttransactiondetails.service';
 import { CommonModule } from '@angular/common';
@@ -13,8 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { MasterSubCodeDialogComponent } from '../master-sub-code-dialog/master-sub-code-dialog.component';
-import { IMasterSubcode } from '../models/submastercode';
+import { IMasterSubcode } from '../models/mastersubcode';
 import { OfficialreceipttransactionDetailsDialogComponent } from '../officialreceipttransaction-details-dialog/officialreceipttransaction-details-dialog.component';
 
 @Component({

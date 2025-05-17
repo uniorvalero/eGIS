@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IMasterSubcode } from '../models/submastercode';
+import { IMasterSubcode } from '../models/mastersubcode';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
@@ -41,8 +41,8 @@ export class MasterSubCodeDialogComponent implements OnInit {
     this.form=this.fb.group({
       id:[data.id],
       code:[this.mastercodeSelected],
-      subcode:[data.subcode || '', [Validators.required]],
-      description:[data.description || '',[Validators.required]],
+      subcode:[data.subcode],
+      description:[data.description],
     })
   }
 
@@ -53,6 +53,9 @@ export class MasterSubCodeDialogComponent implements OnInit {
 
   onSelectionChange(event: MatSelectChange){
     this.mastercodeSelected = event.value;
+    this.form.patchValue({
+      code: this.mastercodeSelected
+    });
   }
 
   private loadMasterCode() {
@@ -66,7 +69,7 @@ export class MasterSubCodeDialogComponent implements OnInit {
 
   onSubmit():void{
     if(this.form.valid){
-      
+      console.log(this.form.value);
       this.dialogRef.close(this.form.value);
     }
   }

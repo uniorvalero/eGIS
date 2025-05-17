@@ -1,9 +1,9 @@
 export interface IOfficialReceipt {
     id: number;
-    receiptnumber: number;
+    receiptNumber: number;
     char: string
     payor : string;
     dateissue : Date;
  }
 
- export type createOfficialReceiptDto =Omit<IOfficialReceipt,'receiptnumber'|'char'|'payor'|'dateissue'>;
+ export type createOfficialReceiptDto =Omit<IOfficialReceipt,'receiptNumber'|'char'|'payor'|'dateissue'>;

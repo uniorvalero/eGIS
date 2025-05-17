@@ -11,6 +11,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MasterCodeDialogComponent } from '../master-code-dialog/master-code-dialog.component';
 import { Router } from '@angular/router';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-master-code',
@@ -22,6 +23,7 @@ import { Router } from '@angular/router';
     MatPaginator,
     MatButtonModule,
     MatIconModule,
+    MatTooltipModule
   ],
   templateUrl: './master-code.component.html',
   styleUrl: './master-code.component.css'
@@ -63,7 +65,6 @@ export class MasterCodeComponent implements OnInit {
 
   openDialog(mCode?:IMastercode):void{
     const dialogRef=this.dialog.open(MasterCodeDialogComponent,{
-     
       data:mCode || {}
     });
     dialogRef.afterClosed().subscribe(result=>{

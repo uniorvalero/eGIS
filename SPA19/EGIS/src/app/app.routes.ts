@@ -27,7 +27,7 @@ export const routes: Routes = [
       {
         path: 'mastersubcode/:code/:description',
         loadComponent: () =>
-          import('./toims/master-subcode/master-subcode/master-subcode.component').then(m => m.MasterSubcodeComponent),
+          import('./toims/master-sub-code/master-sub-code.component').then(m => m.MasterSubcodeComponent),
       },
       {
         path: 'revenuecodeparent',

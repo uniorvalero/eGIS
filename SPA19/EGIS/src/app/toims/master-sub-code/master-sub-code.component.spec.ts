@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MasterSubcodeComponent } from './master-subcode.component';
+import { MasterSubcodeComponent } from './master-sub-code.component';
 
 describe('MasterSubcodeComponent', () => {
   let component: MasterSubcodeComponent;

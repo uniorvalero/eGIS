@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MastersubcodeService } from '../../services/mastersubcode.service';
+import { MastersubcodeService } from '../services/mastersubcode.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatIconModule} from '@angular/material/icon';
 import { MatInputModule} from '@angular/material/input';
 import { MatDialog} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { IMasterSubcode } from '../../models/submastercode';
-import { MasterSubCodeDialogComponent } from '../../master-sub-code-dialog/master-sub-code-dialog.component';
+import { IMasterSubcode } from '../models/mastersubcode';
+import { MasterSubCodeDialogComponent } from '../master-sub-code-dialog/master-sub-code-dialog.component';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
@@ -24,8 +24,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
     MatButtonModule,
     MatIconModule,
   ],
-  templateUrl: './master-subcode.component.html',
-  styleUrl: './master-subcode.component.css'
+  templateUrl: './master-sub-code.component.html',
+  styleUrl: './master-sub-code.component.css'
 })
 export class MasterSubcodeComponent implements OnInit {
    masterCode!: number;

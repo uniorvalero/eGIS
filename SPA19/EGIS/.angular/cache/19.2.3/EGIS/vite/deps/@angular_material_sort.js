@@ -1,6 +1,6 @@
 import {
   _StructuralStylesLoader
-} from "./chunk-XYH2HNNV.js";
+} from "./chunk-HGFV5ONH.js";
 import "./chunk-SZS4RJEH.js";
 import {
   AriaDescriber,
