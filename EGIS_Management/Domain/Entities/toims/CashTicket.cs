@@ -11,10 +11,11 @@ namespace Domain.Entities.toims
     public class CashTicket
     {
         [Key] public int Id { get; set; }
-        public string TicketNumber { get; set; }
-        public DateTime DateIssued { get; set; }
-        public string Description { get; set; }
-        public decimal Amount { get; set; }
+        public int ControlNumber { get; set; }
+        public int Quantity { get; set; }
+        public double Amount { get; set; }
+        public string TellerName { get; set; }
+        public int TellerCode { get; set; }
+        public DateTime CreateAt { get; set; }
     }
-
 }

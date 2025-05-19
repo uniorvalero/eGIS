@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.toims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repository.toims
 {
@@ -7,6 +8,9 @@ namespace Infrastructure.Persistence.Repository.toims
         public CashTicketRepository(EGISManagementDbContext dbContext) : base(dbContext)
         {
         }
-        // Implement custom methods if needed
+        public async Task<bool> IsCodeDuplicateAsync(int code)
+        {
+            return await _dbContext.CashTicket.AnyAsync(x => x.TellerCode == code);
+        }
     }
 }

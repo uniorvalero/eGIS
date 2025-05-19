@@ -9,5 +9,6 @@ namespace Infrastructure.Persistence.Repository.toims
 {
     public interface ICashTicketRepository : IGenericRepository<CashTicket>
     {
+        Task<bool> IsCodeDuplicateAsync(int code);
     }
 }

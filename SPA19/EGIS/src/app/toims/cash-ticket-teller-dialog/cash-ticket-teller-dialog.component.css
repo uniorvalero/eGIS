@@ -1,0 +1,38 @@
+/* Highlight selected row */
+.selected {
+  background-color: #b3e5fc !important;
+}
+
+/* Optional: pointer cursor for selectable rows */
+.mat-row, .mat-cell {
+  cursor: pointer;
+}
+
+/* Optional: improve table look */
+.mat-table {
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.mat-cell, .mat-header-cell {
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 15px;
+}
+
+.mat-header-cell {
+  background-color: #3f51b5;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
+.mat-header-row {
+  height: 48px;
+}
+
+.mat-row:hover {
+  background-color: #e3f2fd;
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { createDto, IFormIssuance } from '../models/formissuance';
+import { createFormIssuanceDto, IFormIssuance } from '../models/formissuance';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +19,9 @@ export class FormissuanceService {
     return this.http.put<void>(`${this.apibaseurl + '/FormIssuanceTransaction'}/${data.id}`,data);
   }
 
-  createFormIssuance(data:createDto):Observable<createDto>{
+  createFormIssuance(data:createFormIssuanceDto):Observable<createFormIssuanceDto>{
     data.id= 0;
-    return this.http.post<createDto>(this.apibaseurl + '/FormIssuanceTransaction' + '/Create',data);
+    return this.http.post<createFormIssuanceDto>(this.apibaseurl + '/FormIssuanceTransaction' + '/Create',data);
   }
 
   

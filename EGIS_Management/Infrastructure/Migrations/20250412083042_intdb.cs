@@ -306,6 +306,43 @@ namespace Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Teller", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "CashTicket",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ControlNumber = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<double>(type: "float", nullable: false),
+                    TellerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TellerCode = table.Column<int>(type: "int", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CashTicket", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CheckReceivedDay",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReceiptNumber = table.Column<int>(type: "int", nullable: false),
+                    BankNumber = table.Column<int>(type: "int", nullable: false),
+                    BankName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CheckNumber = table.Column<int>(type: "int", nullable: false),
+                    CheckAmount = table.Column<double>(type: "float", nullable: false),
+                    CheckDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CheckReceivedDay", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -358,6 +395,12 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Teller");
+
+            migrationBuilder.DropTable(
+                name: "CashTicket");
+
+            migrationBuilder.DropTable(
+                name: "CheckReceivedDay");
         }
     }
 }
