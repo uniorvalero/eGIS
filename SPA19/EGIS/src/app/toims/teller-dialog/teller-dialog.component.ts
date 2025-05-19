@@ -34,7 +34,7 @@ export class TellerDialogComponent {
       id:[data.id],
       code:[data.code || '',[Validators.required]],
       userid:[data.userid || '',[Validators.required]],
-      description:[data.description || '',[Validators.required]],
+      description:[data.name || '',[Validators.required]],
       designation:[data.designation || '',[Validators.required]],
     })
   }

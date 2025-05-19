@@ -15,7 +15,6 @@ import {MatCardModule} from '@angular/material/card';
     CommonModule,
     MatInputModule,
     MatCardModule
-    
   ],
   templateUrl: './master-code-dialog.component.html',
   styleUrl: './master-code-dialog.component.css'

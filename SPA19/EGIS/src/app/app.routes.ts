@@ -68,6 +68,11 @@ export const routes: Routes = [
         path: 'formissuance',
         loadComponent: () =>
           import('./toims/form-issuance/form-issuance.component').then(m => m.FormIssuanceComponent),
+      },
+      {
+        path: 'cashticket',
+        loadComponent: () =>
+          import('./toims/cash-ticket/cash-ticket.component').then(m => m.CashTicketComponent),
       }
     ]
   }

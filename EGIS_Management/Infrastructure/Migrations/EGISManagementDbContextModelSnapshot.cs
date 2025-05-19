@@ -532,7 +532,7 @@ namespace Infrastructure.Migrations
 
                     b.ToTable("Billings");
                 });
-           
+
             modelBuilder.Entity("Domain.Entities.toims.FormIssuance", b =>
             {
                 b.Property<int>("Id")
@@ -573,7 +573,64 @@ namespace Infrastructure.Migrations
 
                 b.ToTable("FormIssuance");
             });
-#pragma warning restore 612, 618
+
+            modelBuilder.Entity("Domain.Entities.toims.CashTicket", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<int>("ControlNumber")
+                    .IsRequired()
+                    .HasColumnType("int");
+
+                b.Property<int>("Quantity")
+                    .HasColumnType("int");
+
+                b.Property<double>("Amount")
+                    .HasColumnType("float");
+
+                b.Property<string>("TellerName")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<int>("TellerCode")
+                    .HasColumnType("int");
+
+                b.Property<DateTime>("CreatedAt")
+                    .HasColumnType("datetime2");
+
+                b.HasKey("Id");
+
+                b.ToTable("CashTicket");
+            });
+
+            modelBuilder.Entity("Domain.Entities.toims.CheckReceivedDay", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                b.Property<int>("ReceiptNumber")
+                    .HasColumnType("int");
+                b.Property<int>("BankNumber")
+                    .HasColumnType("int");
+                b.Property<string>("BankName")
+                    .HasColumnType("nvarchar(max)");
+                b.Property<int>("CheckNumber")
+                    .HasColumnType("int");
+                b.Property<double>("CheckAmount")
+                    .HasColumnType("float");
+                b.Property<DateOnly>("CheckDate")
+                    .HasColumnType("date");
+                b.Property<DateTime>("CreatedAt")
+                    .HasColumnType("datetime2");
+
+                b.HasKey("Id");
+
+                b.ToTable("CheckReceivedDay");
+            });
         }
     }
 }
+ 

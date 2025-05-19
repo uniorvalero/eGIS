@@ -1,46 +1,47 @@
 <div class="container-fluid">
-    <h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} Form Issuance</h2>
+<h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} Form Issuance</h2>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
         <mat-form-field class="full-width">
-            <mat-label> Book Number</mat-label>
-                <input matInput formControlName="booknumber" required >
-            <mat-error *ngIf="form.get('booknumber')?.hasError('required')">Code is required</mat-error>
+            <mat-label> BookNumber</mat-label>
+                <input matInput formControlName="bookNumber" required >
+            <mat-error *ngIf="form.get('bookNumber')?.hasError('required')">BookNumber is required</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Quantity</mat-label>
+            <mat-label> Quantity</mat-label>
                 <input matInput formControlName="quantity" required >
             <mat-error *ngIf="form.get('quantity')?.hasError('required')">Quantity is required</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Start Receipt</mat-label>
-                <input matInput formControlName="startreceipt" required >
-            <mat-error *ngIf="form.get('startreceipt')?.hasError('required')">Start Receipt is required</mat-error>
+            <mat-label> Start Receipt</mat-label>
+                <input matInput formControlName="startReceipt" required >
+            <mat-error *ngIf="form.get('startReceipt')?.hasError('required')">Start Receipt is required</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>End Receipt</mat-label>
-                <input matInput formControlName="endreceipt" required >
-            <mat-error *ngIf="form.get('endreceipt')?.hasError('required')">End Receipt is required</mat-error>
+            <mat-label> End Receipt</mat-label>
+                <input matInput formControlName="endReceipt" required >
+            <mat-error *ngIf="form.get('endReceipt')?.hasError('required')">End Receipt is required</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Char</mat-label>
+            <mat-label> Char</mat-label>
                 <input matInput formControlName="char" required >
             <mat-error *ngIf="form.get('char')?.hasError('required')">Char is required</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Teller Code</mat-label>
-                <input matInput formControlName="tellercode" required >
-            <mat-error *ngIf="form.get('tellercode')?.hasError('required')">Teller Code is required</mat-error>
+            <mat-label> Teller Code</mat-label>
+                <input matInput formControlName="tellerCode" required >
+            <mat-error *ngIf="form.get('tellerCode')?.hasError('required')">Teller Code is required</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Teller Name</mat-label>
-                <input matInput formControlName="tellername" required >
-            <mat-error *ngIf="form.get('tellername')?.hasError('required')">Teller Name is required</mat-error>
+            <mat-label> Teller Name</mat-label>
+                <input matInput formControlName="tellerName" required >
+            <mat-error *ngIf="form.get('tellerName')?.hasError('required')">Teller Name is required</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Final Date</mat-label>
-                <input matInput formControlName="finaldate" >
-            <mat-error *ngIf="form.get('finaldate')?.hasError('required')">Final Date is required</mat-error>
+            <mat-label> Final Date</mat-label>
+                <input matInput formControlName="finalDate" required >
+            <mat-error *ngIf="form.get('finalDate')?.hasError('required')">Final Date is required</mat-error>
         </mat-form-field>
+
         <div class="dialog-actions">
             <button mat-button  type="button" (click)="onCancel()">Cancel</button>
             <button mat-raised-button type="submit" [disabled]="!form.valid">{{isEditMode?'Update':'Create'}}</button>

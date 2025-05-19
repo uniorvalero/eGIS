@@ -1,13 +1,13 @@
 export interface IFormIssuance {
     id: number;
-    booknumber : number;
+    bookNumber : number;
     quantity : number;
-    startreceipt : number;
-    endreceipt : number;
+    startReceipt : number;
+    endReceipt : number;
     char: string
-    tellercode : number;
-    tellername : string;
-    finaldate : Date;
+    tellerCode : number;
+    tellerName : string;
+    finalDate : Date;
  }
 
- export type createDto =Omit<IFormIssuance,'booknumber'|'quantity'|'startreceipt'|'endreceipt'|'char'|'tellercode'|'tellername'|'finaldate'>; 
+ export type createFormIssuanceDto =Omit<IFormIssuance,'bookNumber'|'quantity'|'startReceipt'|'endReceipt'|'char'|'tellerCode'|'tellerName'|'finalDate'>; 

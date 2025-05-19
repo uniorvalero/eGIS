@@ -28,7 +28,7 @@ import { TellerDialogComponent } from '../teller-dialog/teller-dialog.component'
 
 export class TellerComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','code','userid','designation', 'description','actions']
+  displayedColumns: string[] = ['id','code','userid','designation', 'name','actions']
   dataSource!: MatTableDataSource<ITeller>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;

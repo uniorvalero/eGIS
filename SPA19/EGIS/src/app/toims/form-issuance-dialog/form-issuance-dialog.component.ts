@@ -35,20 +35,19 @@ export class FormIssuanceDialogComponent {
     this.isEditMode=!!data.id;
     this.form=this.fb.group({
       id:[data.id],
-      booknumber:[data.booknumber || '', [Validators.required]],
+      bookNumber:[data.bookNumber || '', [Validators.required]],
       quantity:[data.quantity || '', [Validators.required]],
-      startreceipt:[data.startreceipt || '',[Validators.required]],
-      endreceipt:[data.endreceipt || '',[Validators.required]],
+      startReceipt:[data.startReceipt || '',[Validators.required]],
+      endReceipt:[data.endReceipt || '',[Validators.required]],
       char:[data.char || '',[Validators.required]],
-      tellercode:[data.tellercode || '',[Validators.required]],
-      tellername:[data.tellername || '',[Validators.required]],
-      finaldate:[data.finaldate || '',[Validators.required]],
+      tellerCode:[data.tellerCode || '',[Validators.required]],
+      tellerName:[data.tellerName || '',[Validators.required]],
+      finalDate:[data.finalDate ],
     })
   }
 
   onSubmit():void{
     if(this.form.valid){
-      
       this.dialogRef.close(this.form.value);
     }
   }

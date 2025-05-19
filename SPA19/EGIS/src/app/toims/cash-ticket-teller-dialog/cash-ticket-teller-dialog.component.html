@@ -1,0 +1,28 @@
+<div class="container-fluid" style="min-width:350px;max-width:400px;">
+  <h2 mat-dialog-title>Teller Help</h2>
+  <form class="form-container">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="max-height:220px;overflow-y:auto;display:block;">
+
+      <ng-container matColumnDef="tellerCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width:90px;">Teller Code</th>
+        <td mat-cell *matCellDef="let row"> {{row.code}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="tellerName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Teller Name</th>
+        <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div style="margin-top:10px;display:flex;align-items:center;">
+      <span style="flex:0 0 auto;">Type a character to search</span>
+      <input matInput style="margin-left:8px;width:100px;" [(ngModel)]="searchText" name="searchText" (ngModelChange)="applyFilter($event)" placeholder="search">
+    </div>
+
+    <div style="margin-top:16px;display:flex;justify-content:center;gap:16px;">
+      <button mat-raised-button type="button" (click)="onCancel()">Exit</button>
+    </div>
+  </form>
+</div>

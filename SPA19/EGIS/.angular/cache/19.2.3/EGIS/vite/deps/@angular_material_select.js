@@ -4,25 +4,17 @@ import {
   MAT_SELECT_SCROLL_STRATEGY_PROVIDER,
   MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY,
   MAT_SELECT_TRIGGER,
+  MatOptgroup,
+  MatOption,
   MatSelect,
   MatSelectChange,
   MatSelectModule,
   MatSelectTrigger
-} from "./chunk-QWYZV2GV.js";
-import "./chunk-YELCPDW5.js";
-import {
-  MatOptgroup,
-  MatOption
-} from "./chunk-WIAX3YRE.js";
-import "./chunk-VFMIJ4UK.js";
-import "./chunk-N6UCSUCO.js";
-import "./chunk-HGFV5ONH.js";
-import "./chunk-7SWLD5PM.js";
-import "./chunk-SZS4RJEH.js";
-import "./chunk-UDU42JBG.js";
-import "./chunk-QXMN2V6O.js";
-import "./chunk-4ZBKFN6X.js";
-import "./chunk-UJHC2GL6.js";
+} from "./chunk-JLVNPTFI.js";
+import "./chunk-RLRL66TD.js";
+import "./chunk-CMLC3X4C.js";
+import "./chunk-VCDHMFM5.js";
+import "./chunk-YLX6D4GN.js";
 import {
   MatError,
   MatFormField,
@@ -30,20 +22,25 @@ import {
   MatLabel,
   MatPrefix,
   MatSuffix
-} from "./chunk-OW53JBMG.js";
-import "./chunk-LJ7EBVUF.js";
-import "./chunk-UCL4LZVP.js";
-import "./chunk-VYCBT7IR.js";
-import "./chunk-O2KQ3CGJ.js";
-import "./chunk-M3HR6BUY.js";
-import "./chunk-LLSYBTIE.js";
-import "./chunk-XTV6A7WT.js";
-import "./chunk-OSKXDPR7.js";
-import "./chunk-CSTNWRHN.js";
-import "./chunk-FRISPFX3.js";
-import "./chunk-XMN47SEZ.js";
+} from "./chunk-G5UYIY6N.js";
+import "./chunk-OHTZLV4P.js";
+import "./chunk-Z34ZMJSB.js";
+import "./chunk-PZ5TAKUW.js";
+import "./chunk-ESZMZSSW.js";
+import "./chunk-AW2P5U42.js";
+import "./chunk-UCFDKR3Y.js";
+import "./chunk-AEVW6JXZ.js";
+import "./chunk-DN2FFZDR.js";
+import "./chunk-KK5H75WT.js";
+import "./chunk-FF4MPXGY.js";
+import "./chunk-6UBQ3CO5.js";
+import "./chunk-5I3O4PCC.js";
+import "./chunk-XMCU5N4S.js";
+import "./chunk-4URBEMCF.js";
+import "./chunk-2WLYJDS4.js";
+import "./chunk-MAPQVX6I.js";
 
-// node_modules/@angular/material/fesm2022/select.mjs
+// ../../../node_modules/@angular/material/fesm2022/select.mjs
 var matSelectAnimations = {
   // Represents
   // trigger('transformPanelWrap', [
