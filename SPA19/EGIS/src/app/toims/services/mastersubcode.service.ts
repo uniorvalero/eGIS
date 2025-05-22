@@ -4,14 +4,12 @@ import { createMasterSubCodeDto, IMasterSubcode } from '../models/mastersubcode'
 import { Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class MastersubcodeService {
 
   readonly apibaseurl = environment.apibaseURL;
- 
   constructor(private http:HttpClient) { }
 
   getMasterSubCodes(code: number):Observable<IMasterSubcode[]>{

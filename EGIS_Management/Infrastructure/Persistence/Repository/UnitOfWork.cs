@@ -45,7 +45,7 @@ namespace Infrastructure.Persistence.Repository
         public ICancelledReceiptRepository CancelledReceipt => new CancelledReceiptRepository(_dbContext);
         public IReceiptInquiryLogRepository ReceiptInquiryLog => new ReceiptInquiryLogRepository(_dbContext);
         public IBatchReceiptRepository BatchReceipt => new BatchReceiptRepository(_dbContext);
-
+        public ICheckReceivedDayRepository CheckReceivedDay => new CheckReceivedDayRepository(_dbContext);
 
         //Task bool CommitAsync()
         public async Task<bool> CommitAsync()

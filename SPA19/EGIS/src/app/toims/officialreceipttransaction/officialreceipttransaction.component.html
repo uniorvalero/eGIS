@@ -1,9 +1,12 @@
 <div class="table-container">
-  <div>
-      <h1 class="text-2xl font-bold">Official Receipt Entry</h1>
+  <div class="button-row">
+    <div>
       <button mat-raised-button color="primary" (click)="openDialog()">Add Official Receipt</button>
-      
+      <button mat-raised-button color="primary" (click)="openDialog()">Setup</button>
+      <button mat-raised-button color="primary" (click)="openDialog()">Utility</button>
     </div>
+  </div>
+  &nbsp;
   <div>
     <mat-form-field class="full-width">
       <mat-label>Filter</mat-label>
@@ -36,7 +39,7 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef> Action </th>
           <td mat-cell *matCellDef="let row" class="space-x-2">
-            <button mat-icon-button color="primary" matTooltip="Open OR details" (click)="openOfficialReceiptDetails(row.code, row.description)">
+            <button mat-icon-button color="primary" matTooltip="Open OR details" (click)="openOfficialReceiptDetails(row.receiptNumber, row.payor)">
               <mat-icon>open_in_new</mat-icon>
             </button>
             <button mat-icon-button color="primary" matTooltip="Edit OR" (click)="openDialog(row)">
@@ -44,6 +47,9 @@
             </button> 
             <button mat-icon-button color="primary" matTooltip="Delete OR" (click)="deleteOfficialReceipt(row.id)">
                 <mat-icon>delete</mat-icon>
+            </button> 
+            <button mat-icon-button color="primary" matTooltip="Cancel OR" (click)="cancelReceipt(row)">
+                <mat-icon>cancel</mat-icon>
             </button> 
           </td>
         </ng-container>

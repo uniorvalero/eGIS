@@ -38,5 +38,6 @@ namespace Infrastructure.Persistence.Repository
         ICancelledReceiptRepository CancelledReceipt { get; }
         IReceiptInquiryLogRepository ReceiptInquiryLog { get; }
         IBatchReceiptRepository BatchReceipt { get; }
+        ICheckReceivedDayRepository CheckReceivedDay { get; }
     }
 }

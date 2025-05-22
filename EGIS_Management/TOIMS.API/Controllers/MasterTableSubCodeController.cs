@@ -47,7 +47,6 @@ namespace TOIMS.API.Controllers
         {
             try
             {
-                Console.WriteLine($"Received Code: {code}");
                 var result = await _unitofwork.SubCode.GetDetailsByMasterCodeAsync(code); // Added 'await' here
                 return Ok(result);
             }

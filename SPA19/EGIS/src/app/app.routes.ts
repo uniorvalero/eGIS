@@ -60,7 +60,7 @@ export const routes: Routes = [
           import('./toims/officialreceipttransaction/officialreceipttransaction.component').then(m => m.OfficialreceipttransactionComponent),
       },
       {
-        path: 'officialreceiptdetails/:code/:description',
+        path: 'officialreceiptdetails/:receiptNumber/:payor',
         loadComponent: () =>
           import('./toims/officialreceipttransaction-details/officialreceipttransaction-details.component').then(m => m.OfficialreceipttransactionDetailsComponent),
       },
@@ -73,6 +73,11 @@ export const routes: Routes = [
         path: 'cashticket',
         loadComponent: () =>
           import('./toims/cash-ticket/cash-ticket.component').then(m => m.CashTicketComponent),
+      },
+      {
+        path: 'checkreceivedday',
+        loadComponent: () =>
+          import('./toims/check-received-day/check-received-day.component').then(m => m.CheckReceivedDayComponent),
       }
     ]
   }
