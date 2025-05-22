@@ -42,7 +42,6 @@ export class MasterSubcodeComponent implements OnInit {
   constructor(private route: ActivatedRoute, private mastersubcodeService: MastersubcodeService, private dialog: MatDialog, private router: Router){
   }
   ngOnInit(): void {
-    console.log('MasterCode:', this.masterCode, 'Description:', this.masterCodeDescription);
     this.route.params.subscribe((params: Params) => {
       this.masterCode = params['code'];
       this.masterCodeDescription = params['description'];
@@ -55,7 +54,6 @@ export class MasterSubcodeComponent implements OnInit {
         }
     });
     });
-    //this.loadMasterSubCode();
   }
 
   loadMasterSubCode(): void{
@@ -74,7 +72,6 @@ export class MasterSubcodeComponent implements OnInit {
   
     openDialog(msCode?:IMasterSubcode):void{
       const dialogRef=this.dialog.open(MasterSubCodeDialogComponent,{
-       
         data:msCode || {}
       });
   

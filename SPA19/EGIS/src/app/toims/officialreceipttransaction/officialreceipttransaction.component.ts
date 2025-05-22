@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { OfficialreceipttransactionService } from '../services/officialreceipttransaction.service';
 import { OfficialreceipttransactionDialogComponent } from '../officialreceipttransaction-dialog/officialreceipttransaction-dialog.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { OfficialreceipttransactionCancelReceiptDialogComponent } from '../officialreceipttransaction-cancel-receipt-dialog/officialreceipttransaction-cancel-receipt-dialog.component';
 
 @Component({
   selector: 'app-officialreceipttransaction',
@@ -32,7 +33,7 @@ export class OfficialreceipttransactionComponent implements OnInit{
   selectedORId!: number;
   selectedDescription!: string;
 
-  displayedColumns: string[] = ['id','receiptNumber', 'char', 'payor','actions']
+  displayedColumns: string[] = ['receiptNumber', 'char', 'payor','actions']
   dataSource!: MatTableDataSource<IOfficialReceipt>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;
@@ -61,7 +62,26 @@ export class OfficialreceipttransactionComponent implements OnInit{
     this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
   }
 
+  cancelReceipt(mCode?:IOfficialReceipt):void{
+    console.log('Cancel Receipt:', mCode?.receiptNumber);
+    const dialogRef=this.dialog.open(OfficialreceipttransactionCancelReceiptDialogComponent,{
+      
+      data:mCode || {}
+      
+    });
+    dialogRef.afterClosed().subscribe(result=>{
+      if(result){
+        if(result.id){
+          this.officialReceiptService.updateOfficialReceipt(result).subscribe(()=>{
+            this.loadOfficialReceipt();
+          });
+        } 
+      }
+    })
+  }
+
   openDialog(mCode?:IOfficialReceipt):void{
+    console.log('Edit Receipt:', mCode?.receiptNumber);
     const dialogRef=this.dialog.open(OfficialreceipttransactionDialogComponent,{
      
       data:mCode || {}
@@ -80,6 +100,7 @@ export class OfficialreceipttransactionComponent implements OnInit{
       }
     })
   }
+
   deleteOfficialReceipt(id:number){
     if(confirm('Are you sure you want to delete this OR code?')){
       this.officialReceiptService.deleteOfficialReceipt(id).subscribe(()=>{
@@ -88,10 +109,11 @@ export class OfficialreceipttransactionComponent implements OnInit{
     }
   }
 
-  openOfficialReceiptDetails(ORId: number, description: string): void {
-    this.router.navigate([`/mainlayout/officialreceiptdetails`, ORId, description]);
+  openOfficialReceiptDetails(ORId: number, payor: string): void {
+    console.log('ReceiptNumber:', ORId, 'Payor:', payor); 
+    this.router.navigate([`/mainlayout/officialreceiptdetails`, ORId, payor]);
     this.selectedORId = ORId;
-    this.selectedDescription = description;
+    this.selectedDescription = payor;
     this.showOR = true; 
   }
 }

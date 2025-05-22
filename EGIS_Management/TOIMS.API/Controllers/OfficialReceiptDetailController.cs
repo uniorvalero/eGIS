@@ -48,8 +48,7 @@ namespace TOIMS.API.Controllers
         {
             try
             {
-                Console.WriteLine($"Received OR ID: {orID}");
-                var result = await _unitofwork.OfficialReceiptDetail.GetDetailsByORIdAsync(orID); // Added 'await' here
+                var result = await _unitofwork.OfficialReceiptDetail.GetDetailsByORIdAsync(orID); 
                 return Ok(result);
             }
             catch (Exception ex)
@@ -101,6 +100,25 @@ namespace TOIMS.API.Controllers
                 return Ok();
             }
             return BadRequest();
+        }
+
+        [HttpPut("CancelByReceiptNumber/{receiptNumber}")]
+        public async Task<IActionResult> Cancel(int receiptNumber)
+        {
+            var details = await _unitofwork.OfficialReceiptDetail.GetDetailsByORIdAsync(receiptNumber);
+
+            if (details == null || !details.Any())
+                return NotFound("No records found for the given ReceiptNumber.");
+
+            foreach (var detail in details)
+            {
+                detail.Code = "0-000-00-0000";
+                detail.Description = "Cancelled Receipt";
+                _unitofwork.OfficialReceiptDetail.Update(detail);
+            }
+
+            await _unitofwork.CommitAsync();
+            return Ok("All records with the given ReceiptNumber have been cancelled.");
         }
     }
 }
