@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IAccountLedger } from '../models/accountledger';
-import { AccountsubsidiaryledgerService } from '../services/accountsubsidiaryledger.service';
+import { IAccountLedger } from '../transactions/models/accountledger';
+import { AccountsubsidiaryledgerService } from '../transactions/services/accountsubsidiaryledger.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';

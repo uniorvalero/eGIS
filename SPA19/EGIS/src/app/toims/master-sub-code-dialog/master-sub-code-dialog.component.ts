@@ -69,10 +69,10 @@ export class MasterSubCodeDialogComponent implements OnInit {
 
   onSubmit():void{
     if(this.form.valid){
-      console.log(this.form.value);
       this.dialogRef.close(this.form.value);
     }
   }
+  
   onCancel():void{
     this.dialogRef.close();
   }

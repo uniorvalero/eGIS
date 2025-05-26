@@ -15,6 +15,25 @@ export class OfficialreceipttransactionService {
     return this.http.get<IOfficialReceipt[]>(this.apibaseurl + '/OfficialReceipt');
   }
 
+  getFilteredReceipts(dateFrom: Date, dateTo: Date, formCode: string): Observable<IOfficialReceipt[]> {
+    const params = {
+      dateFrom: dateFrom.toISOString(),
+      dateTo: dateTo.toISOString(),
+      formCode
+    };
+    return this.http.get<IOfficialReceipt[]>(`${this.apibaseurl}/OfficialReceipt/getSetup/`, { params });
+  }
+
+  getFilteredUtility(startReceipt: number, endReceipt: number, char: string, formCode: string): Observable<IOfficialReceipt[]> {
+    const params = {
+      startRange: startReceipt,
+      endRange: endReceipt,
+      character: char,
+      form: formCode
+    };
+    return this.http.get<IOfficialReceipt[]>(`${this.apibaseurl}/OfficialReceipt/getUtility/`, { params });
+  }
+
   updateOfficialReceipt(mcode:IOfficialReceipt):Observable<void>{
     return this.http.put<void>(`${this.apibaseurl + '/OfficialReceipt'}/${mcode.id}`,mcode);
   }

@@ -29,7 +29,7 @@ namespace TOIMS.api.Controllers
                 ReceiptNumber = tableCode.ReceiptNumber,
                 Char = tableCode.Char,
                 Payor = tableCode.Payor,
-                DateIssue = DateTime.Now,
+                DateIssue = tableCode.DateIssue,
             };
             
             await _unitOfWork.OfficialReceipt.CreateAsync(createDTO);
@@ -74,7 +74,7 @@ namespace TOIMS.api.Controllers
             {
                 orData.Char = ORtb.Char;
                 orData.Payor = ORtb.Payor;
-                orData.DateIssue = DateTime.Now;
+                orData.DateIssue = ORtb.DateIssue;
                 _unitOfWork.OfficialReceipt.Update(orData);
 
                 await _unitOfWork.CommitAsync();
@@ -83,19 +83,32 @@ namespace TOIMS.api.Controllers
             return BadRequest();
         }
 
-        [HttpGet("PassToSubCode")]
-        public IActionResult PassToSubCode(int masterCode, string description)
+        [HttpGet("getSetup")]
+        public async Task<IActionResult> GetAllSetUp(DateOnly from, DateOnly to, int subcode)
         {
-            if (masterCode <= 0 || string.IsNullOrWhiteSpace(description))
-            {
-                return BadRequest("Invalid MasterCode or Description.");
-            }
+            var orData = await _unitOfWork.OfficialReceipt.GetAllByDateAndForm(from, to, subcode);
+            return Ok(orData);
+        }
 
-            return RedirectToAction(
-                actionName: "DisplayMasterCodeDetails",
-                controllerName: "MasterTableSubCode",
-                routeValues: new { masterCode, description }
-            );
+        [HttpGet("getUtility")]
+        public async Task<IActionResult> GetAllUtility(int startingRange, int endRange, string character, int subcode)
+        {
+            var orData = await _unitOfWork.OfficialReceipt.GetAllByRangeDateAndForm(subcode, startingRange, endRange, character);
+            return Ok(orData);
+        }
+
+        [HttpGet("GetFormCodeByMasterCode")]
+        public async Task<IActionResult> GetCode(int code)
+        {
+            try
+            {
+                var result = await _unitOfWork.SubCode.GetDetailsByMasterCodeAsync(code);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     }
 }

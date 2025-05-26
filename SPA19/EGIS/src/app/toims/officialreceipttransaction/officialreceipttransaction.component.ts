@@ -12,6 +12,8 @@ import { OfficialreceipttransactionService } from '../services/officialreceipttr
 import { OfficialreceipttransactionDialogComponent } from '../officialreceipttransaction-dialog/officialreceipttransaction-dialog.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { OfficialreceipttransactionCancelReceiptDialogComponent } from '../officialreceipttransaction-cancel-receipt-dialog/officialreceipttransaction-cancel-receipt-dialog.component';
+import { OfficialreceipttransactionCalendarDialogComponent } from '../officialreceipttransaction-calendar-dialog/officialreceipttransaction-calendar-dialog.component';
+import { OfficialreceipttransactionUtilityDialogComponent } from '../officialreceipttransaction-utility-dialog/officialreceipttransaction-utility-dialog.component';
 
 @Component({
   selector: 'app-officialreceipttransaction',
@@ -101,6 +103,39 @@ export class OfficialreceipttransactionComponent implements OnInit{
     })
   }
 
+  openCalendarDialog(mCode?:IOfficialReceipt):void{
+    const dialogRef=this.dialog.open(OfficialreceipttransactionCalendarDialogComponent,{
+      data:mCode || {}
+    });
+    dialogRef.afterClosed().subscribe(result=>{
+      if(result){
+        if(result.id){
+          this.officialReceiptService.updateOfficialReceipt(result).subscribe(()=>{
+            this.loadOfficialReceipt();
+          });
+        } else{
+          this.officialReceiptService.createOfficialReceipt(result).subscribe(()=>{
+            this.loadOfficialReceipt();
+          });
+        }
+      }
+    })
+  }
+
+  openUtilityDialog(): void {
+    const dialogRef = this.dialog.open(OfficialreceipttransactionUtilityDialogComponent, {
+      width: '600px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Utility Dialog Result:', result);
+        // Handle the result if needed
+      }
+    });
+  }
+  
   deleteOfficialReceipt(id:number){
     if(confirm('Are you sure you want to delete this OR code?')){
       this.officialReceiptService.deleteOfficialReceipt(id).subscribe(()=>{
@@ -116,4 +151,6 @@ export class OfficialreceipttransactionComponent implements OnInit{
     this.selectedDescription = payor;
     this.showOR = true; 
   }
+
+  
 }
