@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { createBankDto, IBank } from '../models/bank';
-import { environment } from '../../../environment/environment';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'

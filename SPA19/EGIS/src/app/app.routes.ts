@@ -78,6 +78,11 @@ export const routes: Routes = [
         path: 'checkreceivedday',
         loadComponent: () =>
           import('./toims/check-received-day/check-received-day.component').then(m => m.CheckReceivedDayComponent),
+      },
+      {
+        path: 'inquirytransaction',
+        loadComponent: () =>
+          import('./toims/inquirytransaction/inquirytransaction.component').then(m => m.InquirytransactionComponent),
       }
     ]
   }
