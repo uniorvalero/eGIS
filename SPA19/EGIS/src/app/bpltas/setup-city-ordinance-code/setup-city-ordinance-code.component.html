@@ -1,0 +1,162 @@
+<div class="container-fluid">
+
+			<!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">City Ordinance Maintenance</h1>
+			<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Print Report</a>
+          </div>
+		
+		<div class="row">
+			<div class="col-lg-2">
+				<div class="dropdown show">
+			  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Option
+			  </a>
+
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+				<a class="dropdown-item" href="#">All</a>
+				<a class="dropdown-item" href="#">Business Tax</a>
+				<a class="dropdown-item" href="#">Mayor's permit</a>
+				<a class="dropdown-item" href="#">Garbage</a>
+				<a class="dropdown-item" href="#">Sanitary</a>
+				<a class="dropdown-item" href="#">Regulatory</a>
+			
+			  </div>
+			</div>
+			</div>
+			<div class="col-lg-3">
+				<input class="form-control" type="text" placeholder="Effectivity Date" />
+			</div>
+			</div>
+		<br/>
+		<div class="row">
+			<div class="col-lg-5">
+				<div class="card shadow mb-4">
+				<div class="card-header py-3">
+				  <h6 class="m-0 font-weight-bold text-primary">List</h6>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Rate</th>
+					  <th>Amount</th>
+                      <th></th>
+					  <th></th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Code</th>
+                      <th>Rate</th>
+					  <th>Amount</th>
+					<th></th>
+					  <th></th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                      <td>0001</td>
+                      <td>1</td>
+					  <td>0.00</td>
+					<a href="#"><td><i class="fas fa-fw fa-edit"></i></td></a>
+					<a href="#"><td><i class="fas fa-fw fa-trash"></i></td></a>
+                    </tr>
+                    <tr>
+                      <td>0002</td>
+                      <td> 2</td>
+					  <td>0.00</td>
+                     <a href="#"><td><i class="fas fa-fw fa-edit"></i></td></a>
+					<a href="#"><td><i class="fas fa-fw fa-trash"></i></td></a>
+                    </tr>
+                    <tr>
+                      <td>0003</td>
+                      <td> 3</td>
+					  <td>0.00</td>
+                    <a href="#"><td><i class="fas fa-fw fa-edit"></i></td></a>
+					<a href="#"><td><i class="fas fa-fw fa-trash"></i></td></a>
+                    </tr>
+                    <tr>
+                      <td>0004</td>
+                      <td> 4</td>
+					  <td>0.00</td>
+                   <a href="#"><td><i class="fas fa-fw fa-edit"></i></td></a>
+					<a href="#"><td><i class="fas fa-fw fa-trash"></i></td></a>
+                    </tr>
+                    <tr>
+                      <td>0005</td>
+                      <td> 5</td>
+					  <td>0.00</td>
+                     <a href="#"><td><i class="fas fa-fw fa-edit"></i></td></a>
+					<a href="#"><td><i class="fas fa-fw fa-trash"></i></td></a>
+                    </tr>
+                  
+					 </tbody>
+                </table>
+				
+					<div class="row">
+						<div class="col-sm-12 mb-3 mb-sm-0">
+					<textarea class="form-control" rows="5" id="exampleremarks" placeholder="Remarks"></textarea>
+                    
+                  </div>   
+				</div>
+				<br />
+					<div class="row">
+						<div class="col-sm-6 mb-3 mb-sm-0">
+					 <input type="text" class="form-control form-control-user" id="examplebranch" placeholder="Rate">
+						
+                  </div>  
+						<div class="col-sm-6 mb-3 mb-sm-0">
+					 <input type="text" class="form-control form-control-user" id="examplebranch" placeholder="Amount">
+                    
+                  </div>      				  
+					</div>
+					
+					<br />
+					 <a href="login.html" class="btn btn-primary btn-user btn-block">
+                  Save
+                </a>
+				<br/>
+				</div>
+				</div>
+			</div>
+			</div>
+          <div class="col-lg-7">
+                     
+              <form class="user">
+                <div class="form-group row">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="examplecode" placeholder="Tax Code">
+                  </div>
+                   <div class="col-sm-8 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="examplebank" placeholder="Taype of Tax">
+                  </div>
+                </div>
+                 <div class="form-group row">
+					<nav>
+					  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Range</a>
+						<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Excess</a>
+						<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Option</a>
+						<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Ask Quantity</a>
+						<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Range Quantity</a>
+					  </div>
+					</nav>
+					<div class="tab-content" id="nav-tabContent">
+					  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+						
+					  </div>
+					  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+					  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+					</div>
+                  
+                </div>
+				
+              </form>
+				
+          
+          </div>
+        </div>
+        </div>
