@@ -40,11 +40,26 @@ namespace TOIMS.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+
+        [HttpGet("GetCode")]
+        public async Task<IActionResult> GetCode(string code)
         {
-            var data = await _unitofwork.RevenueCodeChild.GetAllAsync();
-            return Ok(data);
+            try
+            {
+                var result = await _unitofwork.RevenueCodeChild.GetDetailsByRevenueCodeAsync(code); // Added 'await' here
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
         }
+        //public async Task<IActionResult> GetAll()
+        //{
+        //    var data = await _unitofwork.RevenueCodeChild.GetAllAsync();
+        //    return Ok(data);
+        //}
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetbyId(int id)

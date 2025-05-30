@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { IFormIssuance } from '../models/formissuance';
 import { FormissuanceService } from '../services/formissuance.service';
 import { FormIssuanceDialogComponent } from '../form-issuance-dialog/form-issuance-dialog.component';
+import { FormIssuanceSetupDialogComponent } from '../form-issuance-setup-dialog/form-issuance-setup-dialog.component';
 
 @Component({
   selector: 'app-form-issuance',
@@ -76,6 +77,12 @@ export class FormIssuanceComponent implements OnInit {
         }
       }
     })
+  }
+
+  openSetupDialog(mCode?:IFormIssuance):void{
+    const dialogRef=this.dialog.open(FormIssuanceSetupDialogComponent,{
+      data:mCode || {}
+    });
   }
 
   deleteFormIssuance(id:number){

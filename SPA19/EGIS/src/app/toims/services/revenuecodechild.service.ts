@@ -12,8 +12,9 @@ export class RevenuecodechildService {
   readonly apibaseurl = environment.apibaseURL;
   constructor(private http:HttpClient) { }
 
-  getRevenueCodeChildLst():Observable<IRevenueCodeChild[]>{
-    return this.http.get<IRevenueCodeChild[]>(this.apibaseurl + '/RevenueCodeChild');
+  getRevenueCodeChildLst(code: string):Observable<IRevenueCodeChild[]>{
+    const params = { code: code};
+    return this.http.get<IRevenueCodeChild[]>(this.apibaseurl + '/RevenueCodeChild/GetCode', { params});
   }
 
   updateRevenueCodeChild(rcodes:IRevenueCodeChild):Observable<void>{

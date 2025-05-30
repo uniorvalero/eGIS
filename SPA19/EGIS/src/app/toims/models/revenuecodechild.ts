@@ -1,7 +1,7 @@
 export interface IRevenueCodeChild {
     id: number;
     description: string;
-    code : number;
+    code : string;
     amount : number;
  }
 

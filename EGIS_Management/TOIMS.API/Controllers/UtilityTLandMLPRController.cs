@@ -52,7 +52,7 @@ namespace TOIMS.API.Controllers
             {
                 orData.Char = ORtb.Char;
                 orData.Payor = ORtb.Payor;
-                orData.DateIssue = DateTime.Now;
+                orData.DateIssue = ORtb.DateIssue;
                 _unitOfWork.OfficialReceipt.Update(orData);
 
                 await _unitOfWork.CommitAsync();

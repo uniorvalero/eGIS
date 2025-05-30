@@ -293,6 +293,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("ReceiptNumber")
                         .HasColumnType("int");
 
+                    b.Property<int>("SubCode")
+                        .HasColumnType("int");
+
                     b.Property<string>("Char")
                         .HasColumnType("nvarchar(max)");
 
@@ -300,7 +303,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateIssue")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -347,7 +350,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")

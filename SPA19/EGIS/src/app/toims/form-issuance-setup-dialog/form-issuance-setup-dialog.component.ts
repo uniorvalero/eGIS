@@ -1,18 +1,17 @@
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { IFormIssuance } from '../models/formissuance';
+import { Form, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import { provideNativeDateAdapter} from '@angular/material/core';
-import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
-import { IOfficialReceipt } from '../models/officialreceipt';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-officialreceipttransaction-calendar-dialog',
-  standalone: true,
+  selector: 'app-form-issuance-setup-dialog',
   imports: [
     MatFormFieldModule,
     MatInputModule,
@@ -23,19 +22,19 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     CommonModule,
     MatInputModule,
     MatCardModule,
-    MatSelectModule,
+    MatSelectModule
   ],
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './officialreceipttransaction-calendar-dialog.component.html',
-  styleUrl: './officialreceipttransaction-calendar-dialog.component.css'
+  templateUrl: './form-issuance-setup-dialog.component.html',
+  styleUrl: './form-issuance-setup-dialog.component.css'
 })
-export class OfficialreceipttransactionCalendarDialogComponent {
+export class FormIssuanceSetupDialogComponent {
   form: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<OfficialreceipttransactionCalendarDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IOfficialReceipt
+    private dialogRef: MatDialogRef<FormIssuanceSetupDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IFormIssuance
   ) 
   {
   this.form = this.fb.group({
@@ -44,7 +43,7 @@ export class OfficialreceipttransactionCalendarDialogComponent {
     dateTo: [null, Validators.required],
     formCode: ['', Validators.required]
   });
-  
+    
   }
   onSubmit() {
     if (this.form.valid) {

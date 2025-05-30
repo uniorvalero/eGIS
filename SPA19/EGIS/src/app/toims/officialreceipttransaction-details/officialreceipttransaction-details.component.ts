@@ -53,7 +53,7 @@ export class OfficialreceipttransactionDetailsComponent implements OnInit {
           console.error('Error fetching official receipt:', err);
         }
     });
-    //this.loadOfficialReceiptDetails();
+
     });
   }
 

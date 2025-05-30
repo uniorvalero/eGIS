@@ -12,9 +12,10 @@ export class OfficialreceipttransactiondetailsService {
   readonly apibaseurl = environment.apibaseURL;
   constructor(private http: HttpClient) { }
 
-  getOfficialReceiptDetails(orNumber: number):Observable<IOfficialReceiptDetail[]>{
-    const params = { orNumber: orNumber};
-    return this.http.get<IOfficialReceiptDetail[]>(this.apibaseurl + '/OfficialReceiptDetail/GetReceiptNumber/', { params });
+  getOfficialReceiptDetails(orNumber: number): Observable<IOfficialReceiptDetail[]> {
+    return this.http.get<IOfficialReceiptDetail[]>(
+      `${this.apibaseurl}/OfficialReceiptDetail/GetReceiptNumber?orID=${orNumber}`
+    );
   }
 
   updateOfficialReceiptDetail(mcode:IOfficialReceiptDetail):Observable<void>{
