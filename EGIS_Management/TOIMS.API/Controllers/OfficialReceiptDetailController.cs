@@ -44,7 +44,7 @@ namespace TOIMS.API.Controllers
         }
 
         [HttpGet("GetReceiptNumber")]
-        public async Task<IActionResult> GetORID(int orID)
+        public async Task<IActionResult> GetReceiptNumber(int orID)
         {
             try
             {

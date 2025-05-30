@@ -10,6 +10,7 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-revenuecodeparent',
@@ -26,6 +27,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './revenuecodeparent.component.css'
 })
 export class RevenuecodeparentComponent implements OnInit {
+  showSubCode = false;
+  selectedMasterCode!: string;
+  selectedDescription!: string;
 
   displayedColumns: string[] = ['id','code','seqNo','kind', 'description','actions']
   dataSource!: MatTableDataSource<IRevenueCodeParent>;
@@ -34,7 +38,7 @@ export class RevenuecodeparentComponent implements OnInit {
   @ViewChild(MatSort) sort!:MatSort;
   @ViewChild(MatTable) table!:MatTable<IRevenueCodeParent>;
 
-  constructor(private revenuecodeparentService: RevenuecodeparentService,
+  constructor(private router: Router, private revenuecodeparentService: RevenuecodeparentService,
                private dialog: MatDialog){
   }
 
@@ -52,40 +56,46 @@ export class RevenuecodeparentComponent implements OnInit {
       });
   }
 
-   applyFilter(event:Event): void{
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
-    }
+  applyFilter(event:Event): void{
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+  }
   
-    openDialog(rCodes?:IRevenueCodeParent):void{
-      const dialogRef=this.dialog.open(RevenuecodeparentDialogComponent,{
-       
-        data:rCodes || {}
-      });
-  
-     
-      dialogRef.afterClosed().subscribe(result=>{
-        if(result){
-          if(result.id){
-            this.revenuecodeparentService.updateRevenueCodeParent(result).subscribe(()=>{
-              this.loadRevenueCodeParent();
-            });
-          } else{
-            this.revenuecodeparentService.createRevenueCodeParent(result).subscribe(()=>{
-              this.loadRevenueCodeParent();
-            });
-          }
-        }
-      })
-  
-    }
-  
-    deleteRevenueCodeParent(id:number){
-      if(confirm('Are you sure you want to delete this revenue code parent?')){
-        this.revenuecodeparentService.deleteRevenueCodeParent(id).subscribe(()=>{
-          this.loadRevenueCodeParent();
-        })
-      }
-    }
+  openDialog(rCodes?:IRevenueCodeParent):void{
+    const dialogRef=this.dialog.open(RevenuecodeparentDialogComponent,{
+      
+      data:rCodes || {}
+    });
 
+    
+    dialogRef.afterClosed().subscribe(result=>{
+      if(result){
+        if(result.id){
+          this.revenuecodeparentService.updateRevenueCodeParent(result).subscribe(()=>{
+            this.loadRevenueCodeParent();
+          });
+        } else{
+          this.revenuecodeparentService.createRevenueCodeParent(result).subscribe(()=>{
+            this.loadRevenueCodeParent();
+          });
+        }
+      }
+    })
+
+  }
+  
+  deleteRevenueCodeParent(id:number){
+    if(confirm('Are you sure you want to delete this revenue code parent?')){
+      this.revenuecodeparentService.deleteRevenueCodeParent(id).subscribe(()=>{
+        this.loadRevenueCodeParent();
+      })
+    }
+  }
+
+  openChild(code: string, description: string): void {
+    this.router.navigate([`/mainlayout/revenuecodechild`, code, description]);
+    this.selectedMasterCode = code;
+    this.selectedDescription = description;
+    this.showSubCode = true; 
+  }
 }

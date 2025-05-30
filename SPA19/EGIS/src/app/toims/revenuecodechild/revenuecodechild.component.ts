@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { RevenuecodechildService } from '../services/revenuecodechild.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RevenuecodechildDialogComponent } from '../revenuecodechild-dialog/revenuecodechild-dialog.component';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-revenuecodechild',
@@ -26,6 +27,9 @@ import { RevenuecodechildDialogComponent } from '../revenuecodechild-dialog/reve
   styleUrl: './revenuecodechild.component.css'
 })
 export class RevenuecodechildComponent implements OnInit {
+  revenueCode!: string;
+  revenueDescription!: string;
+  showSubCode: boolean = false;
 
   displayedColumns: string[] = ['id','code','amount', 'description','actions']
   dataSource!: MatTableDataSource<IRevenueCodeChild>;
@@ -34,16 +38,27 @@ export class RevenuecodechildComponent implements OnInit {
   @ViewChild(MatSort) sort!:MatSort;
   @ViewChild(MatTable) table!:MatTable<IRevenueCodeChild>;
 
-  constructor(private revenuecodechildService: RevenuecodechildService,
-               private dialog: MatDialog){
+  constructor(private revenuecodechildService: RevenuecodechildService, private dialog: MatDialog,
+      private router: Router, private route: ActivatedRoute,){
   }
 
   ngOnInit(): void {
-    this.loadRevenueCodeChild();
+    this.route.params.subscribe((params: Params) => {
+      this.revenueCode = params['code'];
+      this.revenueDescription = params['description'];
+      this.revenuecodechildService.getRevenueCodeChildLst(this.revenueCode).subscribe({
+        next: (data) => {
+          this.dataSource = new MatTableDataSource(data);
+        },
+        error: (err) => {
+          console.error('Error fetching master subcodes:', err);
+        }
+      });
+    });
   }
 
   loadRevenueCodeChild(): void{
-    this.revenuecodechildService.getRevenueCodeChildLst().subscribe((rcodes) =>
+    this.revenuecodechildService.getRevenueCodeChildLst(this.revenueCode).subscribe((rcodes) =>
       {   
          this.dataSource = new MatTableDataSource(rcodes);
          this.dataSource.paginator = this.paginator;
@@ -85,6 +100,11 @@ export class RevenuecodechildComponent implements OnInit {
           this.loadRevenueCodeChild();
         })
       }
+    }
+
+    goToParent(): void {
+      this.router.navigate(['/mainlayout/revenuecodeparent']);
+      this.showSubCode = true; 
     }
 
 }

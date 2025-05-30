@@ -4,31 +4,31 @@
         <mat-form-field class="full-width">
             <mat-label> controlNumber</mat-label>
                 <input matInput formControlName="controlNumber" required >
-            <mat-error *ngIf="form.get('controlNumber')?.hasError('required')">Code is required</mat-error>
+            <mat-error *ngIf="form.get('controlNumber')?.hasError('required')">Control Number is required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
             <mat-label>quantity</mat-label>
                 <input matInput formControlName="quantity" required >
-            <mat-error *ngIf="form.get('quantity')?.hasError('required')">Description is required</mat-error>
+            <mat-error *ngIf="form.get('quantity')?.hasError('required')">Quantity is required</mat-error>
         </mat-form-field>
         
         <mat-form-field class="full-width">
             <mat-label>amount</mat-label>
                 <input matInput formControlName="amount" required >
-            <mat-error *ngIf="form.get('amount')?.hasError('required')">Description is required</mat-error>
+            <mat-error *ngIf="form.get('amount')?.hasError('required')">Amount is required</mat-error>
         </mat-form-field>
   
         <mat-form-field class="full-width">
             <mat-label> tellerCode</mat-label>
                 <input matInput formControlName="tellerCode" required >
-            <mat-error *ngIf="form.get('controlNumber')?.hasError('required')">Code is required</mat-error>
+            <mat-error *ngIf="form.get('controlNumber')?.hasError('required')">Teller Code is required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
             <mat-label> tellerName</mat-label>
                 <input matInput formControlName="tellerName" required >
-            <mat-error *ngIf="form.get('tellerName')?.hasError('required')">Code is required</mat-error>
+            <mat-error *ngIf="form.get('tellerName')?.hasError('required')">Teller Name is required</mat-error>
         </mat-form-field>
         <div class="dialog-actions">
             <button mat-button  type="button" (click)="onCancel()">Cancel</button>

@@ -35,6 +35,7 @@ namespace Infrastructure.Persistence
         public DbSet<CashTicket> CashTicket { get; set; }
         public DbSet<TransferTaxConfirmation> TransferTaxConfirmation { get; set; }
         public DbSet<CheckPayment> CheckPayment { get; set; }
+        public DbSet<CheckReceivedDay> CheckReceivedDay { get; set; }
         public DbSet<PostingRecord> PostingRecord { get; set; }
         public DbSet<CancelledReceipt> CancelledReceipt { get; set; }
         public DbSet<ReceiptInquiryLog> ReceiptInquiryLog { get; set; }

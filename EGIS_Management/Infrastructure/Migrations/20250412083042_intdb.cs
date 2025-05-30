@@ -215,9 +215,10 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ReceiptNumber = table.Column<int>(type: "int", nullable: false),
+                    SubCode = table.Column<int>(type: "int", nullable: false),
                     Char = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Payor = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateIssue = table.Column<DateOnly>(type: "datetime2", nullable: false),
+                    DateIssue = table.Column<DateOnly>(type: "date", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                 },
                 constraints: table =>

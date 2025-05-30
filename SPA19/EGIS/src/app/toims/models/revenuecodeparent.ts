@@ -1,7 +1,7 @@
 export interface IRevenueCodeParent {
     id: number;
     description: string;
-    code : number;
+    code : string;
     kind : number;
     seqNo : number;
  }

@@ -35,7 +35,7 @@ export const routes: Routes = [
          import('./toims/revenuecodeparent/revenuecodeparent.component').then(m => m.RevenuecodeparentComponent),
       },
       {
-        path: 'revenuecodechild',
+        path: 'revenuecodechild/:code/:description',
         loadComponent: () =>
          import('./toims/revenuecodechild/revenuecodechild.component').then(m => m.RevenuecodechildComponent),
       },

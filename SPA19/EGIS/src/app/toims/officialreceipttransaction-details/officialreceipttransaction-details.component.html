@@ -1,15 +1,17 @@
   <div class="table-container">
     <div>
         <h1 class="text-2xl font-bold">Official Receipt Details : {{ orNumber }} - {{ orPayor }}</h1>
+        &nbsp;
         <button mat-raised-button color="primary" (click)="openDialog()">Add OR details</button>
     </div>
+    &nbsp;
     <div>
       <mat-form-field class="full-width">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Search OR details..." #input>
       </mat-form-field>
     </div>
-    
+    &nbsp;
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="receiptNumber">

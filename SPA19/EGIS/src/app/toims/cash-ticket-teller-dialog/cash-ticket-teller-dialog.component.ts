@@ -1,17 +1,31 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ITeller } from '../models/teller';
-import { FormsModule } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { TellerService } from '../services/teller.service';
 import { MatTable, MatTableDataSource, MatTableModule} from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @Component({
   selector: 'app-cash-ticket-teller-dialog',
   imports: [
     MatTableModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    CommonModule,
+    MatInputModule,
+    MatCardModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatPaginatorModule
   ],
   templateUrl: './cash-ticket-teller-dialog.component.html',
   styleUrl: './cash-ticket-teller-dialog.component.css'
