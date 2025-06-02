@@ -33,9 +33,9 @@ export class TellerDialogComponent {
     this.form=this.fb.group({
       id:[data.id],
       code:[data.code || '',[Validators.required]],
-      userid:[data.userid || '',[Validators.required]],
-      description:[data.name || '',[Validators.required]],
-      designation:[data.designation || '',[Validators.required]],
+      userId:[data.userId || '',[Validators.required]],
+      name:[data.name || '',[Validators.required]],
+      designation:[data.designation || '',[Validators.required]]
     })
   }
 

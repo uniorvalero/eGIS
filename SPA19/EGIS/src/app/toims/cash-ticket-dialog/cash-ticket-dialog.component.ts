@@ -30,6 +30,7 @@ export class CashTicketDialogComponent {
   )
   {
     this.isEditMode=!!data.id;
+    console.log(data); // Log the data to check if it is being passed correctly
     this.form=this.fb.group({
       id:[data.id],
       controlNumber:[data.controlNumber || '',[Validators.required]],
@@ -37,13 +38,12 @@ export class CashTicketDialogComponent {
       amount:[data.amount || '',[Validators.required]],
       tellerName:[data.tellerName || '',[Validators.required]],
       tellerCode:[data.tellerCode || '',[Validators.required]],
-
     })
-    console.log('CashTicketDialogComponent data:', data)
   }
 
   onSubmit():void{
     if(this.form.valid){
+      console.log(this.form.value); // Log the form value to check if it is being submitted correctly
       this.dialogRef.close(this.form.value);
     }
   }

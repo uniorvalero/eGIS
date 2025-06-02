@@ -20,6 +20,7 @@ export class FormissuanceService {
   }
 
   createFormIssuance(data:createFormIssuanceDto):Observable<createFormIssuanceDto>{
+    console.log(data, 'calling createFormIssuance');
     data.id= 0;
     return this.http.post<createFormIssuanceDto>(this.apibaseurl + '/FormIssuanceTransaction' + '/Create',data);
   }

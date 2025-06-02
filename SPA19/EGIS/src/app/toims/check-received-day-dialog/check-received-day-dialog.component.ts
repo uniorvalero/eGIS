@@ -51,6 +51,13 @@ export class CheckReceivedDayDialogComponent {
 
   onSubmit():void{
     if(this.form.valid){
+      // Format the date to 'yyyy-MM-dd' before closing the dialog
+      const checkDate = this.form.get('checkDate')?.value;  
+      if (checkDate) {
+        this.form.patchValue({
+          checkDate: formatDate(checkDate, 'yyyy-MM-dd', 'en-US')
+        });
+      } 
       this.dialogRef.close(this.form.value);
     }
   }

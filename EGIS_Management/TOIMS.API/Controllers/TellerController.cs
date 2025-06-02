@@ -25,16 +25,7 @@ namespace TOIMS.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var createDTO = new Teller()
-            {
-               Code = teller.Code,  
-               Designation = teller.Designation,
-               Name = teller.Name,
-               CreatedAt = teller.CreatedAt,   
-               UserId= teller.UserId,
-            };
-
-            await _unitofwork.Teller.CreateAsync(createDTO);
+            await _unitofwork.Teller.CreateAsync(teller);
             await _unitofwork.CommitAsync();
             return Ok();
         }

@@ -29,7 +29,7 @@ import { FormIssuanceSetupDialogComponent } from '../form-issuance-setup-dialog/
 })
 export class FormIssuanceComponent implements OnInit {
 
-  displayedColumns: string[] = ['bookNumber','quantity','startReceipt','endReceipt','char','tellerCode','tellerName','finalDate','actions'];
+  displayedColumns: string[] = ['bookNumber','quantity','startReceipt','endReceipt','char','tellerCode','tellerName','actions'];
   dataSource!: MatTableDataSource<IFormIssuance>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;
@@ -71,7 +71,7 @@ export class FormIssuanceComponent implements OnInit {
             this.loadFormIssuance();
           });
         } else{
-          this.formIssuanceService.updateFormIssuances(result).subscribe(()=>{
+          this.formIssuanceService.createFormIssuance(result).subscribe(()=>{
             this.loadFormIssuance();
           });
         }

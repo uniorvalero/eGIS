@@ -28,7 +28,7 @@ import { TellerDialogComponent } from '../teller-dialog/teller-dialog.component'
 
 export class TellerComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','code','userid','designation', 'name','actions']
+  displayedColumns: string[] = ['code','userId','designation', 'name','actions']
   dataSource!: MatTableDataSource<ITeller>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;
@@ -59,11 +59,8 @@ export class TellerComponent implements OnInit {
   
     openDialog(tellerdata?:ITeller):void{
       const dialogRef=this.dialog.open(TellerDialogComponent,{
-       
         data:tellerdata || {}
       });
-  
-     
       dialogRef.afterClosed().subscribe(result=>{
         if(result){
           if(result.id){
@@ -77,7 +74,6 @@ export class TellerComponent implements OnInit {
           }
         }
       })
-  
     }
   
     deleteTeller(id:number){
