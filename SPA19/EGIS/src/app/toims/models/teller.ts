@@ -3,8 +3,8 @@ export interface ITeller {
     name: string;
     code : number;
     designation:string;
-    userid :string;
+    userId :string;
 
  }
 
- export type createTellerDto =Omit<ITeller,'code'|'name'|'designation'|'userid'>;
+ export type createTellerDto =Omit<ITeller,'code'|'name'|'designation'|'userId'>;

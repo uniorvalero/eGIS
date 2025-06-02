@@ -50,7 +50,6 @@ export class CashTicketTellerDialogComponent implements OnInit{
 
   loadTellers() {
     this.tellerService.getTellers().subscribe((data) => {
-      console.log('Teller data:', data); // <-- Add this
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

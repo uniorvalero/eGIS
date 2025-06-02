@@ -1,7 +1,7 @@
 <div class="table-container">
   <div class="button-row">
     <div>
-    <button mat-raised-button color="primary" (click)="openDialog()">Form Inssuance</button>
+    <button mat-raised-button color="primary" (click)="openDialog()">Add Form Inssuance</button>
     <button mat-raised-button color="primary" (click)="openSetupDialog()">Setup</button>
     <button mat-raised-button color="primary" (click)="openDialog()">Utility</button>
     </div>
@@ -58,6 +58,11 @@
         <ng-container matColumnDef="finalDate">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Final Date </th>
           <td mat-cell *matCellDef="let row"> {{row.finalDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dateAssigned">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Assigned</th>
+          <td mat-cell *matCellDef="let row"> {{row.dateAssigned}} </td>
         </ng-container>
 
         <!-- Action Column -->

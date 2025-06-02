@@ -37,11 +37,18 @@
             <mat-error *ngIf="form.get('tellerName')?.hasError('required')">Teller Name is required</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label> Final Date</mat-label>
-                <input matInput formControlName="finalDate" required >
-            <mat-error *ngIf="form.get('finalDate')?.hasError('required')">Final Date is required</mat-error>
+            <mat-label>Final Date</mat-label>
+                <input matInput [matDatepicker]="finalPicker" formControlName="finalDate">
+            <mat-datepicker-toggle matSuffix [for]="finalPicker"></mat-datepicker-toggle>
+            <mat-datepicker #finalPicker></mat-datepicker>
         </mat-form-field>
-
+        <mat-form-field class="full-width">
+            <mat-label>Date Assigned</mat-label>
+                <input matInput [matDatepicker]="assignedPicker" formControlName="dateAssigned">
+            <mat-datepicker-toggle matSuffix [for]="assignedPicker"></mat-datepicker-toggle>
+            <mat-datepicker #assignedPicker></mat-datepicker>
+        </mat-form-field>
+        
         <div class="dialog-actions">
             <button mat-button  type="button" (click)="onCancel()">Cancel</button>
             <button mat-raised-button type="submit" [disabled]="!form.valid">{{isEditMode?'Update':'Create'}}</button>

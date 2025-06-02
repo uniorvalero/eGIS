@@ -19,7 +19,7 @@ namespace TOIMS.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(FormIssuance data)
+        public async Task<IActionResult> Create([FromBody] FormIssuance data)
         {
             try
             {
@@ -28,7 +28,8 @@ namespace TOIMS.API.Controllers
                     return BadRequest(ModelState);
                 }
 
-                // Check for duplicate Subcode
+                //Check for duplicate Subcode
+
                 var isDuplicate = await _unitofwork.FormIssuance.IsCodeDuplicateAsync(data.BookNumber);
                 if (isDuplicate)
                 {

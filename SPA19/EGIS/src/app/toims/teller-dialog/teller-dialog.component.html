@@ -8,15 +8,15 @@
             </mat-form-field>
           
             <mat-form-field class="full-width">
-                <mat-label>User ID </mat-label>
-                    <input matInput formControlName="userid" required >
-                <mat-error *ngIf="form.get('userid')?.hasError('required')">User ID is required</mat-error>
+                <mat-label>UserID </mat-label>
+                    <input matInput formControlName="userId" required >
+                <mat-error *ngIf="form.get('userId')?.hasError('required')">User ID is required</mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width">
-                <mat-label>Description</mat-label>
-                    <input matInput formControlName="description" required >
-                <mat-error *ngIf="form.get('description')?.hasError('required')">Description is required</mat-error>
+                <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" required >
+                <mat-error *ngIf="form.get('name')?.hasError('required')">Name is required</mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width">

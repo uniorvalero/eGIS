@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
-import { IMastercode, createMasterCodeDto } from '../models/mastercode';
 import { createCashTicketDto, ICashTicket } from '../models/cashticket';
 
 @Injectable({
@@ -23,6 +22,7 @@ export class CashticketService {
 
   createCashTicket(data:createCashTicketDto):Observable<createCashTicketDto>{
     data.id= 0;
+    console.log(data, 'calling createCashTicket');
     return this.http.post<createCashTicketDto>(this.apibaseurl + '/CashTicket' + '/Create',data);
   }
 
