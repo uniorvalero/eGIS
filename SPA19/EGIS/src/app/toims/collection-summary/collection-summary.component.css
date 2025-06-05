@@ -1,0 +1,55 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  ::ng-deep .mat-header-cell {
+    background-color: #3f51b5; /* Change background color */
+    color: white;             /* Text color */
+    font-weight: bold;        /* Bold font */
+    font-size: 16px;          /* Font size */
+    text-align: center;       /* Center align text */
+  }
+  
+  ::ng-deep .mat-header-row {
+    height: 56px;             /* Height of the header row */
+  }
+  
+  
+  .full-width {
+    width: 100%;
+  }
+
+  .button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.button-row > div button {
+  margin-right: 8px;
+}
+
+.month-year-row {
+  display: flex;
+  align-items: bottom;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.month-dropdown, .year-dropdown {
+  min-width: 150px;
+}
+
+.view-btn {
+  height: 56px;           /* Match mat-form-field height */
+  min-width: 150px;       /* Match dropdown width */
+  margin-top: 0;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;    /* Center text vertically */
+  justify-content: center;/* Center text horizontally */
+  box-sizing: border-box; /* Ensure padding doesn't affect size */
+  font-size: 16px;   
+}

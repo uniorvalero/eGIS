@@ -7,4 +7,5 @@ export interface ICashTicket {
     tellerCode : number;
  }
 
- export type createCashTicketDto =Omit<ICashTicket,'controlNumber'|'quantity'|'amount'|'tellerCode'|'tellerName'>;
+ export type createCashTicketDto =Omit<ICashTicket,
+ 'controlNumber'|'quantity'|'amount'|'tellerCode'|'tellerName'>;

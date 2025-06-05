@@ -24,22 +24,11 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            //modelBuilder.Entity<OfficialReceipt>()
-            //    .HasMany(x => x.Details)
-            //    .WithOne(x => x.OfficialReceipt)
-            //    .HasForeignKey(x => x.OfficialReceiptId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-
             modelBuilder.Entity<BillingTransaction>()
                 .HasMany(x => x.Details)
                 .WithOne(x => x.BillingTransaction)
                 .HasForeignKey(x => x.BillingTransactionId)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            //modelBuilder.Entity<FormIssuance>()
-            //    .WithOne(x => x.FormIssuance)
-            //    .HasForeignKey(x => x.TellerCode)
-            //    .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity("Domain.Entities.BatchReceipt", b =>
             {
@@ -161,18 +150,35 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("PerDayAmount")
-                        .HasColumnType("float");
+                    b.HasKey("Id");
+
+                    b.ToTable("CollectionSummary");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CollectionSummaryDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                   
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateOnly>("SetDate")
                         .HasColumnType("date");
 
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
+                    b.Property<double>("PerDayAmount")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("CollectionSummary");
+                    b.ToTable("CollectionSummaryDetails");
                 });
 
             modelBuilder.Entity("Domain.Entities.EstimatedRevenue", b =>
