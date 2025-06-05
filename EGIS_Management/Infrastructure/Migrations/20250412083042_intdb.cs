@@ -113,7 +113,7 @@ namespace Infrastructure.Migrations
                     BeginningBalance = table.Column<double>(type: "float", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     Actual = table.Column<double>(type: "float", nullable: false),
-                    Month = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Month = table.Column<int>(type: "int", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>

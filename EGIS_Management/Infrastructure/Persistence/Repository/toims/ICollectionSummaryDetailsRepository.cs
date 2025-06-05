@@ -9,6 +9,6 @@ namespace Infrastructure.Persistence.Repository.toims
 {
     public interface ICollectionSummaryDetailsRepository : IGenericRepository<CollectionSummaryDetails>
     {
-        Task<IEnumerable<CollectionSummaryDetails>> GetAllDetails(string code);
+        Task<IEnumerable<CollectionSummaryDetails>> GetAllDetails(string code, int month, int year);
     }
 }
