@@ -11,9 +11,7 @@ namespace Domain.Entities
         public double BeginningBalance { get; set; }
         public double Amount { get; set; }
         public double Actual { get; set; }
-        public string Month { get; set; } = string.Empty;
+        public int Month { get; set; }
         public int Year { get; set; }
-        public DateOnly SetDate { get; set; }
-        public double PerDayAmount { get; set; }
     }
 }

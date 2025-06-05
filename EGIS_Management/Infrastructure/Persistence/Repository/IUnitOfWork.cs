@@ -14,6 +14,7 @@ namespace Infrastructure.Persistence.Repository
         IBankRepository Bank { get; }
         IBarangayRepository Barangay { get; }
         IBillingRepository Billing { get; }
+        ICollectionCodeRepository CollectionCode { get; }
 
         //TOIMS Setup Models
         IMasterTableCodeRepository MasterCode { get; }
@@ -23,7 +24,8 @@ namespace Infrastructure.Persistence.Repository
         ITellerRepository Teller { get; }
         IEstimatedRevenueRepository EstimatedRevenue { get; }
         IManagingTemplateRepository ManagingTemplate { get; }
-        ICollectionCodeRepository CollectionCode { get; }
+        ICollectionSummaryRepository CollectionSummary { get; }
+        ICollectionSummaryDetailsRepository CollectionSummaryDetails { get; }   
 
         //Transaction Models
         IOfficialReceiptRepository OfficialReceipt { get; }

@@ -65,7 +65,6 @@ export class OfficialreceipttransactionComponent implements OnInit{
   }
 
   cancelReceipt(mCode?:IOfficialReceipt):void{
-    console.log('Cancel Receipt:', mCode?.receiptNumber);
     const dialogRef=this.dialog.open(OfficialreceipttransactionCancelReceiptDialogComponent,{
       
       data:mCode || {}

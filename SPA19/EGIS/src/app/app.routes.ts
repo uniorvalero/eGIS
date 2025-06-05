@@ -40,6 +40,11 @@ export const routes: Routes = [
          import('./toims/revenuecodechild/revenuecodechild.component').then(m => m.RevenuecodechildComponent),
       },
       {
+        path: 'collectionsummary',
+        loadComponent: () =>
+         import('./toims/collection-summary/collection-summary.component').then(m => m.CollectionSummaryComponent),
+      },
+      {
         path: 'teller',
         loadComponent: () =>
          import('./toims/teller/teller.component').then(m => m.TellerComponent),

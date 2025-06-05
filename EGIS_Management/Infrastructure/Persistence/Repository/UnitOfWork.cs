@@ -21,6 +21,7 @@ namespace Infrastructure.Persistence.Repository
         public IBankRepository Bank => new BankRepository(_dbContext);
         public IBarangayRepository Barangay => new BarangayRepository(_dbContext);
         public IBillingRepository Billing => new BillingRepository(_dbContext);
+        public ICollectionCodeRepository CollectionCode => new CollectionCodeRepository(_dbContext);
 
         //TOIMS Setup Models Repository
         public IMasterTableCodeRepository MasterCode => new MasterTableCodeRepository(_dbContext);
@@ -30,7 +31,7 @@ namespace Infrastructure.Persistence.Repository
         public ITellerRepository Teller => new TellerRepository(_dbContext);
         public IEstimatedRevenueRepository EstimatedRevenue => new EstimatedRevenueRepository(_dbContext);
         public IManagingTemplateRepository ManagingTemplate => new ManagingTemplateRepository(_dbContext);
-        public ICollectionCodeRepository CollectionCode => new CollectionCodeRepository(_dbContext);
+        public ICollectionSummaryRepository CollectionSummary => new CollectionSummaryRepository(_dbContext);  
 
         //TOIMS Transaction Models Repository
         public IOfficialReceiptRepository OfficialReceipt => new OfficialReceiptRepository(_dbContext);

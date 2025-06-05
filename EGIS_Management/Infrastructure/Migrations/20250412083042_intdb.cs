@@ -115,12 +115,26 @@ namespace Infrastructure.Migrations
                     Actual = table.Column<double>(type: "float", nullable: false),
                     Month = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
-                    SetDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    PerDayAmount = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CollectionSummary", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CollectionSummaryDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SetDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    PerDayAmount = table.Column<double>(type: "float", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CollectionSummaryDetails", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -362,7 +376,10 @@ namespace Infrastructure.Migrations
                 name: "CollectionCode");
 
             migrationBuilder.DropTable(
-                name: "CollectionSummarie");
+                name: "CollectionSummary");
+
+            migrationBuilder.DropTable(
+                name: "CollectionSummaryDetails");
 
             migrationBuilder.DropTable(
                 name: "EstimatedRevenue");

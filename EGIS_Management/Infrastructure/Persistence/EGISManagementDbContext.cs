@@ -13,7 +13,8 @@ namespace Infrastructure.Persistence
 
         //TOIMS Setup Models
         public DbSet<CollectionCode> CollectionCode { get; set; }
-        public DbSet<CollectionSummary> CollectionSummarie { get; set; }
+        public DbSet<CollectionSummary> CollectionSummary { get; set; }
+        public DbSet<CollectionSummaryDetails> CollectionSummaryDetails { get; set; }
         public DbSet<EstimatedRevenue> EstimatedRevenue { get; set; }
         public DbSet<ManagingTemplate> ManagingTemplate { get; set; }
         public DbSet<RevenueCodeChild> RevenueCodeChild { get; set; }
@@ -40,5 +41,6 @@ namespace Infrastructure.Persistence
         public DbSet<CancelledReceipt> CancelledReceipt { get; set; }
         public DbSet<ReceiptInquiryLog> ReceiptInquiryLog { get; set; }
         public DbSet<BatchReceipt> BatchReceipt { get; set; }
+        
     }
 }
