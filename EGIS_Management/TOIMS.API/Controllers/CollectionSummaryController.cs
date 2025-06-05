@@ -13,7 +13,7 @@ namespace TOIMS.API.Controllers
             _unitOfWork = unitofwork;
         }
 
-        [HttpGet("getViews")]
+        [HttpGet("GetViews")]
         public async Task<IActionResult> GetViews(int month, int year)
         {
             var orData = await _unitOfWork.CollectionSummary.GetAllByMonthAndYear(month, year);

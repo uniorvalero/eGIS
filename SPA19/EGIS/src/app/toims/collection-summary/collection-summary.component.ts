@@ -5,12 +5,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableModule, MatTableDataSource, MatTable } from '@angular/material/table';
+import { MatTableModule, MatTableDataSource, MatTable, MatFooterCell, MatFooterCellDef } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
 import { ICollectionSummary } from '../models/collectionsummary';
 import { CollectionsummaryService } from '../services/collectionsummary.service';
-import { MatRadioModule } from '@angular/material/radio';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -28,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatTooltipModule,
     MatSelectModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatFooterCellDef
   ],
   templateUrl: './collection-summary.component.html',
   styleUrl: './collection-summary.component.css'
@@ -53,6 +53,9 @@ export class CollectionSummaryComponent implements OnInit{
     { name: 'November', value: 11 },
     { name: 'December', value: 12 }
   ];
+  totalBeginningBalance = 0;
+  totalAmount = 0;
+  totalActual = 0;
 
   displayedColumns: string[] = ['code', 'description', 'beginningBalance', 'amount', 'actual', 'actions'];
   dataSource!: MatTableDataSource<ICollectionSummary>;
@@ -77,10 +80,17 @@ export class CollectionSummaryComponent implements OnInit{
   loadCollectionSummaries(): void {
   // selectedMonth and selectedYear are now numbers
     this.collectionsummaryService.getCollectionByMonthYear(this.selectedMonth, this.selectedYear).subscribe((mcodes) => {   
-    this.dataSource = new MatTableDataSource(mcodes);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+      this.dataSource = new MatTableDataSource(mcodes);
+      this.calculateTotals(mcodes);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
+  }
+
+  calculateTotals(data: ICollectionSummary[]) {
+    this.totalBeginningBalance = data.reduce((sum, row) => sum + (row.beginningBalance || 0), 0);
+    this.totalAmount = data.reduce((sum, row) => sum + (row.amount || 0), 0);
+    this.totalActual = data.reduce((sum, row) => sum + (row.actual || 0), 0);
   }
 
   applyFilter(event:Event): void{
@@ -90,7 +100,7 @@ export class CollectionSummaryComponent implements OnInit{
 
   openDetails(code: string, month: string, year: number): void {
     console.log(`Navigating to details for code: ${code}, month: ${month}, year: ${year}`);
-    this.router.navigate([`/mainlayout/collectionsummary`, code, month, year]);
+    this.router.navigate([`/mainlayout/collectionsummarydetails`, code]);
     this.selectedCode = code;
     this.selectedMonth = Number(month);
     this.selectedYear = year;

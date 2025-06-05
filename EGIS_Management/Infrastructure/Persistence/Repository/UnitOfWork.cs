@@ -31,7 +31,8 @@ namespace Infrastructure.Persistence.Repository
         public ITellerRepository Teller => new TellerRepository(_dbContext);
         public IEstimatedRevenueRepository EstimatedRevenue => new EstimatedRevenueRepository(_dbContext);
         public IManagingTemplateRepository ManagingTemplate => new ManagingTemplateRepository(_dbContext);
-        public ICollectionSummaryRepository CollectionSummary => new CollectionSummaryRepository(_dbContext);  
+        public ICollectionSummaryRepository CollectionSummary => new CollectionSummaryRepository(_dbContext);
+        public ICollectionSummaryDetailsRepository CollectionSummaryDetails => new CollectionSummaryDetailsRepository(_dbContext);
 
         //TOIMS Transaction Models Repository
         public IOfficialReceiptRepository OfficialReceipt => new OfficialReceiptRepository(_dbContext);

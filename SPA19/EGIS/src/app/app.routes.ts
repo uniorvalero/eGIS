@@ -45,6 +45,11 @@ export const routes: Routes = [
          import('./toims/collection-summary/collection-summary.component').then(m => m.CollectionSummaryComponent),
       },
       {
+        path: 'collectionsummarydetails/:code/:month/:year',
+        loadComponent: () =>
+          import('./toims/collection-summary-details/collection-summary-details.component').then(m => m.CollectionSummaryDetailsComponent),
+      },
+      {
         path: 'teller',
         loadComponent: () =>
          import('./toims/teller/teller.component').then(m => m.TellerComponent),

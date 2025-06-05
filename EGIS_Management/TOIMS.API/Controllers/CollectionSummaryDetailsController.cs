@@ -12,15 +12,11 @@ namespace TOIMS.API.Controllers
         {
             _unitOfWork = unitofwork;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
-        [HttpGet("getDetails")]
-        public async Task<IActionResult> GetDetails(string code)
+        [HttpGet("GetDetails")]
+        public async Task<IActionResult> GetDetails(string code, int month, int year)
         {
-            var orData = await _unitOfWork.CollectionSummaryDetails.GetAllDetails(code);
+            var orData = await _unitOfWork.CollectionSummaryDetails.GetAllDetails(code, month, year);
             return Ok(orData);
         }
 

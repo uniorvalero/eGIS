@@ -12,10 +12,16 @@ export class CollectionsummarydetailsService {
   readonly apibaseurl = environment.apibaseURL;
   constructor(private http:HttpClient) { }
 
-  getCollectionByMonthYear(code: string): Observable<ICollectionSummaryDetails[]> {
-    return this.http.get<ICollectionSummaryDetails[]>(
-      this.apibaseurl + '/Collectionsummary/getViews/',
-      { params: { code } }
-    );
+  getCollectionByCodeMonthYear(code: string, month: number, year: number): Observable<ICollectionSummaryDetails[]> {
+    const params = {
+      code: code,
+      month: month,  
+      year: year
+    };
+    return this.http.get<ICollectionSummaryDetails[]>(this.apibaseurl + '/Collectionsummarydetails/GetDetails/', {params});
+  }
+
+  deleteCollection(id:number):Observable<void>{
+    return this.http.delete<void>(`${this.apibaseurl + '/CheckReceivedDay'}/${id}`);
   }
 }
