@@ -2,8 +2,8 @@ export interface ICollectionSummaryDetails {
     id: number;
     code: string;
     setDate : Date;
-    perdayAmount : number;
+    perDayAmount : number;
  }
 
  export type createCollectionSummaryDetailsDto = Omit<ICollectionSummaryDetails,
-    'code' | 'setDate' | 'perdayAmount'>;
+    'id' |'code' | 'setDate' | 'perDayAmount'>;

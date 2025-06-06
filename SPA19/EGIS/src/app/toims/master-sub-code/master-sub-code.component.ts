@@ -52,7 +52,7 @@ export class MasterSubcodeComponent implements OnInit {
         error: (err) => {
           console.error('Error fetching master subcodes:', err);
         }
-    });
+      });
     });
   }
 
