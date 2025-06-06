@@ -63,13 +63,10 @@ export class CollectionSummaryComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!:MatSort;
   @ViewChild(MatTable) table!:MatTable<ICollectionSummary>;
-  @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) container!: ViewContainerRef;
-  constructor(private router: Router, private collectionsummaryService: CollectionsummaryService, 
-    private dialog: MatDialog){
-  }
+  //@ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) container!: ViewContainerRef;
+  constructor(private router: Router, private collectionsummaryService: CollectionsummaryService){}
 
   ngOnInit(): void {
-    // Populate years (e.g., from 2000 to current year)
     const currentYear = new Date().getFullYear();
     for (let y = currentYear; y >= 2000; y--) {
       this.years.push(y);
@@ -78,7 +75,6 @@ export class CollectionSummaryComponent implements OnInit{
   }
 
   loadCollectionSummaries(): void {
-  // selectedMonth and selectedYear are now numbers
     this.collectionsummaryService.getCollectionByMonthYear(this.selectedMonth, this.selectedYear).subscribe((mcodes) => {   
       this.dataSource = new MatTableDataSource(mcodes);
       this.calculateTotals(mcodes);
@@ -100,7 +96,7 @@ export class CollectionSummaryComponent implements OnInit{
 
   openDetails(code: string, month: string, year: number): void {
     console.log(`Navigating to details for code: ${code}, month: ${month}, year: ${year}`);
-    this.router.navigate([`/mainlayout/collectionsummarydetails`, code]);
+    this.router.navigate([`/mainlayout/collectionsummarydetails`, code, month, year]);
     this.selectedCode = code;
     this.selectedMonth = Number(month);
     this.selectedYear = year;
