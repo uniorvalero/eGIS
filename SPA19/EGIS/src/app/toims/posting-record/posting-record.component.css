@@ -31,14 +31,14 @@
   margin-right: 8px;
 }
 
-.month-year-row {
+.month-year-row, .per-day-row {
   display: flex;
   align-items: bottom;
   gap: 16px;
   margin-bottom: 16px;
 }
 
-.month-dropdown, .year-dropdown {
+.month-dropdown, .year-dropdown, .day-dropdown {
   min-width: 150px;
 }
 

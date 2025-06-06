@@ -1,0 +1,51 @@
+/* Dialog container */
+:host ::ng-deep .mat-dialog-container {
+  border-radius: 16px;
+  padding: 32px 24px 16px 24px;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+/* Title */
+h2[mat-dialog-title] {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a237e;
+  margin-bottom: 12px;
+}
+
+/* Content */
+mat-dialog-content {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 24px;
+  display: block;
+}
+
+/* Actions */
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Buttons */
+button[mat-button] {
+  min-width: 80px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+button[mat-button]:hover {
+  background: #e3e7fd;
+}
+
+button[color="primary"] {
+  background: #3949ab;
+  color: #fff;
+}
+
+button[color="primary"]:hover {
+  background: #283593;
+}

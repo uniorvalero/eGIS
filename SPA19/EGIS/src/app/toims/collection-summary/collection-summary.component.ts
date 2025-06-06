@@ -1,6 +1,5 @@
 import { Component, Inject, inject, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 import { MatPaginator } from '@angular/material/paginator';
@@ -36,8 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
 export class CollectionSummaryComponent implements OnInit{
   showCS = false;
   selectedCode!: string;
-  selectedMonth: number = new Date().getMonth() + 1; // default to current month
-  selectedYear: number = new Date().getFullYear();   // default to current year
+  selectedMonth: number = new Date().getMonth() + 1; 
+  selectedYear: number = new Date().getFullYear();   
   years: number[] = [];
   months = [
     { name: 'January', value: 1 },
@@ -63,7 +62,7 @@ export class CollectionSummaryComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!:MatSort;
   @ViewChild(MatTable) table!:MatTable<ICollectionSummary>;
-  //@ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) container!: ViewContainerRef;
+  
   constructor(private router: Router, private collectionsummaryService: CollectionsummaryService){}
 
   ngOnInit(): void {
