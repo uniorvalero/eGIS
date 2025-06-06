@@ -1,0 +1,43 @@
+<div class="table-container">
+  <div>
+    <h1 class="text-2xl font-bold">Posting Record</h1>
+  </div>
+  &nbsp;
+  <div>
+    <h1 class="text-2xl font-bold">Monthly Posting</h1>
+  </div>
+  <div class="month-year-row">
+    <mat-form-field appearance="fill" class="month-dropdown">
+      <mat-label>Month</mat-label>
+      <mat-select [(ngModel)]="selectedMonth">
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{ month.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="year-dropdown">
+      <mat-label>Year</mat-label>
+      <mat-select [(ngModel)]="selectedYear">
+        <mat-option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="process-btn" (click)="processMonthlyPosting()">Process</button>
+  </div>
+  &nbsp;
+  <div>
+    <h1 class="text-2xl font-bold">Daily Posting</h1>
+  </div>
+    <div class="per-day-row">
+        <mat-form-field appearance="fill" class="day-dropdown">
+            <mat-label>Pick a date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="process-btn" (click)="processMonthlyPosting()">Process</button>
+    </div>
+</div>
+
+  
