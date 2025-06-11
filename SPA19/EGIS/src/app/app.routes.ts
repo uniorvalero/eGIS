@@ -49,11 +49,6 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./toims/collection-summary-details/collection-summary-details.component').then(m => m.CollectionSummaryDetailsComponent),
       },
-      {
-        path: 'postingrecords',
-        loadComponent: () =>
-         import('./toims/posting-record/posting-record.component').then(m => m.PostingRecordComponent),
-        },
       { 
         path: 'teller',
         loadComponent: () =>
@@ -90,14 +85,24 @@ export const routes: Routes = [
           import('./toims/cash-ticket/cash-ticket.component').then(m => m.CashTicketComponent),
       },
       {
-        path: 'checkreceivedday',
+        path: 'batchinputreceipt',
         loadComponent: () =>
-          import('./toims/check-received-day/check-received-day.component').then(m => m.CheckReceivedDayComponent),
+         import('./toims/batch-input-receipt/batch-input-receipt.component').then(m => m.BatchInputReceiptComponent),
+      },
+      {
+        path: 'postingrecords',
+        loadComponent: () =>
+         import('./toims/posting-record/posting-record.component').then(m => m.PostingRecordComponent),
       },
       {
         path: 'inquirytransaction',
         loadComponent: () =>
           import('./toims/inquirytransaction/inquirytransaction.component').then(m => m.InquirytransactionComponent),
+      },
+      {
+        path: 'checkreceivedday',
+        loadComponent: () =>
+          import('./toims/check-received-day/check-received-day.component').then(m => m.CheckReceivedDayComponent),
       },
       //BPLTAS
       {
@@ -230,6 +235,17 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./bpltas/transaction-account-update/transaction-account-update.component').then(m => m.TransactionAccountUpdateComponent),
       },
+      //RPTAS-FAASS
+      {
+        path: 'rprascode',
+        loadComponent: () =>
+          import('./rptfaass/rptas-code/rptas-code.component').then(m => m.RptasCodeComponent),
+      },
+      {
+        path: 'actualuse',
+        loadComponent: () =>
+          import('./rptfaass/actual-use/actual-use.component').then(m => m.ActualUseComponent),  
+      }
     ]
   }
 

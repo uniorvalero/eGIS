@@ -1,0 +1,62 @@
+<div class="container-fluid">
+<h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} Batch Receipt</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-grid">
+            <mat-form-field class="full-width">
+                <mat-label>Setup Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="setupDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Setup Form</mat-label>
+                    <input matInput formControlName="setupForm" required >
+                <mat-error *ngIf="form.get('setupForm')?.hasError('required')">Setup Form is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Starting Series</mat-label>
+                    <input matInput formControlName="startingSeries" required >
+                <mat-error *ngIf="form.get('startingSeries')?.hasError('required')">Starting Series is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Ending Series</mat-label>
+                    <input matInput formControlName="endingSeries" required >
+                <mat-error *ngIf="form.get('endingSeries')?.hasError('required')">Ending Series is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Character</mat-label>
+                    <input matInput formControlName="char" required >
+                <mat-error *ngIf="form.get('char')?.hasError('required')">Charter is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Payor</mat-label>
+                    <input matInput formControlName="payor" required >
+                <mat-error *ngIf="form.get('payor')?.hasError('required')">Payor is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Account Code</mat-label>
+                    <input matInput formControlName="accountCode" required >
+                <mat-error *ngIf="form.get('accountCode')?.hasError('required')">Account Code is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Description</mat-label>
+                    <input matInput formControlName="description" required >
+                <mat-error *ngIf="form.get('description')?.hasError('required')">Description is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Book No</mat-label>
+                    <input matInput formControlName="bookNumber" required >
+                <mat-error *ngIf="form.get('bookNumber')?.hasError('required')">Book No is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Amount</mat-label>
+                    <input matInput formControlName="amount" required >
+                <mat-error *ngIf="form.get('amount')?.hasError('required')">Amount is required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="dialog-actions">
+            <button mat-button  type="button" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button type="submit" [disabled]="!form.valid">{{isEditMode?'Update':'Create'}}</button>
+        </div>
+    </form>
+</div>
