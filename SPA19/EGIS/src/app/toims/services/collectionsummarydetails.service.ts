@@ -9,7 +9,7 @@ import { environment } from '../../environment/environment';
 })
 export class CollectionsummarydetailsService {
 
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http:HttpClient) { }
 
   getCollectionByCodeMonthYear(code: string, month: number, year: number): Observable<ICollectionSummaryDetails[]> {

@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Entities.bpltas;
+using Domain.Entities.rptas;
 using Domain.Entities.toims;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,6 +42,12 @@ namespace Infrastructure.Persistence
         public DbSet<CancelledReceipt> CancelledReceipt { get; set; }
         public DbSet<ReceiptInquiryLog> ReceiptInquiryLog { get; set; }
         public DbSet<BatchReceipt> BatchReceipt { get; set; }
-        
+        //RPTAS
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Assessments> Assessments { get; set; }
+        public DbSet<Properties> Properties { get; set; }
+        public DbSet<TaxComputations> TaxComputations { get; set; }
+        public DbSet<Payments> Payments { get; set; }
+
     }
 }

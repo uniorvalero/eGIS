@@ -9,7 +9,7 @@ import { environment } from '../../environment/environment';
 })
 export class BankService {
 
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.bpltasApiBaseURL;
   constructor(private http:HttpClient) { }
 
   getBanks():Observable<IBank[]>{

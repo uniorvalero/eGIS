@@ -9,7 +9,7 @@ import { createCashTicketDto, ICashTicket } from '../models/cashticket';
 })
 export class CashticketService {
 
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http: HttpClient) { }
 
   getCashTickets():Observable<ICashTicket[]>{

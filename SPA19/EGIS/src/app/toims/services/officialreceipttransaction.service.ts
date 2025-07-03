@@ -8,7 +8,7 @@ import { environment } from '../../environment/environment';
   providedIn: 'root'
 })
 export class OfficialreceipttransactionService {
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http: HttpClient) { }
 
   getOfficialReceipts():Observable<IOfficialReceipt[]>{

@@ -1,0 +1,68 @@
+<div class="container-fluid">
+<h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} Tax Computation</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-grid">
+            <mat-form-field class="full-width">
+                <mat-label>Assessment Id</mat-label>
+                <mat-select formControlName="assessmentId" required>
+                    <mat-option *ngFor="let id of assessmentIdsWithAssessor" [value]="id">
+                    {{ id }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Tax Year</mat-label>
+                <input matInput formControlName="taxYear" type="number" >
+                <span matTextSuffix>%</span>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Basic Tax</mat-label>
+                <input matInput formControlName="basicTax" type="number" >
+                <span matTextSuffix>%</span>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Sef Tax</mat-label>
+                <input matInput formControlName="sefTax" type="number">
+                <span matTextSuffix>%</span>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Idle Land Tax</mat-label>
+                <input matInput formControlName="idleLandTax" type="number">
+                <span matTextSuffix>%</span>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Discount Applied</mat-label>
+                <input matInput formControlName="discount" type="number">  
+                <span matTextSuffix>%</span>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Penalty</mat-label>
+                <input matInput formControlName="penalty" type="number">
+                <span matTextSuffix>%</span>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Total Due</mat-label>
+                <span matTextPrefix>Php:</span>
+                <input matInput formControlName="totalDue" readonly (click)="openTaxDueDialog()">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Final Amount</mat-label>
+                <span matTextPrefix>Php: </span>
+                <input matInput formControlName="finalAmount" >
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Tax Status</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option *ngFor="let stat of taxStatusOptions" [value]="stat.name">
+                        {{ stat.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="dialog-actions">
+            <button mat-button  type="button" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button type="submit" [disabled]="!form.valid">{{isEditMode?'Update':'Create'}}</button>
+        </div>
+    </form>
+</div>

@@ -23,7 +23,7 @@ import { IMastercode } from '../models/mastercode';
   templateUrl: './master-sub-code-dialog.component.html',
   styleUrl: './master-sub-code-dialog.component.css'
 })
-export class MasterSubCodeDialogComponent implements OnInit {
+export class MasterSubCodeDialogComponent  implements OnInit {
 
   form:FormGroup;
   isEditMode:boolean;
@@ -47,8 +47,17 @@ export class MasterSubCodeDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-      this.loadMasterCode();
+    this.mastercodeService.getMasteCodes().subscribe(masterCodes => {
+      this.masterCodeData = masterCodes;
+      if (this.isEditMode) {
+        this.mastercodeSelected = this.data.code.toString();
+        this.form.patchValue({
+          code: this.mastercodeSelected,
+          subcode: this.data.subcode,
+          description: this.data.description
+        });
+      }
+    });
   }
 
   onSelectionChange(event: MatSelectChange){
@@ -56,15 +65,6 @@ export class MasterSubCodeDialogComponent implements OnInit {
     this.form.patchValue({
       code: this.mastercodeSelected
     });
-  }
-
-  private loadMasterCode() {
-    this.mastercodeService.getMasteCodes()
-      .subscribe({
-        next: (data) => {
-          this.masterCodeData= data;
-        }
-      });
   }
 
   onSubmit():void{

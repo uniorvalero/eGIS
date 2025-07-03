@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Architecture.Tests", "Archi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bpltas.api", "bpltas.api\bpltas.api.csproj", "{8C24F984-EDA9-02C7-3715-7991FF85B7EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rptasfaas.api", "rptasfaas.api\rptasfaas.api.csproj", "{E7BDE41E-4F60-7BF8-1EAF-A40058BE071D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{8C24F984-EDA9-02C7-3715-7991FF85B7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C24F984-EDA9-02C7-3715-7991FF85B7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C24F984-EDA9-02C7-3715-7991FF85B7EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7BDE41E-4F60-7BF8-1EAF-A40058BE071D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BDE41E-4F60-7BF8-1EAF-A40058BE071D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BDE41E-4F60-7BF8-1EAF-A40058BE071D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BDE41E-4F60-7BF8-1EAF-A40058BE071D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{0A4B3D27-5B4D-955C-AFA5-81DF2F79A43F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{20ACBCB5-FD39-418E-9F28-AE0A142A656B} = {7E04FF97-38AE-4DD9-A189-1E470A24853F}
 		{8C24F984-EDA9-02C7-3715-7991FF85B7EE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{E7BDE41E-4F60-7BF8-1EAF-A40058BE071D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {23DE833E-B1B6-441C-9A05-9ADA4F4CD898}

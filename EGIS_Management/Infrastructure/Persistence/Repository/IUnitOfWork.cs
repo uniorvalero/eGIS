@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Persistence.Repository.bpltas;
 using Infrastructure.Persistence.Repository.login;
+using Infrastructure.Persistence.Repository.rptas;
 using Infrastructure.Persistence.Repository.toims;
 
 namespace Infrastructure.Persistence.Repository
@@ -27,7 +28,7 @@ namespace Infrastructure.Persistence.Repository
         ICollectionSummaryRepository CollectionSummary { get; }
         ICollectionSummaryDetailsRepository CollectionSummaryDetails { get; }   
 
-        //Transaction Models
+        //TOIMS Transaction Models
         IOfficialReceiptRepository OfficialReceipt { get; }
         IOfficialReceiptDetailRepository OfficialReceiptDetail { get; }
         IBillingTransactionRepository BillingTransaction { get; }
@@ -41,5 +42,11 @@ namespace Infrastructure.Persistence.Repository
         IReceiptInquiryLogRepository ReceiptInquiryLog { get; }
         IBatchReceiptRepository BatchReceipt { get; }
         ICheckReceivedDayRepository CheckReceivedDay { get; }
+        //RPTAS
+        IUsersRepository Users { get; }
+        IAssessmentsRepository Assessments { get; }
+        IPropertiesRepository Properties { get; }
+        ITaxComputationsRepository TaxComputations { get; }
+        IPaymentsRepository Payments { get; }
     }
 }

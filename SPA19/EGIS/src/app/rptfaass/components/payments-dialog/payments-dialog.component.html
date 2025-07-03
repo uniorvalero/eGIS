@@ -1,0 +1,61 @@
+<div class="container-fluid">
+<h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} Payment</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-grid">
+            <mat-form-field class="full-width">
+                <mat-label>Select Tax ID</mat-label>
+                <mat-select formControlName="taxId" required>
+                    <mat-option *ngFor="let id of Taxes" [value]="id">
+                    {{ id }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Select Payer</mat-label>
+                <mat-select formControlName="payerId" (selectionChange)="onSelectedPayer($event.value)">
+                    <mat-option *ngFor="let user of users" [value]="user.id">
+                        {{ user.userName }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Payment Date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="paymentDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Amount Paid</mat-label>
+                <input matInput formControlName="amountPaid" type="number">
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Payment Method</mat-label>
+                <mat-select formControlName="paymentMethod" >
+                <mat-option *ngFor="let clas of clasificationOptions" [value]="clas.name">
+                    {{ clas.name }}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Receipt No</mat-label>
+                <input matInput formControlName="receiptNo" type="number">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Select Verifier</mat-label>
+                <mat-select formControlName="verifiedBy" (selectionChange)="onSelectedVerifier($event.value)">
+                    <mat-option *ngFor="let user of verifiers" [value]="user.id">
+                        {{ user.userName }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>            
+            
+        </div>
+        <div class="dialog-actions">
+            <button mat-button  type="button" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button type="submit" [disabled]="!form.valid">{{isEditMode?'Update':'Create'}}</button>
+        </div>
+    </form>
+</div>

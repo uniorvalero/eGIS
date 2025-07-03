@@ -9,7 +9,7 @@ import { createCheckReceivedDayDto, ICheckReceivedDay } from '../models/checkrec
 })
 export class CheckreceiveddayService {
 
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http: HttpClient) { }
 
   getCheckReceivedDays():Observable<ICheckReceivedDay[]>{

@@ -1,0 +1,1 @@
+import{Bb as s,Cb as a,Wb as o,fb as t}from"./chunk-5MRHDFKX.js";var i=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-transaction-renewal-assesment"]],decls:2,vars:0,template:function(e,m){e&1&&(s(0,"p"),o(1,"transaction-renewal-assesment works!"),a())},encapsulation:2})};export{i as TransactionRenewalAssesmentComponent};

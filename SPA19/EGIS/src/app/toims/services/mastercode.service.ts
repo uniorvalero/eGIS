@@ -9,7 +9,7 @@ import { environment } from '../../environment/environment';
 })
 export class MastercodeService {
   
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http: HttpClient) { }
 
   getMasteCodes():Observable<IMastercode[]>{

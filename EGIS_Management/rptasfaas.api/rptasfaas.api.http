@@ -1,0 +1,6 @@
+@rptasfaas.api_HostAddress = http://localhost:5255
+
+GET {{rptasfaas.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

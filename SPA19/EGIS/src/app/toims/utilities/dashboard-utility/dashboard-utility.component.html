@@ -1,0 +1,65 @@
+<div class="main-dashboard">
+  <h1 class="main-title">eGIS Utilities Process Approval</h1>
+  <div class="dashboard-grid">
+    <!-- 1st System -->
+    <div class="dashboard-system">
+      <h2>eGIS Utilities Process Approval</h2>
+      <div class="dashboard-row">
+        <div class="dashboard-box total-dues">
+          <div class="label">TOTAL OF PROCESSED TRANSACTIONS</div>
+          <div class="value">₱{{ totalDues | number:'1.2-2' }}</div>
+        </div>
+        <div class="dashboard-box delinquency">
+          <div class="label">TOTAL PENDING</div>
+          <div class="value">{{ delinquency | percent:'1.0-2' }}</div>
+        </div>
+      </div>
+      <div class="dashboard-row">
+        <div class="dashboard-box last-payment">
+          <div class="label">LAST PAYMENT PROCESSED</div>
+          <div>
+            <div><b>Date:</b> {{ lastPayment.date | date }}</div>
+            <div><b>Amount:</b> ₱{{ lastPayment.amount | number:'1.2-2' }}</div>
+            <div><b>Method:</b> {{ lastPayment.method }}</div>
+          </div>
+        </div>
+        <div class="dashboard-box heatmap">
+          <div class="label">HEATMAP OF PENDING TRANSACTIONS</div>
+          <table class="heatmap-table">
+            <tr *ngFor="let row of heatmapData">
+              <td *ngFor="let cell of row" [ngClass]="{'delinquent': cell}"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="dashboard-row actions">
+        <button class="dashboard-btn" (click)="payNow()">PAY NOW</button>
+        <button class="dashboard-btn" (click)="requestReassessment()">REQUEST REASSESSMENT</button>
+      </div>
+      <div class="dashboard-row">
+        <div class="dashboard-box assessment-history">
+          <div class="label">ASSESSMENT HISTORY</div>
+          <!-- Chart or content here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 2nd System -->
+    <div class="dashboard-system">
+      <h2>BPLTAS UTILITIES</h2>
+      <!-- ...repeat the same structure as above, with its own data... -->
+    </div>
+
+    <!-- 3rd System -->
+    <div class="dashboard-system">
+      <h2>RPTAS-FAASS UTILITIES</h2>
+      <!-- ...repeat the same structure as above, with its own data... -->
+    </div>
+
+    <!-- 4th System -->
+    <div class="dashboard-system">
+      <h2>eGIS Utilities Process Approval</h2>
+      <!-- ...repeat the same structure as above, with its own data... -->
+    </div>
+  </div>
+</div>

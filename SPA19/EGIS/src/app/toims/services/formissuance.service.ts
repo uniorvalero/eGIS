@@ -8,7 +8,7 @@ import { createFormIssuanceDto, IFormIssuance } from '../models/formissuance';
   providedIn: 'root'
 })
 export class FormissuanceService {
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http:HttpClient) { }
 
   getFormIssuances():Observable<IFormIssuance[]>{
@@ -20,7 +20,6 @@ export class FormissuanceService {
   }
 
   createFormIssuance(data:createFormIssuanceDto):Observable<createFormIssuanceDto>{
-    console.log(data, 'calling createFormIssuance');
     data.id= 0;
     return this.http.post<createFormIssuanceDto>(this.apibaseurl + '/FormIssuanceTransaction' + '/Create',data);
   }

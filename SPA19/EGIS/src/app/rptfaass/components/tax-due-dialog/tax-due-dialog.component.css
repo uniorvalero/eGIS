@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.mat-dialog-container {
+  min-width: 340px;
+  max-width: 95vw;
+  padding: 32px 24px 24px 24px !important;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}

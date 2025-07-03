@@ -82,22 +82,5 @@ namespace TOIMS.API.Controllers
             }
             return BadRequest();
         }
-
-        //[HttpGet("PassToSubCode")]
-        //public IActionResult PassToSubCode(int masterCode, string description)
-        //{
-        //    // Validate the input
-        //    if (masterCode <= 0 || string.IsNullOrWhiteSpace(description))
-        //    {
-        //        return BadRequest("Invalid MasterCode or Description.");
-        //    }
-
-        //    // Redirect to the SubCode Controller with the MasterCode and Description
-        //    return RedirectToAction(
-        //        actionName: "DisplayMasterCodeDetails",
-        //        controllerName: "MasterTableSubCode",
-        //        routeValues: new { masterCode, description }
-        //    );
-        //}
     }
 }

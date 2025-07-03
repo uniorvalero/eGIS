@@ -1,0 +1,64 @@
+<div class="dashboard-container">
+  <h2>Real Property Tax Administration System</h2>
+  <div class="dashboard-subtitle">Municipal Dashboard Overview</div>
+  <div class="dashboard-row">
+    <div class="dashboard-box total-dues" (click)="gotoTaxComputation()">
+      <div class="icon"><span class="material-icons">account_balance_wallet</span></div>
+      <div>
+        <div class="label">TOTAL DUES</div>
+        <div class="value">₱{{ totalDues | number:'1.2-2' }}</div>
+      </div>
+    </div>
+    <div class="dashboard-box property" (click)="gotoProperty()">
+      <div class="icon"><span class="material-icons">home_work</span></div>
+      <div>
+        <div class="label">PROPERTY</div>
+        <div class="value">{{ property | percent:'1.0-2' }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-row">
+  <div class="dashboard-col">
+    <div class="dashboard-box last-payment" (click)="gotoLastPayment()">
+      <div class="icon icon-last-payment"><span class="material-icons">receipt_long</span></div>
+      <div>
+        <div class="label">LAST PAYMENT</div>
+        <div class="payment-details">
+          <div><b>Date:</b> {{ lastPayment.date | date:'mediumDate' }}</div>
+          <div><b>Amount:</b> ₱{{ lastPayment.amount | number:'1.2-2' }}</div>
+          <div><b>Method:</b> {{ lastPayment.method }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-box heatmap" (click)="gotoHeatmap()">
+      <div class="icon icon-heatmap"><span class="material-icons">whatshot</span></div>
+      <div>
+        <div class="label">HEATMAP OF DELINQUENT PROPERTIES</div>
+        <table class="heatmap-table">
+          <tr *ngFor="let row of heatmapData">
+            <td *ngFor="let cell of row" [ngClass]="{'delinquent': cell}"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-box assessment-history" (click)="gotoAssessmentHistory()">
+    <div class="icon icon-assessment"><span class="material-icons">pie_chart</span></div>
+    <div>
+      <div class="label">ASSESSMENT HISTORY</div>
+      <div id="assessmentPieChart"></div>
+      <div class="legend-row">
+        <div class="legend-item">
+          <span class="legend-color" style="background:#42a5f5"></span> Residential
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background:#66bb6a"></span> Commercial
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background:#ffa726"></span> Industrial
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

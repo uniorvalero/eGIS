@@ -358,6 +358,237 @@ namespace Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_CheckReceivedDay", x => x.Id);
                 });
+            //RPTAS
+            // Users
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                });
+            // Baranggays
+            migrationBuilder.CreateTable(
+                name: "Baranggays",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ZoneNo = table.Column<int>(type: "int", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Province = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Baranggays", x => x.Id);
+                });
+            // Properties
+            migrationBuilder.CreateTable(
+                name: "Properties",
+                columns: table => new
+                {
+                    PropertyId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TaxDeclarationNo = table.Column<int>(type: "int", nullable: false),
+                    OwnerId = table.Column<int>(type: "int", nullable: false),
+                    TitleNo = table.Column<int>(type: "int", nullable: false),
+                    Classification = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LandArea = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PropertyStatus = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Properties", x => x.PropertyId);
+                    table.ForeignKey(
+                        name: "FK_Properties_Users_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+            // Assessments
+            migrationBuilder.CreateTable(
+                name: "Assessments",
+                columns: table => new
+                {
+                    AssessmentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PropertyId = table.Column<int>(type: "int", nullable: false),
+                    AssessedValue = table.Column<double>(type: "float", nullable: false),
+                    MarketValue = table.Column<double>(type: "float", nullable: false),
+                    AssessmentLevel = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AssessmentDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    ValidUntil = table.Column<DateOnly>(type: "date", nullable: false),
+                    AssessedBy = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assessments", x => x.AssessmentId);
+                    table.ForeignKey(
+                        name: "FK_Assessments_Properties_PropertyId",
+                        column: x => x.PropertyId,
+                        principalTable: "Properties",
+                        principalColumn: "PropertyId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Assessments_Users_AssessedBy",
+                        column: x => x.AssessedBy,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+            // AuditLogs
+            migrationBuilder.CreateTable(
+                name: "AuditLogs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Action = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EntityAffected = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MyProperty = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuditLogs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AuditLogs_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+            // TaxComputations
+            migrationBuilder.CreateTable(
+                name: "TaxComputations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AssessmentId = table.Column<int>(type: "int", nullable: false),
+                    TaxYear = table.Column<double>(type: "float", nullable: false),
+                    BasicTax = table.Column<double>(type: "float", nullable: false),
+                    SefTax = table.Column<double>(type: "float", nullable: false),
+                    IdleLandTax = table.Column<double>(type: "float", nullable: false),
+                    TotalDue = table.Column<double>(type: "float", nullable: false),
+                    Discount = table.Column<double>(type: "float", nullable: false),
+                    Penalty = table.Column<double>(type: "float", nullable: false),
+                    FinalAmount = table.Column<double>(type: "float", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaxComputations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TaxComputations_Assessments_AssessmentId",
+                        column: x => x.AssessmentId,
+                        principalTable: "Assessments",
+                        principalColumn: "AssessmentId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+            // Payments
+            migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TaxId = table.Column<int>(type: "int", nullable: false),
+                    PayerId = table.Column<int>(type: "int", nullable: false),
+                    PaymentDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    AmountPaid = table.Column<double>(type: "float", nullable: false),
+                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReceiptNo = table.Column<int>(type: "int", nullable: false),
+                    VerifiedBy = table.Column<int>(type: "int", nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Payments_Properties_TaxId",
+                        column: x => x.TaxId,
+                        principalTable: "Properties",
+                        principalColumn: "PropertyId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Payments_Users_PayerId",
+                        column: x => x.PayerId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Payments_Users_VerifiedBy",
+                        column: x => x.VerifiedBy,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+            // Reassessments
+            migrationBuilder.CreateTable(
+                name: "Reassessments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PropertyId = table.Column<int>(type: "int", nullable: false),
+                    RequestedBy = table.Column<int>(type: "int", nullable: false),
+                    Reason = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RequestedDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    DateReviewed = table.Column<DateOnly>(type: "date", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reassessments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reassessments_Properties_PropertyId",
+                        column: x => x.PropertyId,
+                        principalTable: "Properties",
+                        principalColumn: "PropertyId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reassessments_Users_RequestedBy",
+                        column: x => x.RequestedBy,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+            // Delinquencies
+            migrationBuilder.CreateTable(
+                name: "Delinquencies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TaxId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ActionTaken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateFlagged = table.Column<DateOnly>(type: "date", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Delinquencies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Delinquencies_TaxComputations_TaxId",
+                        column: x => x.TaxId,
+                        principalTable: "TaxComputations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
         }
 
         /// <inheritdoc />
@@ -419,6 +650,33 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "CheckReceivedDay");
+            //RPTAS
+            migrationBuilder.DropTable(
+                name: "AuditLogs");
+
+            migrationBuilder.DropTable(
+                name: "Baranggays");
+
+            migrationBuilder.DropTable(
+                name: "Delinquencies");
+
+            migrationBuilder.DropTable(
+                name: "Payments");
+
+            migrationBuilder.DropTable(
+                name: "Reassessments");
+
+            migrationBuilder.DropTable(
+                name: "TaxComputations");
+
+            migrationBuilder.DropTable(
+                name: "Assessments");
+
+            migrationBuilder.DropTable(
+                name: "Properties");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

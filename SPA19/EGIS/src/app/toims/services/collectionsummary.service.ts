@@ -9,7 +9,7 @@ import { ICollectionSummary } from '../models/collectionsummary';
 })
 export class CollectionsummaryService {
 
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http:HttpClient) { }
 
   getCollectionByMonthYear(month: number, year: number):Observable<ICollectionSummary[]>{

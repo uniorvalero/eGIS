@@ -10,7 +10,7 @@ import { createChecksDto, IChecks } from '../models/checks';
 })
 export class ChecksService {
 
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.bpltasApiBaseURL;
   constructor(private http:HttpClient) { }
 
   getChecks():Observable<IChecks[]>{

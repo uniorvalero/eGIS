@@ -9,7 +9,7 @@ import { createTellerDto, ITeller } from '../models/teller';
 })
 export class TellerService {
 
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
     constructor(private http:HttpClient) { }
   
     getTellers():Observable<ITeller[]>{
