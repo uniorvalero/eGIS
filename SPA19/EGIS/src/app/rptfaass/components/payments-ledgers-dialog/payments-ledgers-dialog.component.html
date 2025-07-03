@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Payments Ledger Report</h2>
+<div mat-dialog-content>
+  <table class="ledger-table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Property</th>
+        <th>Assessment</th>
+        <th>Tax Computation</th>
+        <th>Payment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- User Info -->
+        <td>
+          <div><b>Name:</b> {{ledger.user?.userName}}</div>
+          <div><b>Email:</b> {{ledger.user?.email}}</div>
+        </td>
+        <!-- Property Info -->
+        <td>
+          <div><b>Location:</b> {{ledger.property?.location}}</div>
+          <div><b>Tax Dec No:</b> {{ledger.property?.taxDeclarationNo}}</div>
+          <div><b>Title No:</b> {{ledger.property?.titleNo}}</div>
+        </td>
+        <!-- Assessment Info -->
+        <td>
+          <div><b>Assessed Value:</b> {{ledger.assessment?.assessedValue}}</div>
+          <div><b>Assessed By:</b> {{ledger.assessment?.assessedByUserName}}</div>
+          <div><b>Date:</b> {{ledger.assessment?.assessmentDate | date}}</div>
+        </td>
+        <!-- Tax Computation Info -->
+        <td>
+          <div><b>Tax Year:</b> {{ledger.taxComputation?.taxYear}}</div>
+          <div><b>Basic Tax:</b> {{ledger.taxComputation?.basicTax}}</div>
+          <div><b>Sef Tax:</b> {{ledger.taxComputation?.sefTax}}</div>
+          <div><b>Idle Land Tax:</b> {{ledger.taxComputation?.idleLandTax}}</div>
+        </td>
+        <!-- Payment Info -->
+        <td>
+          <div><b>Date:</b> {{ledger.payment?.paymentDate | date}}</div>
+          <div><b>Amount Paid:</b> {{ledger.payment?.amountPaid}}</div>
+          <div><b>Method:</b> {{ledger.payment?.paymentMethod}}</div>
+          <div><b>Receipt No:</b> {{ledger.payment?.receiptNo}}</div>
+          <div><b>Verified By:</b> {{ledger.payment?.verifiedByUserName}}</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</div>

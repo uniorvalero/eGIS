@@ -638,6 +638,372 @@ namespace Infrastructure.Migrations
 
                 b.ToTable("CheckReceivedDay");
             });
+            //RPTAS
+            modelBuilder.Entity("Domain.Entities.rptas.Users", b =>
+            {
+                b.Property<int>("UserId")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                b.Property<string>("UserName")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Password")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Role")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Email")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Phone")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<DateTime>("CreatedAt")
+                    .HasColumnType("datetime2");
+
+                b.HasKey("UserId");
+                b.ToTable("Users");
+            });
+
+            modelBuilder.Entity("Domain.Entities.rptas.Baranggays", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<int>("ZoneNo")
+                    .HasColumnType("int");
+
+                b.Property<string>("City")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Province")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.HasKey("Id");
+                b.ToTable("Baranggays");
+            });
+
+            modelBuilder.Entity("Domain.Entities.rptas.Properties", b =>
+            {
+                b.Property<int>("PropertyId")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PropertyId"));
+
+                b.Property<int>("TaxDeclarationNo")
+                    .HasColumnType("int");
+
+                b.Property<int>("OwnerId")
+                    .HasColumnType("int");
+
+                b.Property<int>("TitleNo")
+                    .HasColumnType("int");
+
+                b.Property<string>("Classification")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Location")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("LandArea")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<bool>("PropertyStatus")
+                    .HasColumnType("bit");
+
+                b.Property<DateTime>("CreatedAt")
+                    .HasColumnType("datetime2");
+
+                b.HasKey("PropertyId");
+                b.HasIndex("OwnerId");
+                b.ToTable("Properties");
+            });
+
+            modelBuilder.Entity("Domain.Entities.rptas.Assessments", b =>
+            {
+                b.Property<int>("AssessmentId")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AssessmentId"));
+
+                b.Property<int>("PropertyId")
+                    .HasColumnType("int");
+
+                b.Property<double>("AssessedValue")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+    
+                b.Property<double>("MarketValue")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("AssessmentLevel")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<DateOnly>("AssessmentDate")
+                    .HasColumnType("date");
+
+                b.Property<DateOnly>("ValidUntil")
+                    .HasColumnType("date");
+
+                b.Property<int>("AssessedBy")
+                    .HasColumnType("int");
+
+                b.HasKey("AssessmentId");
+                b.HasIndex("PropertyId");
+                b.HasIndex("AssessedBy");
+                b.ToTable("Assessments");
+            });
+
+            modelBuilder.Entity("Domain.Entities.rptas.AuditLogs", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<int>("UserId")
+                    .HasColumnType("int");
+
+                b.Property<string>("Action")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("EntityAffected")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<DateTime>("MyProperty")
+                    .HasColumnType("datetime2");
+
+                b.HasKey("Id");
+                b.HasIndex("UserId");
+                b.ToTable("AuditLogs");
+            });
+
+            modelBuilder.Entity("Domain.Entities.rptas.TaxComputations", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<int>("AssessmentId")
+                    .HasColumnType("int");
+
+                b.Property<double>("TaxYear")
+                    .HasColumnType("float");
+
+                b.Property<double>("BasicTax")
+                    .HasColumnType("float");
+
+                b.Property<double>("SefTax")
+                    .HasColumnType("float");
+
+                b.Property<double>("IdleLandTax")
+                    .HasColumnType("float");
+
+                b.Property<double>("TotalDue")
+                    .HasColumnType("float");
+
+                b.Property<double>("Discount")
+                    .HasColumnType("float");
+
+                b.Property<double>("Penalty")
+                    .HasColumnType("float");
+
+                b.Property<double>("FinalAmount")
+                    .HasColumnType("float");
+
+                b.Property<string>("Status")
+                    .HasColumnType("nvarchar(max)");
+
+                b.HasKey("TaxComputationId");
+                b.HasIndex("AssessmentId");
+                b.ToTable("TaxComputations");
+            });
+
+            modelBuilder.Entity("Domain.Entities.rptas.Payments", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<int>("TaxId")
+                    .HasColumnType("int");
+
+                b.Property<int>("PayerId")
+                    .HasColumnType("int");
+
+                b.Property<DateOnly>("PaymentDate")
+                    .HasColumnType("date");
+
+                b.Property<double>("AmountPaid")
+                    .HasColumnType("float");
+
+                b.Property<string>("PaymentMethod")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<int>("ReceiptNo")
+                    .HasColumnType("int");
+
+                b.Property<int>("VerifiedBy")
+                    .HasColumnType("int");
+
+                b.HasKey("Id");
+                b.HasIndex("TaxId");
+                b.HasIndex("PayerId");
+                b.HasIndex("VerifiedBy");
+                b.ToTable("Payments");
+            });
+
+            modelBuilder.Entity("Domain.Entities.rptas.Reassessments", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<int>("PropertyId")
+                    .HasColumnType("int");
+
+                b.Property<int>("RequestedBy")
+                    .HasColumnType("int");
+
+                b.Property<string>("Reason")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Status")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<DateOnly>("RequestedDate")
+                    .HasColumnType("date");
+
+                b.Property<DateOnly>("DateReviewed")
+                    .HasColumnType("date");
+
+                b.HasKey("Id");
+                b.HasIndex("PropertyId");
+                b.HasIndex("RequestedBy");
+                b.ToTable("Reassessments");
+            });
+
+            modelBuilder.Entity("Domain.Entities.rptas.Delinquencies", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<int>("TaxId")
+                    .HasColumnType("int");
+
+                b.Property<string>("Status")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("ActionTaken")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<DateOnly>("DateFlagged")
+                    .HasColumnType("date");
+
+                b.HasKey("Id");
+                b.HasIndex("TaxId");
+                b.ToTable("Delinquencies");
+            });
+
+            // Foreign key relationships
+            modelBuilder.Entity("Domain.Entities.rptas.Properties", b =>
+            {
+                b.HasOne("Domain.Entities.rptas.Users", null)
+                    .WithMany()
+                    .HasForeignKey("OwnerId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+            modelBuilder.Entity("Domain.Entities.rptas.Assessments", b =>
+            {
+                b.HasOne("Domain.Entities.rptas.Properties", null)
+                    .WithMany()
+                    .HasForeignKey("PropertyId")
+                    .OnDelete(DeleteBehavior.Cascade);
+                b.HasOne("Domain.Entities.rptas.Users", null)
+                    .WithMany()
+                    .HasForeignKey("AssessedBy")
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity("Domain.Entities.rptas.AuditLogs", b =>
+            {
+                b.HasOne("Domain.Entities.rptas.Users", null)
+                    .WithMany()
+                    .HasForeignKey("UserId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+            modelBuilder.Entity("Domain.Entities.rptas.TaxComputations", b =>
+            {
+                b.HasOne("Domain.Entities.rptas.Assessments", null)
+                    .WithMany()
+                    .HasForeignKey("AssessmentId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+            modelBuilder.Entity("Domain.Entities.rptas.Payments", b =>
+            {
+                b.HasOne("Domain.Entities.rptas.Properties", null)
+                    .WithMany()
+                    .HasForeignKey("TaxId")
+                    .OnDelete(DeleteBehavior.Cascade);
+                b.HasOne("Domain.Entities.rptas.Users", null)
+                    .WithMany()
+                    .HasForeignKey("PayerId")
+                    .OnDelete(DeleteBehavior.Restrict);
+                b.HasOne("Domain.Entities.rptas.Users", null)
+                    .WithMany()
+                    .HasForeignKey("VerifiedBy")
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity("Domain.Entities.rptas.Reassessments", b =>
+            {
+                b.HasOne("Domain.Entities.rptas.Properties", null)
+                    .WithMany()
+                    .HasForeignKey("PropertyId")
+                    .OnDelete(DeleteBehavior.Cascade);
+                b.HasOne("Domain.Entities.rptas.Users", null)
+                    .WithMany()
+                    .HasForeignKey("RequestedBy")
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity("Domain.Entities.rptas.Delinquencies", b =>
+            {
+                b.HasOne("Domain.Entities.rptas.TaxComputations", null)
+                    .WithMany()
+                    .HasForeignKey("TaxId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
         }
     }
 }

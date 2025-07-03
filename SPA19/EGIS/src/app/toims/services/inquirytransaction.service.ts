@@ -8,7 +8,7 @@ import { IInquiry } from '../models/inquiry';
   providedIn: 'root'
 })
 export class InquirytransactionService {
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http: HttpClient) { }
 
   getInquiryList():Observable<IInquiry[]>{

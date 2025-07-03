@@ -2,7 +2,6 @@
 using Domain.Entities.toims;
 using Infrastructure.Persistence.Repository.toims;
 using Infrastructure.Persistence.Repository;
-using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

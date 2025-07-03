@@ -1,4 +1,5 @@
-﻿using Infrastructure.Persistence.Repository;
+﻿using Domain.Entities;
+using Infrastructure.Persistence.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TOIMS.API.Controllers
@@ -18,6 +19,25 @@ namespace TOIMS.API.Controllers
         {
             var orData = await _unitOfWork.CollectionSummary.GetAllByMonthAndYear(month, year);
             return Ok(orData);
+        }
+
+        [HttpPost("Create")]
+        public async Task<IActionResult> Create([FromBody] CollectionSummary tableCode)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var createDTO = new CollectionSummary()
+            {
+                Code = tableCode.Code,
+                Description = tableCode.Description
+            };
+
+            await _unitOfWork.CollectionSummary.CreateAsync(createDTO);
+            await _unitOfWork.CommitAsync();
+            return Ok();
         }
     }
 }

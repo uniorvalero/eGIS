@@ -16,7 +16,7 @@ export const routes: Routes = [
   {
     path: 'mainlayout',
     loadComponent: () =>
-      import('./toims/layout/layout.component').then(m => m.LayoutComponent),
+      import('./layout/layout.component').then(m => m.LayoutComponent),
         canActivate: [authGuard],
     children: [
       {
@@ -235,16 +235,47 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./bpltas/transaction-account-update/transaction-account-update.component').then(m => m.TransactionAccountUpdateComponent),
       },
+      //UTILITIES
+      {
+        path: 'utilitydashboard',
+        loadComponent: () =>
+          import('./toims/utilities/dashboard-utility/dashboard-utility.component').then(m => m.DashboardUtilityComponent),
+      },
       //RPTAS-FAASS
       {
-        path: 'rprascode',
+        path: 'users',
         loadComponent: () =>
-          import('./rptfaass/rptas-code/rptas-code.component').then(m => m.RptasCodeComponent),
+          import('./rptfaass/components/users/users.component').then(m => m.UsersComponent),
       },
       {
-        path: 'actualuse',
+        path: 'property',
         loadComponent: () =>
-          import('./rptfaass/actual-use/actual-use.component').then(m => m.ActualUseComponent),  
+          import('./rptfaass/components/property/property.component').then(m => m.PropertyComponent),
+      },
+      {
+        path: 'rptasdashboard',
+        loadComponent: () =>
+          import('./rptfaass/components/dashboard/dashboard.component').then(m => m.DashboardComponent),
+      },
+      {
+        path: 'assessment',
+        loadComponent: () =>
+          import('./rptfaass/components/assessments/assessments.component').then(m => m.AssessmentsComponent),
+      },
+      {
+        path: 'taxcomputation',
+        loadComponent: () =>
+          import('./rptfaass/components/tax-computation/tax-computation.component').then(m => m.TaxComputationComponent),
+      },
+      {
+        path: 'rptpayment',
+        loadComponent: () =>
+          import('./rptfaass/components/payments/payments.component').then(m => m.PaymentsComponent),
+      },
+      {
+        path: 'rptutility',
+        loadComponent: () =>
+          import('./toims/utilities/rptas-utilities/rptas-utility/rptas-utility.component').then(m => m.RptasUtilityComponent),
       }
     ]
   }

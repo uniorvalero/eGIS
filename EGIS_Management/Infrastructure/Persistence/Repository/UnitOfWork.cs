@@ -1,6 +1,6 @@
-﻿
-using Infrastructure.Persistence.Repository.bpltas;
+﻿using Infrastructure.Persistence.Repository.bpltas;
 using Infrastructure.Persistence.Repository.login;
+using Infrastructure.Persistence.Repository.rptas;
 using Infrastructure.Persistence.Repository.toims;
 
 namespace Infrastructure.Persistence.Repository
@@ -48,6 +48,12 @@ namespace Infrastructure.Persistence.Repository
         public IReceiptInquiryLogRepository ReceiptInquiryLog => new ReceiptInquiryLogRepository(_dbContext);
         public IBatchReceiptRepository BatchReceipt => new BatchReceiptRepository(_dbContext);
         public ICheckReceivedDayRepository CheckReceivedDay => new CheckReceivedDayRepository(_dbContext);
+        //RPTAS Repository
+        public IUsersRepository Users => new UsersRepository(_dbContext);
+        public IAssessmentsRepository Assessments => new AssessmentsRepository(_dbContext);
+        public IPropertiesRepository Properties => new PropertiesRepository(_dbContext);
+        public ITaxComputationsRepository TaxComputations => new TaxComputationsRepository(_dbContext);
+        public IPaymentsRepository Payments => new PaymentsRepository(_dbContext);
 
         //Task bool CommitAsync()
         public async Task<bool> CommitAsync()

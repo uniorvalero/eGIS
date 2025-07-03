@@ -9,7 +9,7 @@ import { environment } from '../../environment/environment';
 })
 export class AccountsubsidiaryledgerService {
   
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.bpltasApiBaseURL;
   constructor(private http:HttpClient) { }
 
   getAccountLedgers():Observable<IAccountLedger[]>{

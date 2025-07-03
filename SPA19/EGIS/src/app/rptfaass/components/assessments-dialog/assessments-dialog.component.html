@@ -1,0 +1,99 @@
+<div class="container-fluid">
+    <h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} Assessment</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-grid">
+            <mat-form-field class="full-width">
+                <mat-label>Select property owner</mat-label>
+                <mat-select formControlName="userId" (selectionChange)="onSelectedOwner($event.value)">
+                    <mat-option *ngFor="let user of usersOwner" [value]="user.id">
+                        {{ user.userName }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field class="full-width" *ngIf="ownerProperties.length > 0">
+                <mat-label>Select Tax Declaration No</mat-label>
+                <mat-select formControlName="propertyId" (selectionChange)="onSelectedTax($event.value)">
+                    <mat-option *ngFor="let prop of ownerProperties" [value]="prop.propertyId">
+                    {{ prop.taxDeclarationNo }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Property ID</mat-label>
+                <input matInput formControlName="propertyId" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Property Location</mat-label>
+                <input matInput formControlName="propertyLocation" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Tax Declaration No</mat-label>
+                <input matInput formControlName="taxDeclarationNo" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Title No</mat-label>
+                <input matInput formControlName="titleNo" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Classification</mat-label>
+                <input matInput formControlName="classification" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Location</mat-label>
+                <input matInput formControlName="location" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Land Area</mat-label>
+                <input matInput formControlName="landArea" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Assessed Value</mat-label>
+                <input matInput formControlName="assessedValue" required>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Market Value</mat-label>
+                <input matInput formControlName="marketValue" required>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Assessment Level</mat-label>
+                <input matInput formControlName="assessmentLevel" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Select assessor</mat-label>
+                <mat-select formControlName="userId" (selectionChange)="onSelectedAssessor($event.value)">
+                    <mat-option *ngFor="let user of usersAssessor" [value]="user.id">
+                        {{ user.userName }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field class="full-width">
+                <mat-label>Valid Until</mat-label>
+                <input matInput [matDatepicker]="validpicker" formControlName="validUntil">  
+                <mat-datepicker-toggle matSuffix [for]="validpicker"></mat-datepicker-toggle>
+                <mat-datepicker #validpicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Assessment Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="assessmentDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="dialog-actions">
+            <button mat-button  type="button" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button type="submit" [disabled]="!form.valid">{{isEditMode?'Update':'Create'}}</button>
+        </div>
+    </form>
+</div>

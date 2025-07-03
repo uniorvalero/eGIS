@@ -9,7 +9,7 @@ import { createMTDto, IManagingtemplate } from '../models/managingtemplate';
 })
 export class ManagingtemplateService {
 
-   readonly apibaseurl = environment.apibaseURL;
+   readonly apibaseurl = environment.toimsApiBaseURL;
         constructor(private http:HttpClient) { }
       
         getMTList():Observable<IManagingtemplate[]>{

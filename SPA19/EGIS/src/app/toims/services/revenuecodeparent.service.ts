@@ -13,7 +13,7 @@ import { createEnvironmentInjector } from '@angular/core';
 })
 export class RevenuecodeparentService {
 
-   readonly apibaseurl = environment.apibaseURL;
+   readonly apibaseurl = environment.toimsApiBaseURL;
     constructor(private http:HttpClient) { }
   
     getRevenueCodeParentLst():Observable<IRevenueCodeParent[]>{

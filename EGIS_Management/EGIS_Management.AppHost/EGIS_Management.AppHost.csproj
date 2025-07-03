@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
 
@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\bpltas.api\bpltas.api.csproj" />
+    <ProjectReference Include="..\rptasfaas.api\rptasfaas.api.csproj" />
     <ProjectReference Include="..\TOIMS.API\TOIMS.API.csproj" />
   </ItemGroup>
 

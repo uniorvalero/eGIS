@@ -9,7 +9,7 @@ import { createRevenueCodeChildDto, IRevenueCodeChild } from '../models/revenuec
 })
 export class RevenuecodechildService {
 
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http:HttpClient) { }
 
   getRevenueCodeChildLst(code: string):Observable<IRevenueCodeChild[]>{

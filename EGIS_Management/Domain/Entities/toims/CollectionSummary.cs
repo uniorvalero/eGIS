@@ -13,5 +13,6 @@ namespace Domain.Entities
         public double Actual { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }
+
     }
 }

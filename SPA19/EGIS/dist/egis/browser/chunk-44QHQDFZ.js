@@ -1,0 +1,1 @@
+import{W as n,ya as a}from"./chunk-5MRHDFKX.js";var r=class t{isAuthenticated=a(!1);login(i,e){return i==="admin"&&e==="admin"?(this.isAuthenticated.set(!0),!0):!1}logout(){this.isAuthenticated.set(!1)}static \u0275fac=function(e){return new(e||t)};static \u0275prov=n({token:t,factory:t.\u0275fac,providedIn:"root"})};export{r as a};
