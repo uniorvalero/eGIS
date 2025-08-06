@@ -1,0 +1,136 @@
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f6fa;
+}
+
+.login-theme {
+  position: relative;
+  flex: 1;
+  background: url('/assets/images/sanpedro-theme.png') center center no-repeat;
+  background-size: cover; /* maximize logo */
+  background-color: #f5f6fa;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 48px 32px 48px 0;
+  overflow: hidden;
+}
+
+.theme-logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.08; /* Watermark effect */
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 1;
+  filter: grayscale(100%);
+}
+
+.theme-title,
+.theme-desc {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.login-logo {
+  width: 90px; /* Adjust size as needed */
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.theme-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: right;
+}
+
+.theme-desc {
+  font-size: 1.2rem;
+  text-align: right;
+  max-width: 320px;
+}
+
+.login-form {
+  flex: 0 0 520px; /* Make the right container thinner and fixed width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0 48px 32px;
+  min-width: 400px;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 520px; /* Wider input/button/card */
+  box-shadow: 0 4px 24px rgba(40, 3, 247, 0.08);
+}
+
+.full-width {
+  width: 100%;
+  min-width: 320px; /* Make input/button longer */
+  max-width: 480px;
+  display: block;
+}
+
+.large-input {
+  margin-bottom: 10px;
+}
+
+mat-form-field.large-input .mat-mdc-form-field-infix {
+  height: 48px;
+  font-size: 1.08rem;
+  border-radius: 8px;
+}
+
+.large-btn {
+  height: 48px;
+  font-size: 1.08rem;
+  border-radius: 8px;
+  background: #234a96;
+  color: #fff;
+  margin-bottom: 10px;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.centered-title {
+  text-align: left;
+  font-size: 1.18rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+  margin-left: 2px;
+}
+
+.otp-instructions {
+  margin-bottom: 16px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.otp-form {
+  margin-top: 16px;
+}

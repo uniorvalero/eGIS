@@ -1,0 +1,52 @@
+<!-- <div class="tab-content"> -->
+  <form [formGroup]="userForm" class="form-tab-grid">
+    <!-- <div class="form-grid"> -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" formControlName="firstName" [disabled]="disabled">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Middle Name</mat-label>
+        <input matInput placeholder="Middle Name" formControlName="middleName" [disabled]="disabled">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" formControlName="lastName" [disabled]="disabled" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contact No.</mat-label>
+        <input matInput placeholder="Contact No." formControlName="contactNo" [disabled]="disabled" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" placeholder="Age" formControlName="age" min="0" [disabled]="disabled">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <input matInput [matDatepicker]="picker" placeholder="Birth Date" [disabled]="disabled" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender" [disabled]="disabled">
+        <mat-option *ngFor="let clas of genderOptions" [value]="clas.name">
+            {{ clas.name }}
+        </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>MaritalStatus</mat-label>
+          <mat-select formControlName="status" [disabled]="disabled">
+          <mat-option *ngFor="let clas of statusOptions" [value]="clas.name">
+              {{ clas.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <!-- </div> -->
+     <div class="form-actions">
+      <button mat-raised-button color="primary" (click)="onSave()" [disabled]="userForm.invalid || disabled">
+        Save & Next
+      </button>
+    </div>
+  </form>
+<!-- </div> -->

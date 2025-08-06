@@ -1,0 +1,55 @@
+<div class="container-fluid">
+<h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} Payment</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-grid">
+            <mat-form-field class="full-width">
+                <mat-label>Select Application No.:</mat-label>
+                <mat-select formControlName="applicationId">
+                    <mat-option *ngFor="let Id of applicationIds" [value]="Id">
+                        {{ Id }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Select Inspector</mat-label>
+                <mat-select formControlName="inspectorId" (selectionChange)="onSelectedInspector($event.value)">
+                    <mat-option *ngFor="let user of users" [value]="user.id">
+                        {{ user.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Inspection Result</mat-label>
+                <mat-select formControlName="inspectionResult" required>
+                    <mat-option *ngFor="let result of inspectionResultOptions" [value]="result.name">
+                        {{ result.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="inspectionStatus" required>
+                    <mat-option *ngFor="let stat of inspectionStatusOptions" [value]="stat.value">
+                        {{ stat.label }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('status')?.hasError('required')">Status is required</mat-error>
+            </mat-form-field> 
+            <mat-form-field class="full-width">
+                <mat-label>Date of Inspection</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="inspectionDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get('inspectionDate')?.hasError('required')">Date of Inspection is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Remarks</mat-label>
+                <textarea matInput formControlName="remarks" rows="4"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="dialog-actions">
+            <button mat-button  type="button" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button type="submit" [disabled]="!form.valid">{{isEditMode?'Update':'Create'}}</button>
+        </div>
+    </form>
+</div>

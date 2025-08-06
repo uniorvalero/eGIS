@@ -1,0 +1,109 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 24px;
+  background: transparent; /* Make background transparent */
+  box-shadow: none;        /* Optional: remove shadow for full transparency */
+}
+  
+  
+  .load-batch-btn {
+  height: 50px;
+  min-width: 120px;
+  margin-left: 8px;
+  background: #4169e1 !important;
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(65, 105, 225, 0.15);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  letter-spacing: 0.5px;
+  border: none;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  padding: 0 24px;
+  margin-bottom: 24px;
+}
+
+.load-batch-btn:hover,
+.load-batch-btn:focus {
+  background: #274bb5 !important;      /* Darker Royal Blue on hover */
+  box-shadow: 0 4px 16px rgba(65, 105, 225, 0.25);
+  transform: translateY(-2px) scale(1.03);
+}
+
+  ::ng-deep .mat-header-cell {
+    background-color: #3f51b5; /* Change background color */
+    color: white;             /* Text color */
+    font-weight: bold;        /* Bold font */
+    font-size: 16px;          /* Font size */
+    text-align: center;       /* Center align text */
+  }
+  
+  ::ng-deep .mat-header-row {
+    height: 56px;             /* Height of the header row */
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+  table,
+thead,
+tbody,
+tr,
+th,
+td {
+  background: transparent !important;
+}
+
+/* Table and all its parts */
+.mat-elevation-z8,
+.mat-table,
+.mat-header-row,
+.mat-row,
+.mat-header-cell,
+.mat-cell,
+tr,
+td,
+th {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .mat-paginator, 
+::ng-deep .mat-paginator-container, 
+::ng-deep .mat-paginator-outer-container, 
+::ng-deep .mat-paginator-range-actions, 
+::ng-deep .mat-paginator-page-size, 
+::ng-deep .mat-paginator-page-size-label, 
+::ng-deep .mat-paginator-range-label, 
+::ng-deep .mat-paginator-navigation-previous, 
+::ng-deep .mat-paginator-navigation-next, 
+::ng-deep .mat-paginator-page-size-select, 
+::ng-deep .mat-paginator-page-size-select .mat-select-trigger, 
+::ng-deep .mat-paginator-page-size-select .mat-select-value,
+::ng-deep .paginator-row,
+::ng-deep div[style*="background"],
+::ng-deep .mat-mdc-paginator,
+::ng-deep .mat-mdc-paginator-container,
+::ng-deep .mat-mdc-paginator-range-actions {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Try to target any direct parent div with a background */
+::ng-deep .mat-paginator, 
+::ng-deep .mat-paginator-container, 
+::ng-deep .mat-paginator-outer-container,
+::ng-deep .mat-mdc-paginator,
+::ng-deep .mat-mdc-paginator-container {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}

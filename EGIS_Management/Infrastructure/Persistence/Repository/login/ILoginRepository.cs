@@ -1,9 +1,9 @@
-﻿using Domain.Entities.login;
+﻿using Domain.Entities.usermanagement;
 
 namespace Infrastructure.Persistence.Repository.login
 {
-    public interface ILoginRepository : IGenericRepository<Login>
+    public interface ILoginRepository : IGenericRepository<Users_Login>
     {
-        Task<Login> GetByEmail(string email);
+        Task<Users_Login> GetByEmail(string email);
     }
 }

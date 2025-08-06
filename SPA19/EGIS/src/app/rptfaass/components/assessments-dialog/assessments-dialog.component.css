@@ -26,22 +26,45 @@
     min-height: 200px;  /* Adjust the height to suit your needs */
   }
   
-  mat-dialog-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+::ng-deep .mat-dialog-container {
+    width: 2000px !important;
+    max-width: 2000px !important;
+    min-width: 1500px !important;
+    padding: 40px 32px 32px 32px !important;
+    border-radius: 24px !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 1.5px 6px rgba(0,0,0,0.10) !important;
+    background: #f8f8fc !important;
+    display: block !important;
+}
   
   mat-form-field {
-    width: 100%;  /* Ensure form fields use the full width of the container */
-    padding: 10px;
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 0;
+    box-sizing: border-box;
+    background: #e7eaf3;
+    border-radius: 12px;
+    transition: box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+  }
+
+  .mat-form-field-label {
+    white-space: normal !important;
+    font-size: 1em;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+    width: 100%;
+    text-align: left;
+    color: #2d3559;
+    font-weight: 500;
   }
 
   .form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px 20px;
+    margin-bottom: 16px;
+  }
 
 .dialog-actions {
   margin-top: 24px;

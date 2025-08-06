@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IPayment } from '../models/payment';
-import { createPaymentDto } from '../../bpltas/models/payment';
+import { createPaymentDto } from '../../rptfaass/models/payment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
@@ -17,6 +17,14 @@ export class PaymentService {
     return this.http.get<IPayment[]>(this.apibaseurl + '/Payment');
   }
 
+  getAllPaymentsByStatus(status: string):Observable<IPayment[]>{
+    return this.http.get<IPayment[]>(this.apibaseurl + '/Payment/Status', {
+      params: { 
+        status: status
+      }
+    });
+  }
+
   getPaymentsByReceiptRange(start: number, end: number) {
     console.log('Fetching payments with start:', start, 'and end:', end);
     return this.http.get<IPayment[]>(`${this.apibaseurl}/UtilityRPTAS/ReceiptRange`, {
@@ -25,7 +33,6 @@ export class PaymentService {
         end: end.toString()
       }
     });
-    console.log('Payments fetched successfully');
   }
 
   updatePayments(mcode:IPayment):Observable<void>{

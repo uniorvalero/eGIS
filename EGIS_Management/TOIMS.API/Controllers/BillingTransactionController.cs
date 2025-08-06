@@ -55,14 +55,14 @@ namespace TOIMS.API.Controllers
 
         // 4. Enter Codes
         [HttpPost("AddPaymentCode/{transactionId}")]
-        public async Task<IActionResult> AddPaymentCode(int transactionId, [FromBody] BillingTransactionDetail detail)
+        public async Task<IActionResult> AddPaymentCode(int transactionId, [FromBody] BillingTransaction detail)
         {
             var transaction = await _unitOfWork.BillingTransaction.GetByIdAsync(transactionId);
             if (transaction == null)
                 return NotFound();
 
-            detail.BillingTransactionId = transactionId;
-            await _unitOfWork.BillingTransactionDetail.CreateAsync(detail);
+            detail.Id = transactionId;
+            await _unitOfWork.BillingTransaction.CreateAsync(detail);
             await _unitOfWork.CommitAsync();
 
             return Ok(detail);
@@ -76,12 +76,12 @@ namespace TOIMS.API.Controllers
             if (transaction == null)
                 return NotFound();
 
-            var details = await _unitOfWork.BillingTransactionDetail.GetAllAsync();
-            var transactionDetails = details.Where(d => d.BillingTransactionId == transactionId).ToList();
+            var details = await _unitOfWork.BillingTransaction.GetAllAsync();
+            var transactionDetails = details.Where(d => d.Id == transactionId).ToList();
 
             foreach (var detail in transactionDetails)
             {
-                await _unitOfWork.BillingTransactionDetail.DeleteAsync(detail);
+                await _unitOfWork.BillingTransaction.DeleteAsync(detail);
             }
 
             await _unitOfWork.CommitAsync();
@@ -182,7 +182,7 @@ namespace TOIMS.API.Controllers
         }
 
         [HttpPost("AddDetail/{transactionId}")]
-        public async Task<IActionResult> AddDetail(int transactionId, [FromBody] BillingTransactionDetail detail)
+        public async Task<IActionResult> AddDetail(int transactionId, [FromBody] BillingTransaction detail)
         {
             var transaction = await _unitOfWork.BillingTransaction.GetByIdAsync(transactionId);
             if (transaction == null)
@@ -190,12 +190,11 @@ namespace TOIMS.API.Controllers
                 return NotFound();
             }
 
-            detail.BillingTransactionId = transactionId;
-            transaction.Details.Add(detail);
+            detail.Id = transactionId;
+            await _unitOfWork.BillingTransaction.CreateAsync(detail);
+            await _unitOfWork.CommitAsync(); 
 
-            _unitOfWork.BillingTransaction.Update(transaction);
-            await _unitOfWork.CommitAsync();
-            return Ok(transaction);
+            return Ok(detail); 
         }
     }
 }

@@ -2,6 +2,7 @@
 using Infrastructure.Persistence.Repository.login;
 using Infrastructure.Persistence.Repository.rptas;
 using Infrastructure.Persistence.Repository.toims;
+using Infrastructure.Persistence.Repository.usermanagement;
 
 namespace Infrastructure.Persistence.Repository
 {
@@ -10,13 +11,12 @@ namespace Infrastructure.Persistence.Repository
         Task<bool> CommitAsync();
         //Login Repository
         ILoginRepository Login { get; }
-
         //BPLTAS Repository
-        IBankRepository Bank { get; }
-        IBarangayRepository Barangay { get; }
-        IBillingRepository Billing { get; }
-        ICollectionCodeRepository CollectionCode { get; }
-
+        IBPLTASBanksRepository BPLTASBanks { get; }
+        IBPLTASUserRepository BPLTASUsers { get; }
+        IBPLTASInspectionRepository BPLTASInspections { get; }
+        IBPLTASPaymentRepository BPLTASPayments { get; }
+        IBPLTASApplicationRepository BPLTASApplications { get; }
         //TOIMS Setup Models
         IMasterTableCodeRepository MasterCode { get; }
         IMasterTableSubCodeRepository SubCode { get; }
@@ -26,13 +26,11 @@ namespace Infrastructure.Persistence.Repository
         IEstimatedRevenueRepository EstimatedRevenue { get; }
         IManagingTemplateRepository ManagingTemplate { get; }
         ICollectionSummaryRepository CollectionSummary { get; }
-        ICollectionSummaryDetailsRepository CollectionSummaryDetails { get; }   
-
+        ICollectionSummaryDetailsRepository CollectionSummaryDetails { get; }
         //TOIMS Transaction Models
         IOfficialReceiptRepository OfficialReceipt { get; }
         IOfficialReceiptDetailRepository OfficialReceiptDetail { get; }
         IBillingTransactionRepository BillingTransaction { get; }
-        IBillingTransactionDetailRepository BillingTransactionDetail { get; }
         IFormIssuanceRepository FormIssuance { get; }
         ICashTicketRepository CashTicket { get; }
         ITransferTaxConfirmationRepository TransferTaxConfirmation { get; }
@@ -48,5 +46,22 @@ namespace Infrastructure.Persistence.Repository
         IPropertiesRepository Properties { get; }
         ITaxComputationsRepository TaxComputations { get; }
         IPaymentsRepository Payments { get; }
+        //User Management
+        IUsersAppRoleRepository UsersAppRole { get; }
+        IUsersAddressRepository UsersAddress { get; }
+        IUsersAppRepository UsersApp { get; }
+        IUsersAppSubcriptionRepository UsersAppSubcription { get; }
+        IUsersBarangayRepository UsersBarangay { get; }
+        IUsersCaptchaRepository UsersCaptcha { get; }
+        IUsersCityRepository UsersCity { get; }
+        IUsersCountryRepository UsersCountry { get; }
+        IUsersLoginRepository UsersLogin { get; }
+        IUsersOtpTokenRepository UsersOtpToken { get; }
+        IUsersProfileRepository UsersProfile { get; }
+        IUsersRoleRepository UsersRole { get; }
+        IUsersUserRepository UsersUser { get; }
+        IUsersUserRoleRepository UsersUserRole { get; }
+        IUsersMenuRepository UsersMenu { get; }
+        IUsersRoleMenuRepository UsersRoleMenu { get; }
     }
 }

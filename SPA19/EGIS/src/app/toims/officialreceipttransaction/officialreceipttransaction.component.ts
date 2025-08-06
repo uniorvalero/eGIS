@@ -17,6 +17,7 @@ import { OfficialreceipttransactionUtilityDialogComponent } from '../officialrec
 
 @Component({
   selector: 'app-officialreceipttransaction',
+  standalone: true,
   imports: [
     MatFormField,
     MatInputModule,

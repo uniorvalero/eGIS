@@ -1,0 +1,53 @@
+<div class="container-fluid">
+<h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} User</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-grid">
+            <mat-form-field class="full-width">
+                <mat-label>Owner</mat-label>
+                <mat-select formControlName="ownerId" (selectionChange)="onSelectedOwner($event.value)">
+                    <mat-option *ngFor="let user of users" [value]="user.id">
+                        {{ user.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('ownerId')?.hasError('required')">Owner is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Business Name</mat-label>
+                <input matInput formControlName="businessName" required>
+                <mat-error *ngIf="form.get('businessName')?.hasError('required')">Business Name is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Business Permit No.</mat-label>
+                <input matInput formControlName="businessPermitNo" required>
+                <mat-error *ngIf="form.get('businessPermitNo')?.hasError('required')">Business Permit No. is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status" required>
+                    <mat-option *ngFor="let status of statusOptions" [value]="status.name">
+                        {{ status.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('status')?.hasError('required')">Status is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Date of Application</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="applicationDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get('applicationDate')?.hasError('required')">Date of Application is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Released Date</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="releaseDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="form.get('releaseDate')?.hasError('required')">Released Date is required</mat-error>
+            </mat-form-field>
+        </div>      
+        <div class="dialog-actions">
+            <button mat-button  type="button" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button type="submit" [disabled]="!form.valid">{{isEditMode?'Update':'Create'}}</button>
+        </div>
+    </form>
+</div>

@@ -28,9 +28,6 @@ import { Router } from '@angular/router';
   styleUrl: './users.component.css'
 })
 export class UsersComponent implements OnInit {
-  showSubCode = false;
-  selectedMasterCode!: number;
-  selectedDescription!: string;
 
   displayedColumns: string[] = ['userName', 'role', 'email', 'phone', 'actions'];
   dataSource!: MatTableDataSource<IUsers>;

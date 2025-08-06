@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} Assessment</h2>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
-        <div class="form-grid">
-            <mat-form-field class="full-width">
+        <div class="form-grid three-columns">
+            <mat-form-field class="full-width"> 
                 <mat-label>Select property owner</mat-label>
                 <mat-select formControlName="userId" (selectionChange)="onSelectedOwner($event.value)">
                     <mat-option *ngFor="let user of usersOwner" [value]="user.id">

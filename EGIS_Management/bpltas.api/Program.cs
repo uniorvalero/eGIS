@@ -13,10 +13,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
-   
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -34,6 +34,10 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseCors("AllowCors");
 app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.

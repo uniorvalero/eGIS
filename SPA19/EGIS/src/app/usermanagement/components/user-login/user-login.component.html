@@ -1,0 +1,39 @@
+<div class="login-container">
+  <div class="login-theme">
+  </div>
+  <div class="login-form">
+    <!-- <form (ngSubmit)="onLogin()" #loginForm="ngForm" autocomplete="off"> -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-card>
+        
+        <mat-card-content>
+          <div class="logo-container">
+            <img src="assets/images/sanpedro.png" alt="Logo" class="login-logo">
+          </div>
+          <div class="form-title centered-title">Sign-in to your account.</div>
+          <mat-form-field appearance="outline" class="full-width large-input">
+            <mat-label>User ID</mat-label>
+            <input matInput formControlName="email" placeholder="Email" type="email" />
+            <!-- <input matInput type="text" [(ngModel)]="email" name="email" required autocomplete="username"> -->
+          </mat-form-field>
+          <div class="forgot-password-row">
+            <a routerLink="forgot-password" class="forgot-link">Forgot Password?</a>
+          </div>
+          <mat-form-field appearance="outline" class="full-width large-input">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" placeholder="Password" type="password" />
+            <!-- <input matInput type="password" [(ngModel)]="password" name="password" required autocomplete="current-password"> -->
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" class="full-width large-btn">Sign In</button>
+          <div class="create-account-link">
+            <span>No account yet?</span>
+            <a routerLink="/signup">Create now</a>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>         
+  </div>
+</div>
+
+
+<!-- <router-outlet></router-outlet> -->

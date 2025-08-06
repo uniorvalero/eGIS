@@ -73,7 +73,6 @@ dataSource!: MatTableDataSource<IPayment>;
   loadBatch(): void{
   const startWith = Number(this.rangeForm.get('startingRange')?.value);
   const endWith = Number(this.rangeForm.get('endingRange')?.value);
-  console.log("start" + startWith, "end" + endWith);
 
   if (isNaN(startWith) || isNaN(endWith)) {
     // Show error or return
@@ -82,7 +81,6 @@ dataSource!: MatTableDataSource<IPayment>;
   
   this.utilityrptasService.getPaymentsByReceiptRange(startWith, endWith).subscribe((mcodes) =>
     {   
-      console.log("mcodes", mcodes);
         this.dataSource = new MatTableDataSource(mcodes);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

@@ -1,0 +1,19 @@
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Upload Profile Photo</mat-label>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" matInput>
+  </mat-form-field>
+  
+  <div *ngIf="selectedFile">
+    <img [src]="previewUrl" alt="Profile Photo Preview" class="preview-image"/>
+  </div>
+  
+  <button mat-raised-button color="primary" (click)="onUpload()">Upload</button>
+</div>
+<style>
+  .preview-image {
+    max-width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+  }
+</style>

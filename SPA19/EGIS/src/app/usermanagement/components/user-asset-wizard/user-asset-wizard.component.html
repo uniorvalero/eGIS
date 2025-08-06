@@ -1,0 +1,69 @@
+<div class="container-fluid">
+<mat-card *ngIf="ready">
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <!-- Step 1: User & Roles -->
+    <mat-step [stepControl]="userRoleForm">
+      <form [formGroup]="userRoleForm">
+        <h3>Piliin ang User at Roles</h3>
+        <mat-form-field class="full-width">
+          <mat-label>User</mat-label>
+          <mat-select formControlName="userId" required>
+            <mat-option *ngFor="let user of users" [value]="user.id">
+              {{user.firstName}} {{user.lastName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <div *ngIf="rolesArray && rolesArray.length === roles.length">
+                <label>Roles:</label>
+                <div *ngFor="let role of roles; let i = index">
+                    <mat-checkbox [formControl]="rolesArray.at(i)">{{role.roleName}}</mat-checkbox>
+                </div>
+          </div>
+        </div>
+        <div>
+          <button mat-button matStepperNext [disabled]="userRoleForm.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 2: Apps & Menus -->
+    <mat-step [stepControl]="appMenuForm">
+      <form [formGroup]="appMenuForm">
+        <h3>Piliin ang App at Menus</h3>
+        <mat-form-field class="full-width">
+          <mat-label>App</mat-label>
+          <mat-select formControlName="appId" (selectionChange)="onAppChange($event.value)" required>
+            <mat-option *ngFor="let app of apps" [value]="app.id">{{app.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+            <div *ngIf="menusArray && menusArray.length === menus.length">
+                <label>Menus:</label>
+                <div *ngFor="let menu of menus; let i = index">
+                    <mat-checkbox [formControl]="menusArray.at(i)">{{menu.menuName}}</mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="appMenuForm.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 3: Review -->
+    <mat-step>
+      <h3>Summary</h3>
+      <p><strong>User:</strong> {{getUserName(userRoleForm.value.userId)}}</p>
+      <p><strong>Roles:</strong> {{getSelectedRoles()}}</p>
+      <p><strong>App:</strong> {{getAppName(appMenuForm.value.appId)}}</p>
+      <p><strong>Menus:</strong> {{getSelectedMenus()}}</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card>
+</div>

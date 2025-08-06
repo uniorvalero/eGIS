@@ -11,7 +11,7 @@ namespace Domain.Entities.rptas
     public class TaxComputations
     {
         [Key]
-        public int Id { get; set; }
+        public int TaxComputationId { get; set; }
         [ForeignKey("Assessments")]
         public int AssessmentId { get; set; }
         public double TaxYear { get; set; }

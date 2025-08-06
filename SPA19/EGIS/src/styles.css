@@ -12,3 +12,134 @@ body {
 }
 
 h1 { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Card styling */
+.tab-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  max-width: 700px;      /* mas malapad para kasya ang 2 columns */
+  margin: 60px auto;
+  padding: 32px 32px;
+  /* tanggalin ang max-height at overflow */
+}
+
+/* Tabs styling */
+.mat-tab-group {
+  background: transparent;
+}
+
+.mat-tab-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #3a4a5a;
+  padding: 12px 32px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mat-tab-label.mat-tab-label-active {
+  background: #fff;
+  color: #1976d2;
+  box-shadow: 0 2px 8px rgba(30,136,229,0.08);
+}
+
+.mat-tab-label:not(.mat-tab-label-active) {
+  background: #e3e7ea;
+  color: #7b8a97;
+  opacity: 0.7;
+}
+
+.mat-tab-label.mat-tab-label-disabled {
+  color: #b0b8c1 !important;
+  background: #e3e7ea !important;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.mat-ink-bar {
+  background-color: #1976d2 !important;
+  height: 3px;
+  border-radius: 2px;
+}
+
+/* Tab content styling */
+.tab-content {
+  padding: 24px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* tanggalin ang overflow at max-height */
+}
+
+/* Actions styling */
+.actions {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.sign-in-btn {
+  background: #1de9b6;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(30,136,229,0.08);
+}
+
+.sign-in-btn:hover {
+  background: #00bfa5;
+}
+
+.signup-link {
+  color: #7b8a97;
+}
+
+.signup-link a {
+  color: #1976d2;
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Form container for step components */
+.form-tab-grid{
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+}
+
+/* Two-column grid for forms */
+.form-tab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 32px;
+  width: 100%;
+  max-width: 600px;      /* mas malapad para kasya ang fields */
+  margin: 40px auto 0 auto;
+}
+
+/* Make form fields fill their grid cell */
+.mat-form-field.full-width {
+  width: 100%;
+  min-width: 220px;      /* mas mahaba pa */
+}
+
+/* Button styling for consistency */
+.mat-raised-button {
+  width: 100%;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* Button spans both columns */
+.form-actions {
+  grid-column: 1 / span 2;
+  margin-top: 32px;
+}

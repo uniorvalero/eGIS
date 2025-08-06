@@ -1,0 +1,21 @@
+.personal-info-form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.personal-info-form mat-form-field {
+    margin-bottom: 16px;
+}
+
+.personal-info-form button {
+    align-self: flex-end;
+    margin-top: 16px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -12px;
+    margin-bottom: 12px;
+}

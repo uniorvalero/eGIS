@@ -1,185 +1,200 @@
 <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
     <div class="container-fluid">
       <img src="assets/images/egis-logo.png" alt="eGIS Logo" class="logo" />
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-            TOIMS
-          </a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Setup</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="master">Master Code Table Entry</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="revenuecodeparent">Revenue Code Parent Entry</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="teller">Teller Table Master Entry</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="">Setting of Form Control</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="collectionsummary">Collection Summary</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="estimatedrevenue">Estimated Revenue Setup</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="managingtemplate">Template Creation</a></li>
-                <li><hr class="dropdown-divider"></li>
-              </ul>
-            </li>
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Transactions</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="officialreceipt">Official Receipt Entry</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="">Billing Entry</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="formissuance">Issuance of Forms</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="cashticket">Issuance of Cash Tickets</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="">Confirmation of Paymet</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="batchinputreceipt">Batch input of Receipts</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="postingrecords">Posting of Records</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="inquirytransaction">Inquery</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="checkreceivedday">Checks received for the Day</a></li>
-                <li><hr class="dropdown-divider"></li>
-              </ul>
-            </li>
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Utilities</a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">BPLTAS</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report">Report</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report2">Report 2</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report3">Report 3</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                  </ul>
-                </li>
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">RPTAS-FAASS</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="rptutility">Total RPTAS Payment per Receipt</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report2">Report 2</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report3">Report 3</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                  </ul>
-                </li>
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">TOIMS</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report">Report</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report2">Report 2</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report3">Report 3</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-            BPLTAS
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item dropdown-toggle"  data-bs-toggle="dropdown">Setup</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" routerLink="systemtable">System Table</a></li>
-                <li><a class="dropdown-item" routerLink="bank">Banks</a></li>
-                <li><a class="dropdown-item" routerLink="baranggay">Baranggays</a></li>
-                <li><a class="dropdown-item" routerLink="collector">Collectors</a></li>
-                <li><a class="dropdown-item" routerLink="category">Category</a></li>
-                <li><a class="dropdown-item" routerLink="penaltyschedule">Penalty Schedule</a></li>
-                <li><hr class="dropdown-divider">
-                Other setup
-                <li><hr class="dropdown-divider">
-                <li><a class="dropdown-item" routerLink="cityordinancecode">City Ordinance Codes</a></li>
-                <li><a class="dropdown-item" routerLink="businesscode">Business Category</a></li>
-                <li><a class="dropdown-item" routerLink="taxpayercorporatecode">Taxpayer/Corporate Code</a></li>
-                <li><a class="dropdown-item" routerLink="masterfiledata">Master file info data</a></li>
-                <li><a class="dropdown-item"  routerLink="extensiondate">Extension Date</a></li>
-                
-              </ul>
-            </li>
-            <li>
-              <a class="dropdown-item dropdown-toggle"  data-bs-toggle="dropdown">Transactions</a>
-              <ul class="dropdown-menu">
-                Custome Transactions
-                <li><hr class="dropdown-divider">
-                <li><a class="dropdown-item" routerLink="businesspermit">Business Permit</a></li>
-                <li><a class="dropdown-item"  routerLink="billing">Billing</a></li>
-                <li><a class="dropdown-item"  routerLink="payment">Payment</a></li>
-                <li><a class="dropdown-item"  routerLink="accountledger">Account Subsidiary Ledger</a></li>
-                <li><a class="dropdown-item"  routerLink="additionalfee">Additional Fees</a></li>
-                <li><a class="dropdown-item"  routerLink="checks">Checks</a></li>
-                <li><a class="dropdown-item"  routerLink="taxcredit">Tax Credit</a></li>
-                <li><a class="dropdown-item"  routerLink="holdaccount">Hold/Unhold Account</a></li>
-                <li><a class="dropdown-item"  routerLink="releasingpermit">Releasing of Permit</a></li>
-                <li><a class="dropdown-item"  routerLink="renewalassesment">Renewal/Assesment</a></li>
-                <li><a class="dropdown-item"  routerLink="transmital">Transmital</a></li>
-                <li><a class="dropdown-item"  routerLink="applicationretirement">Application of Retirement</a></li>
-                <li><a class="dropdown-item"  routerLink="tellertransaction">Teller Transactions</a></li>
-                <li><a class="dropdown-item"  routerLink="accountadjustment">Account Adjustment</a></li>
-                <li><a class="dropdown-item"  routerLink="accountupdate">Update Account</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-            RPTAS-FAASS
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" (click)="closeDropdowns()" routerLink="rptasdashboard">Dashboard</a>
-            </li>
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">User Management</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="users">Users</a></li>
-              </ul>
-            </li>
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Property Assessment</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="property">Property Registration</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="assessment">FAAS</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="taxcomputation">Tax Computation</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="rptpayment">Payment</a></li>
-                <li><hr class="dropdown-divider"></li>
-              </ul>
-            </li>
-        </ul> 
-        </li>
-      </ul>
-    <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn" type="submit">Search</button>
-        <button (click)="logout()">Logout</button>
-    </form>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+              TOIMS
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Setup</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="master">Master Code Table Entry</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="revenuecodeparent">Revenue Code Parent Entry</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="teller">Teller Table Master Entry</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="">Setting of Form Control</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="collectionsummary">Collection Summary</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="estimatedrevenue">Estimated Revenue Setup</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="managingtemplate">Template Creation</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Transactions</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="officialreceipt">Official Receipt Entry</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="">Billing Entry</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="formissuance">Issuance of Forms</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="cashticket">Issuance of Cash Tickets</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="">Confirmation of Paymet</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="batchinputreceipt">Batch input of Receipts</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="postingrecords">Posting of Records</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="inquirytransaction">Inquery</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="checkreceivedday">Checks received for the Day</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Utilities</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">BPLTAS</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="bpltasutility">Total Business Permit per Receipt </a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report2">Report 2</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report3">Report 3</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">RPTAS-FAASS</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="rptutility">Total RPTAS Payment per Receipt</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report2">Report 2</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report3">Report 3</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">TOIMS</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="userlogin">Login</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="userroles">Roles</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="report3">Report 3</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+              BPLTAS
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" (click)="closeDropdowns()" routerLink="bpltasdashboard">Dashboard</a>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Business Transactions</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="bpltasuser">Users</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="bpltasapplication">Applications</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="bpltasinspection">Inspections</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="bpltaspayment">Payments</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="bpltasreport">Reports</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
+              </li>
+            </ul> 
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+              RPTAS-FAASS
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" (click)="closeDropdowns()" routerLink="rptasdashboard">Dashboard</a>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">User Management</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="userList">Users</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Property Assessment</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="property">Property Registration</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="assessment">FAAS</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="taxcomputation">Tax Computation</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="rptpayment">Payment</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
+              </li>
+            </ul> 
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+              User Management
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" (click)="closeDropdowns()" routerLink="userasset">Asset Assignment</a>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Settings</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="userapp">Applicaion</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="userbarangay">Barangay</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="usercity">City</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="usercountry">Country</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="usermenu">Menu</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="userprovince">Province</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="userroles">Role</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)="closeDropdowns()" routerLink="userasset">Asset</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
+              </li>
+            </ul> 
+          </li>
+        </ul>
+        <header class="dashboard-header">
+          <div class="profile-header dropdown" data-bs-toggle="dropdown" aria-expanded="false"> 
+            <img src="assets/images/Meliton.png" alt="Profile" class="profile-pic" />
+            <span class="profile-arrow">&#9662;</span>
+            <ul class="dropdown-menu profile-dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="['/mayorsprofileedit']">Profile</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/mayor-credentials']">Credentials</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/mayor-security']">Security</a></li>
+              <li><hr class="dropdown-separator"></li>
+              <li><a class="dropdown-item" [routerLink]="['/login']">Log out</a></li>
+            </ul>
+          </div>
+        </header>
     </div>
   </div>
-  </nav>
+</nav>
 <BR>
 
 <router-outlet></router-outlet>

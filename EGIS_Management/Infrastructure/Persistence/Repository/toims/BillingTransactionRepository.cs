@@ -11,12 +11,12 @@ namespace Infrastructure.Persistence.Repository.toims
 
         public async Task<IEnumerable<BillingTransaction>> GetAllAsync()
         {
-            return await _dbContext.BillingTransaction.Include(t => t.Details).ToListAsync();
+            return await _dbContext.BillingTransaction.Include(t => t.TransactionCode).ToListAsync();
         }
 
         public async Task<BillingTransaction> GetByIdAsync(int id)
         {
-            return await _dbContext.BillingTransaction.Include(t => t.Details).FirstOrDefaultAsync(t => t.Id == id);
+            return await _dbContext.BillingTransaction.Include(t => t.TransactionCode).FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public async Task CreateAsync(BillingTransaction transaction)
@@ -60,7 +60,7 @@ namespace Infrastructure.Persistence.Repository.toims
         {
             return await _dbContext.BillingTransaction
                 .Where(t => t.TransactionDate >= startDate && t.TransactionDate <= endDate)
-                .SumAsync(t => t.Details.Sum(d => d.Amount));
+                .SumAsync(t => t.Amount);
         }
     }
 }

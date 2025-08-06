@@ -1,0 +1,1 @@
+import{a}from"./chunk-UFX6ZKHS.js";import"./chunk-MS4AQ6UA.js";import"./chunk-LB6LRJVS.js";import"./chunk-YBNMVR6Q.js";import"./chunk-FPYKYBTQ.js";import"./chunk-NKHI3LCY.js";export{a as MayorsPhotoUploadComponent};

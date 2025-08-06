@@ -1,0 +1,53 @@
+<div class="table-container">
+  <div>
+      <h1 class="text-2xl font-bold">Cities</h1>
+      &nbsp;
+      <button mat-raised-button color="primary" class="load-batch-btn" (click)="openDialog()">Add City</button>
+  </div>
+  &nbsp;
+  <div>
+    <mat-form-field class="full-width">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search city..." #input>
+    </mat-form-field>
+  </div>
+  
+  <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="cityName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> City Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.cityName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="provinceId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Province </th>
+          <td mat-cell *matCellDef="let row"> {{row.provinceId}} </td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let row" class="space-x-2">
+            <button mat-icon-button color="primary" matTooltip="Edit City" (click)="openDialog(row)">
+                <mat-icon>edit</mat-icon>
+            </button> 
+            <button mat-icon-button color="primary" matTooltip="Delete City" (click)="deleteCity(row)">
+                <mat-icon>delete</mat-icon>
+            </button> 
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of cities"></mat-paginator>
+    </div>
+</div>

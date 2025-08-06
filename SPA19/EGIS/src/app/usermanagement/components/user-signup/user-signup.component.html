@@ -1,0 +1,37 @@
+<div class="login-container">
+  <div class="login-theme">
+  </div>
+  <div class="login-form">
+    <form *ngIf="step === 1" (ngSubmit)="onSendOTP()" #loginForm="ngForm" autocomplete="off">
+      <mat-card>
+        <mat-card-content>
+          <div class="logo-container">
+            <img src="assets/images/sanpedro.png" alt="Logo" class="login-logo">
+          </div>
+          <div class="form-title centered-title">Create your account.</div>
+          <mat-form-field appearance="outline" class="full-width large-input">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" [(ngModel)]="signupDetails.email" name="email" required autocomplete="username">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width large-input">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" [(ngModel)]="signupDetails.password" name="password" required autocomplete="new-password">
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" class="full-width large-btn">Send OTP</button>
+        </mat-card-content>
+      </mat-card>
+    </form>
+    <form *ngIf="step === 2" (ngSubmit)="onVerifyOtp()" autocomplete="off" class="otp-form">
+      <div class="otp-instructions">
+        <span>An OTP code has been sent to your email. Please enter it below:</span>
+      </div>
+      <mat-form-field appearance="outline" class="full-width large-input">
+        <mat-label>OTP Code</mat-label>
+        <input matInput type="text" [(ngModel)]="otpCode" name="otp" required placeholder="Enter OTP">
+      </mat-form-field>
+      <button mat-raised-button color="accent" class="full-width large-btn" type="submit">Verify OTP</button>
+    </form>
+  </div>
+</div>
+
+<!-- <router-outlet></router-outlet> -->

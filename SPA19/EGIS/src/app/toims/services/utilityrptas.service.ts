@@ -17,7 +17,6 @@ export class UtilityrptasService {
   }
 
   getPaymentsByReceiptRange(start: number, end: number) {
-    console.log('Fetching payments with start:', start, 'and end:', end);
     return this.http.get<IPayment[]>(`${this.apibaseurl}/UtilityRPTAS/ReceiptRange`, {
       params: {
         start: start.toString(),
@@ -27,14 +26,14 @@ export class UtilityrptasService {
   }
 
   updatePayments(mcode:IPayment):Observable<void>{
-    return this.http.put<void>(`${this.apibaseurl + '/Payment'}/${mcode.Id}`,mcode);
+    return this.http.put<void>(`${this.apibaseurl + '/UtilityRPTAS'}/${mcode.Id}`,mcode);
   }
 
   batchUpdatePayments(payments: IPayment[]): Observable<void> {
-    return this.http.put<void>(`${this.apibaseurl}/Payment/BatchUpdate`, payments);
+    return this.http.put<void>(`${this.apibaseurl}/UtilityRPTAS/BatchUpdate`, payments);
   }
 
   createCollection(data:createPaymentDto):Observable<createPaymentDto>{
-    return this.http.post<createPaymentDto>(this.apibaseurl + '/Payment' + '/Create',data);
+    return this.http.post<createPaymentDto>(this.apibaseurl + '/UtilityRPTAS' + '/Create',data);
   }
 }
