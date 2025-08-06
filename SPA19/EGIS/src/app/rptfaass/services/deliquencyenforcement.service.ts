@@ -9,7 +9,7 @@ import { environment } from '../../environment/environment';
 })
 export class DeliquencyenforcementService {
 
-  readonly apibaseurl = environment.apibaseURL;
+  readonly apibaseurl = environment.rptasfaasApiBaseURL;
   constructor(private http: HttpClient) { }
 
   getAllBaranggays():Observable<IDelinquencies[]>{

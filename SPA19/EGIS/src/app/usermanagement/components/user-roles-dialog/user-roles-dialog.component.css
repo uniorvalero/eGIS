@@ -1,0 +1,78 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;  /* Centers the form fields horizontally */
+    justify-content: center;  /* Centers the form fields vertically */
+    height: 100%;
+    padding: 10px;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .dialog-actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  
+  mat-dialog-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;  /* Adjust the height to suit your needs */
+  }
+  
+  mat-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  mat-form-field {
+    width: 100%;  /* Ensure form fields use the full width of the container */
+    padding: 10px;
+  }
+
+  .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.dialog-actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Make the dialog background transparent */
+::ng-deep .mat-dialog-container {
+  background: rgba(255,255,255,0.5) !important; /* semi-transparent white */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  backdrop-filter: blur(4px); /* optional: glass effect */
+}
+
+/* Optional: Make form fields transparent */
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex,
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix,
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-outline,
+::ng-deep .mat-form-field-wrapper,
+::ng-deep .mat-form-field-flex,
+::ng-deep .mat-form-field-infix,
+::ng-deep .mat-input-element,
+::ng-deep .mat-select-trigger,
+::ng-deep .mat-select-value,
+::ng-deep .mat-select,
+::ng-deep input.mat-input-element,
+::ng-deep textarea.mat-input-element {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+

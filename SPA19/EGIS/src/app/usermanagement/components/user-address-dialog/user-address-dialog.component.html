@@ -1,0 +1,66 @@
+<div class="container-fluid">
+<h2 mat-dialog-title>{{isEditMode?'Edit':'Add'}} User</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-grid">
+            <mat-form-field class="full-width">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="addressLine1" required>
+                <mat-error *ngIf="form.get('addressLine1')?.hasError('required')">Address is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Building Name</mat-label>
+                <input matInput formControlName="buildingName">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>House No</mat-label>
+                <input matInput formControlName="houseNo" required>
+                <mat-error *ngIf="form.get('houseNo')?.hasError('required')">House No is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Subdivision</mat-label>
+                <input matInput formControlName="subdivision">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="countryId" required>
+                    <mat-option *ngFor="let country of countries" [value]="country.id">
+                        {{ country.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('countryId')?.hasError('required')">Country is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Province</mat-label>
+                <mat-select formControlName="provinceId" required>
+                    <mat-option *ngFor="let province of provinces" [value]="province.id">
+                        {{ province.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('provinceId')?.hasError('required')">Province is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>City</mat-label>
+                <mat-select formControlName="cityId" required>
+                    <mat-option *ngFor="let city of cities" [value]="city.id">
+                        {{ city.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('cityId')?.hasError('required')">City is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Barangay</mat-label>
+                <mat-select formControlName="barangayId" required>
+                    <mat-option *ngFor="let barangay of barangays" [value]="barangay.id">
+                        {{ barangay.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('barangayId')?.hasError('required')">Barangay is required</mat-error>
+            </mat-form-field>
+
+        </div>      
+        <div class="dialog-actions">
+            <button mat-button  type="button" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button type="submit" [disabled]="!form.valid">{{isEditMode?'Update':'Create'}}</button>
+        </div>
+    </form>
+</div>

@@ -13,8 +13,10 @@ namespace Domain.Entities.toims
         public string PayorName { get; set; }
         public bool IsCash { get; set; }
         public string CheckNumber { get; set; }
+        public string TransactionCode { get; set; }
+        public string SubCode { get; set; }
+        public decimal Amount { get; set; }
         public DateTime TransactionDate { get; set; }
-        public ICollection<BillingTransactionDetail> Details { get; set; }
         public bool IsCompleted { get; set; }
     }
 }

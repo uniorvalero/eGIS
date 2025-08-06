@@ -6,6 +6,7 @@ using Infrastructure.Persistence.Repository;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +50,8 @@ builder.Services
     .AddPresentation();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IGlobeSmsService, GlobeSmsService>();
+builder.Services.AddScoped<ICaptchaService, CaptchaService>();
 
 builder.Services.AddCors(options =>
 {

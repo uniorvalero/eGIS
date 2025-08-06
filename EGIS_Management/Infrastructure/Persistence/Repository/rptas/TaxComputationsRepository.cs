@@ -17,7 +17,7 @@ namespace Infrastructure.Persistence.Repository.rptas
         {
             return await _dbContext.TaxComputations
                 .Where(x => x.Status == status)
-                .Select(x => x.Id)
+                .Select(x => x.TaxComputationId)
                 .ToListAsync();
         }
 
@@ -30,7 +30,7 @@ namespace Infrastructure.Persistence.Repository.rptas
                 return null;
 
             return await _dbContext.TaxComputations
-                .FirstOrDefaultAsync(tc => tc.Id == payment.TaxId);
+                .FirstOrDefaultAsync(tc => tc.TaxComputationId == payment.TaxId);
         }
     }
 }

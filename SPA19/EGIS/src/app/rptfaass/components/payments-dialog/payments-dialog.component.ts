@@ -51,6 +51,10 @@ export class PaymentsDialogComponent {
     {name: 'Credit Card'},
     {name: 'Debit Card'},
     {name: 'Mobile Payment'},];
+  statusOptions = [
+    {name: 'Paid'},
+    {name: 'Pending'},
+    {name: 'Cancelled'}];
   constructor(
     private fb: FormBuilder,
     private dialogRef:MatDialogRef<PaymentsDialogComponent>,
@@ -68,6 +72,7 @@ export class PaymentsDialogComponent {
       paymentMethod: [data.paymentMethod || ''],
       receiptNo: [data.receiptNo || null],
       verifiedBy: [null],
+      status: [data.status || '']
     })
     this.loadVerifiers();
     this.loadPayer();

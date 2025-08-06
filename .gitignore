@@ -14,7 +14,25 @@
 *.userprefs
 
 # Mono auto generated files
-mono_crash.*
+mono_crash.*+
+# compiled output
+/dist
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# System files
+.DS_Store
+Thumbs.db
 
 # Build results
 [Dd]ebug/

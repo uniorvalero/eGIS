@@ -1,0 +1,169 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.custom-navbar {
+  background-color: #4B2885 !important;
+  width: 100%;
+  margin: 0;
+  padding: 0 24px;
+  box-sizing: border-box;
+  color: #fff !important;
+  font-size: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 56px; /* mas mataas na navbar */
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container-fluid {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+body {
+  padding-top: 200px;
+  background: #f5f6fa;
+}
+.app-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa; /* Adjust background color as needed */
+    border-bottom: 1px solid #ddd;
+}
+  
+.logo {
+  height: 40px; /* mas malaki para proportion sa navbar */
+  width: auto;
+  margin-right: 16px;
+}
+  
+.app-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #fff;
+  margin-left: 8px;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu,
+.dropdown-submenu:focus-within > .dropdown-menu {
+  display: block;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+  padding: 4px 12px;
+  border-radius: 24px;
+  transition: background 0.15s;
+}
+.profile-header:hover {
+  background: rgba(255,255,255,0.08);
+}
+.profile-arrow {
+  font-size: 1.3rem;
+  color: #fff;
+  margin: 0;
+  align-self: center;
+  transition: color 0.15s;
+}
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.dropdown-separator {
+  border: none;
+  border-top: 2px solid #aaacb3;
+  margin: 12px 0;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent;
+}
+.profile-dropdown-menu {
+  min-width: 260px;
+  right: 0;
+  left: auto;
+  transform: none;
+  top: 56px;
+  position: absolute;
+  z-index: 1000;
+  background: #46494e;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 12px 0 8px 0;
+  border: none;
+}
+.profile-dropdown-menu .dropdown-item {
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 0px;
+  transition: background 0.15s;
+  border-bottom: 1px solid #5a5d63; /* line per item */
+  background: none;
+}
+.profile-dropdown-menu .dropdown-item:hover {
+  background: #343a40;
+}
+.profile-dropdown-menu .dropdown-item:last-child {
+  border-bottom: none; /* remove line for last item */
+}
+.profile-info {
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 6px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.navbar-nav div {
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+/* Remove scroll bar for the webpage */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}

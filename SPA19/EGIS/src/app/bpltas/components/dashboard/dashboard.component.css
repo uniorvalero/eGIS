@@ -1,0 +1,203 @@
+.dashboard-container {
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  font-size: 1.15rem;
+  padding: 32px 16px 48px 16px;
+  background: rgba(255,255,255,0.15);
+  max-width: 1600px;
+  margin: 32px auto;
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 24px;
+  margin-left: 4px;
+}
+
+.dashboard-row {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+  align-items: stretch;
+}
+
+.dashboard-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 1 1 0;
+  min-width: 340px;
+  max-width: 480px;
+}
+
+.dashboard-box {
+  flex: 1 1 0;
+  min-width: 340px;
+  min-height: 180px;
+  padding: 32px 28px;
+  font-size: 1.15rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.7);
+  transition: box-shadow 0.2s, transform 0.2s;
+  margin: 8px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: transparent !important;
+  border: 4px solid rgba(0,0,0,0.18);
+  box-shadow: none !important;
+  color: #222 !important; 
+}
+
+.dashboard-box .icon {
+  font-size: 2.8rem;
+  margin-right: 24px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  max-width: 56px;
+  max-height: 56px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.10);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.dashboard-box.total-dues, 
+.dashboard-box.property, 
+.dashboard-box.last-payment,
+.dashboard-box.heatmap {
+  min-height: 160px;
+  height: 1fr;
+}
+.dashboard-box.heatmap { background: linear-gradient(135deg, 80%, #e57373 100%); color: #333; }
+
+.dashboard-box.assessment-history .label {
+  text-align: left;
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 12px;
+}
+
+.dashboard-box.assessment-history {
+  flex: 2 1 0;
+  min-width: 420px;
+  max-width: 100%;
+  width: 100%;
+  min-height: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* Align content to the left */
+  justify-content: flex-start;
+  margin: 0;
+  padding-left: 40px;        /* Optional: add left padding for better spacing */
+}
+
+.label {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.value {
+  font-size: 2.4em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.payment-details div {
+  font-size: 1.1em;
+  margin-bottom: 2px;
+}
+
+.heatmap-table {
+  margin-top: 12px;
+}
+
+.heatmap-table td {
+  width: 60px;
+  height: 22px;
+  border-radius: 4px;
+  background: #eee;
+  margin: 2px;
+}
+
+.heatmap-table td.delinquent {
+  background: #6c52ff;
+}
+
+#assessmentPieChart {
+  width: 980px !important;
+  height: 380px !important;
+  margin: 0 auto 16px auto;
+  display: block;
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+.legend-row {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 16px;
+  gap: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+
+.icon-last-payment {
+  background: #fff3cd !important;   /* Mild yellow */
+  color: #b8860b !important;
+}
+.icon-heatmap {
+  background: #ffe0e6 !important;   /* Mild pink/red */
+  color: #d32f2f !important;
+}
+.icon-assessment {
+  background: #ede7f6 !important;   /* Mild purple */
+  color: #7b1fa2 !important;
+}
+.icon-property {
+  background: #a0dda5 !important;   /* Mild green */
+  color: #388e3c !important;
+}
+.icon-total-dues {
+  background: #90c4e9 !important;   /* Mild blue */
+  color: #1976d2 !important;
+}
+
+.dashboard-box.total-dues .icon {
+  background: #bed8f1 !important;  /* Blue */
+  color: #1976d2 !important;
+}
+
+/* Property Icon: Green background, white icon */
+.dashboard-box.property .icon {
+  background: #a0dda5 !important;  /* Green */
+  color: #388e3c !important;
+}

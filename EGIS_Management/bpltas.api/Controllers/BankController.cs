@@ -16,24 +16,21 @@ namespace bpltas.api.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromBody] Bank bank) 
+        public async Task<IActionResult> Create([FromBody] BPLTASBanks bank) 
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var createDTO = new Bank()
+            var createDTO = new BPLTASBanks()
             {
               Address = bank.Address,
               BankCode = bank.BankCode,
               BankName = bank.BankName,
               Branch = bank.Branch,
-              ContactName = bank.ContactName,
-              ContactNo = bank.ContactNo,
-              CreatedAt = DateTime.UtcNow,
             };
-            await _unitofwork.Bank.CreateAsync(createDTO);
+            await _unitofwork.BPLTASBanks.CreateAsync(createDTO);
             await _unitofwork.CommitAsync();
             return Ok();
         }
@@ -41,24 +38,24 @@ namespace bpltas.api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var data = await _unitofwork.Bank.GetAllAsync();
+            var data = await _unitofwork.BPLTASBanks.GetAllAsync();
             return Ok(data);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetbyId(int id)
         {
-            var data = await _unitofwork.Bank.GetById(id);
+            var data = await _unitofwork.BPLTASBanks.GetById(id);
             return Ok(data);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var data = await _unitofwork.Bank.GetById(id);
+            var data = await _unitofwork.BPLTASBanks.GetById(id);
             if (data != null)
             {
-                await _unitofwork.Bank.DeleteAsync(data);
+                await _unitofwork.BPLTASBanks.DeleteAsync(data);
                 await _unitofwork.CommitAsync();
                 return Ok();
             }
@@ -67,9 +64,9 @@ namespace bpltas.api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Bank bank)
+        public async Task<IActionResult> Update(int id, BPLTASBanks bank)
         {
-            var data = await _unitofwork.Bank.GetById(id);
+            var data = await _unitofwork.BPLTASBanks.GetById(id);
 
             if (data != null)
             {
@@ -78,11 +75,8 @@ namespace bpltas.api.Controllers
                 data.Branch = bank.Branch;
                 data.BankName = bank.BankName;
                 data.BankCode = bank.BankCode;
-                data.ContactName = bank.ContactName;
-                data.ContactNo = bank.ContactNo;
-                data.CreatedAt = bank.CreatedAt;
 
-                _unitofwork.Bank.Update(data);
+                _unitofwork.BPLTASBanks.Update(data);
 
                 await _unitofwork.CommitAsync();
                 return Ok();

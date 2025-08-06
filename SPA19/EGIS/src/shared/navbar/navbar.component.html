@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container-fluid">
+        <img src="assets/images/egis-logo.png" alt="eGIS Logo" class="logo" />
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div>Electronic Governance Information System</div>
+            </ul>
+            <header class="dashboard-header">
+                <div class="profile-header dropdown" data-bs-toggle="dropdown" aria-expanded="false"> 
+                    <img src="assets/images/Meliton.png" alt="Profile" class="profile-pic" />
+                    <span class="profile-arrow">&#9662;</span>
+                    <ul class="dropdown-menu profile-dropdown-menu">
+                        <li><a class="dropdown-item" [routerLink]="['/mayorsprofileedit']">Profile</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/mayor-credentials']">Credentials</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/mayor-security']">Security</a></li>
+                        <li><hr class="dropdown-separator"></li>
+                        <li><a class="dropdown-item" [routerLink]="['/login']">Log out</a></li>
+                    </ul>
+                </div>
+            </header>
+        </div>
+    </div>
+  </nav>
+<BR>
+
+<router-outlet></router-outlet>

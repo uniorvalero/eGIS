@@ -12,11 +12,15 @@ export class CollectionsummaryService {
   readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http:HttpClient) { }
 
+  getCollectionSummary(): Observable<ICollectionSummary[]> {
+    return this.http.get<ICollectionSummary[]>(this.apibaseurl + '/Collectionsummary/GetViews');
+  }
+
   getCollectionByMonthYear(month: number, year: number):Observable<ICollectionSummary[]>{
     const params = {
       month: month,  
       year: year
     };
-    return this.http.get<ICollectionSummary[]>(this.apibaseurl + '/Collectionsummary/getViews/', {params});
+    return this.http.get<ICollectionSummary[]>(this.apibaseurl + '/Collectionsummary/GetViews/', {params});
   }
 }

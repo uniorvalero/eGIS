@@ -23,6 +23,6 @@ namespace Domain.Entities.rptas
         public int ReceiptNo { get; set; }
         [ForeignKey("Users")]
         public int VerifiedBy { get; set; }
-        //public string Status { get; set; }
+        public string Status { get; set; } = string.Empty;
     }
 }

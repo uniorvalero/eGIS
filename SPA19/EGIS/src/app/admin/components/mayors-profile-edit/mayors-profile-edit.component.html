@@ -1,0 +1,25 @@
+<div class="profile-edit-container">
+  <h2>Edit Profile</h2>
+  <form (ngSubmit)="onSubmit()" #profileForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="user.firstName" name="firstName" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Middle Name</mat-label>
+      <input matInput [(ngModel)]="user.middleName" name="middleName" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="user.email" name="email" required email>
+    </mat-form-field>
+
+    <app-personal-info-form [(ngModel)]="user.address" name="address"></app-personal-info-form>
+
+    <app-mayors-photo-upload (photoUploaded)="onImageUploaded($event)"></app-mayors-photo-upload>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.form.valid">Save Changes</button>
+  </form>
+</div>

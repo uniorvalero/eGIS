@@ -1,0 +1,89 @@
+<mat-card class="user-profile-card">
+  <mat-card-header>
+    <mat-card-title>User Profile</mat-card-title>
+    <mat-card-subtitle>Enter your personal and address details</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" #profileForm="ngForm" autocomplete="off">
+      <div class="form-section">
+        <h3>Personal Information</h3>
+        <div class="form-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput [(ngModel)]="userDetails.firstName" name="firstName" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Middle Name</mat-label>
+            <input matInput [(ngModel)]="userDetails.middleName" name="middleName">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput [(ngModel)]="userDetails.lastName" name="lastName" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Age</mat-label>
+            <input matInput type="number" [(ngModel)]="userDetails.age" name="age" min="0">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Birth Date</mat-label>
+            <input matInput type="date" [(ngModel)]="userDetails.birthDate" name="birthDate">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Gender</mat-label>
+            <mat-select [(ngModel)]="userDetails.gender" name="gender">
+              <mat-option value="">Select</mat-option>
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <input matInput [(ngModel)]="userDetails.status" name="status">
+          </mat-form-field>
+          <mat-checkbox [(ngModel)]="userDetails.isVerified" name="isVerified">Verified</mat-checkbox>
+        </div>
+      </div>
+      <div class="form-section">
+        <h3>Address Information</h3>
+        <div class="form-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>Address Line 1</mat-label>
+            <input matInput [(ngModel)]="address.addressLine1" name="addressLine1" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Building Name</mat-label>
+            <input matInput [(ngModel)]="address.buildingName" name="buildingName">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>House No</mat-label>
+            <input matInput [(ngModel)]="address.houseNo" name="houseNo">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Subdivision</mat-label>
+            <input matInput [(ngModel)]="address.subdivision" name="subdivision">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Country ID</mat-label>
+            <input matInput type="number" [(ngModel)]="address.countryId" name="countryId" min="0">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Province ID</mat-label>
+            <input matInput type="number" [(ngModel)]="address.provinceId" name="provinceId" min="0">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>City ID</mat-label>
+            <input matInput type="number" [(ngModel)]="address.cityId" name="cityId" min="0">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Barangay ID</mat-label>
+            <input matInput type="number" [(ngModel)]="address.barangayId" name="barangayId" min="0">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

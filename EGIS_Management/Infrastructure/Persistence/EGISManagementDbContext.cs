@@ -2,18 +2,22 @@
 using Domain.Entities.bpltas;
 using Domain.Entities.rptas;
 using Domain.Entities.toims;
+using Domain.Entities.usermanagement;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
 {
     public class EGISManagementDbContext(DbContextOptions<EGISManagementDbContext> options) : DbContext(options)
     {
-        public DbSet<Bank> Bank { get; set; }
-        public DbSet<Barangay> Barangay { get; set; }
-        public DbSet<Billing> Billing { get; set; }
+        // BPLTAS Models
+        public DbSet<BPLTASUsers> BPLTASUsers { get; set; }
+        public DbSet<BPLTASBanks> BPLTASBanks { get; set; }
+        public DbSet<BPLTASApplications> BPLTASApplications { get; set; }
+        public DbSet<BPLTASInspections> BPLTASInspections { get; set; }
+        public DbSet<BPLTASPayments> BPLTASPayments { get; set; }
 
         //TOIMS Setup Models
-        public DbSet<CollectionCode> CollectionCode { get; set; }
+        //public DbSet<CollectionCode> CollectionCode { get; set; }
         public DbSet<CollectionSummary> CollectionSummary { get; set; }
         public DbSet<CollectionSummaryDetails> CollectionSummaryDetails { get; set; }
         public DbSet<EstimatedRevenue> EstimatedRevenue { get; set; }
@@ -32,7 +36,6 @@ namespace Infrastructure.Persistence
         public DbSet<OfficialReceipt> OfficialReceipt { get; set; }
         public DbSet<OfficialReceiptDetail> OfficialReceiptDetail { get; set; }
         public DbSet<BillingTransaction> BillingTransaction { get; set; }
-        public DbSet<BillingTransactionDetail> BillingTransactionDetail { get; set; }
         public DbSet<FormIssuance> FormIssuance { get; set; }
         public DbSet<CashTicket> CashTicket { get; set; }
         public DbSet<TransferTaxConfirmation> TransferTaxConfirmation { get; set; }
@@ -48,6 +51,22 @@ namespace Infrastructure.Persistence
         public DbSet<Properties> Properties { get; set; }
         public DbSet<TaxComputations> TaxComputations { get; set; }
         public DbSet<Payments> Payments { get; set; }
-
+        //User Management
+        public DbSet<Users_Address> UsersAddress { get; set; }
+        public DbSet<Users_App> UsersApp { get; set; }
+        public DbSet<Users_AppRoles> AppRoles{ get; set; }
+        public DbSet<Users_Barangay> UsersBarangay { get; set; }
+        public DbSet<Users_AppSubcription> UsersAppSubcription { get; set; }
+        public DbSet<Users_Captcha> UsersCaptcha { get; set; }
+        public DbSet<Users_City> UsersCity { get; set; }
+        public DbSet<Users_Country> UsersCountry { get; set; }
+        public DbSet<Users_Login> UsersLogin { get; set; }
+        public DbSet<Users_Menu> UsersMenu{ get; set; }
+        public DbSet<Users_OtpToken> UsersOtpToken { get; set; }
+        public DbSet<Users_Profile> UsersProfile { get; set; }
+        public DbSet<Users_Role> UsersRole { get; set; }
+        public DbSet<Users_RoleMenu> RoleMenu{ get; set; }
+        public DbSet<Users_User> UsersUser { get; set; }
+        public DbSet<Users_UserRole> UsersUserRole { get; set; }
     }
 }

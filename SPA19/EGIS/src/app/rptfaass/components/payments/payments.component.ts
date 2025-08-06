@@ -33,8 +33,9 @@ export class PaymentsComponent implements OnInit {
   showSubCode = false;
   selectedMasterCode!: number;
   selectedDescription!: string;
+  auditted: string = 'Computted';
 
-  displayedColumns: string[] = ['paymentDate', 'amountPaid', 'paymentMethod', 'receiptNo', 'verifiedBy', 'actions'];
+  displayedColumns: string[] = ['paymentDate', 'amountPaid', 'paymentMethod', 'receiptNo', 'verifiedBy', 'status', 'actions'];
   dataSource!: MatTableDataSource<IPayment>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;

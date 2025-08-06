@@ -1,0 +1,55 @@
+<form [formGroup]="form">
+  <div class="form-grid">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Address Line 1</mat-label>
+      <input matInput formControlName="addressLine1">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Building Name</mat-label>
+      <input matInput formControlName="buildingName">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>House No</mat-label>
+      <input matInput formControlName="houseNo">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Subdivision</mat-label>
+      <input matInput formControlName="subdivision">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Country</mat-label>
+      <mat-select formControlName="countryId" required>
+        <mat-option *ngFor="let country of countries" [value]="country.id">
+            {{ country.countryName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>  
+    <mat-form-field appearance="outline" class="full-width  ">
+      <mat-label>Select Province</mat-label>
+      <mat-select formControlName="provinceId" required>
+        <mat-option *ngFor="let province of provinces" [value]="province.id">
+            {{ province.provinceName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select City</mat-label>
+      <mat-select formControlName="cityId" required>
+        <mat-option *ngFor="let city of cities" [value]="city.id">
+            {{ city.cityName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Barangay</mat-label>
+      <mat-select formControlName="barangayId" required>
+          <mat-option *ngFor="let barangay of barangays" [value]="barangay.id">
+              {{ barangay.barangayName }}
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">
+    Save & Next
+  </button>
+</form>

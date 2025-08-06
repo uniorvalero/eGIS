@@ -1,0 +1,15 @@
+<form [formGroup]="form">
+  <div class="email-verification-container">
+    <h3>Email Verification</h3>
+    <p>We sent a verification code to your email: <strong>{{ userEmail }}</strong></p>
+    <mat-form-field appearance="outline">
+      <mat-label>Verification Code</mat-label>
+      <input matInput formControlName="verificationCode" maxlength="6" placeholder="Enter OTP" required>
+    </mat-form-field>
+    <div class="verification-actions">
+      <button mat-raised-button color="primary" (click)="onVerify()">Verify</button>
+      <button mat-button color="accent" (click)="onResend()">Resend Code</button>
+    </div>
+    <div *ngIf="verificationStatus" class="verification-status">{{ verificationStatus }}</div>
+  </div>
+</form>

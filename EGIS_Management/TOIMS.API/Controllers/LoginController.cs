@@ -1,5 +1,4 @@
-﻿using Domain.Entities.login;
-using Infrastructure.Persistence.Repository;
+﻿using Infrastructure.Persistence.Repository;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -12,6 +11,7 @@ using System.Transactions;
 using System.Data;
 using System.Web;
 using System.Configuration;
+using Domain.Entities.usermanagement;
 
 namespace TOIMS.API.Controllers
 {
@@ -35,16 +35,16 @@ namespace TOIMS.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] Login tableLogin)
+        public async Task<IActionResult> Register([FromBody] Users_Login tableLogin)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var createDTO = new Login()
+            var createDTO = new Users_Login()
             {
-                Email = tableLogin.Email,
+                //Email = tableLogin.Email,
                 Password = tableLogin.Password,
                 CreatedAt = DateTime.Now,
             };
@@ -54,28 +54,28 @@ namespace TOIMS.API.Controllers
             return Ok();
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> login([FromBody] Login login)
-        {
-            var loginData = await _unitofwork.Login.GetByEmail(login.Email);
+        //[HttpPost("login")]
+        //public async Task<IActionResult> login([FromBody] Users_Login login)
+        //{
+        //    var loginData = await _unitofwork.Login.GetByEmail(login.Email);
 
-            var keyString = _configuration["Jwt:Key"];
-            if (string.IsNullOrEmpty(keyString))
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "JWT key is not configured.");
-            }
+        //    var keyString = _configuration["Jwt:Key"];
+        //    if (string.IsNullOrEmpty(keyString))
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError, "JWT key is not configured.");
+        //    }
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(keyString);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity([new Claim(ClaimTypes.Email, login.Email)]),
-                Expires = DateTime.UtcNow.AddDays(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
-            };
+        //    var tokenHandler = new JwtSecurityTokenHandler();
+        //    var key = Encoding.UTF8.GetBytes(keyString);
+        //    var tokenDescriptor = new SecurityTokenDescriptor
+        //    {
+        //        Subject = new ClaimsIdentity([new Claim(ClaimTypes.Email, login.Email)]),
+        //        Expires = DateTime.UtcNow.AddDays(1),
+        //        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
+        //    };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return Ok(new { Token = tokenHandler.WriteToken(token) });
-        }
+        //    var token = tokenHandler.CreateToken(tokenDescriptor);
+        //    return Ok(new { Token = tokenHandler.WriteToken(token) });
+        //}
     }
 }

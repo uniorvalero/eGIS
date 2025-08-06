@@ -1,0 +1,51 @@
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput [(ngModel)]="user.firstName" required>
+    <mat-error *ngIf="!user.firstName">First Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput [(ngModel)]="user.lastName" required>
+    <mat-error *ngIf="!user.lastName">Last Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="user.email" type="email" required>
+    <mat-error *ngIf="!user.email">A valid Email is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Contact Number</mat-label>
+    <input matInput [(ngModel)]="user.contactNo" required>
+    <mat-error *ngIf="!user.contactNo">Contact Number is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Street</mat-label>
+    <input matInput [(ngModel)]="address.street" required>
+    <mat-error *ngIf="!address.street">Street is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>City</mat-label>
+    <input matInput [(ngModel)]="address.city" required>
+    <mat-error *ngIf="!address.city">City is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>State</mat-label>
+    <input matInput [(ngModel)]="address.state" required>
+    <mat-error *ngIf="!address.state">State is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Zip Code</mat-label>
+    <input matInput [(ngModel)]="address.zipCode" required>
+    <mat-error *ngIf="!address.zipCode">Zip Code is required</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+</form>

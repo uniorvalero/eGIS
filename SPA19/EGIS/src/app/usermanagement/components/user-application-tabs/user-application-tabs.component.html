@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<mat-card class="tab-card">
+  <mat-tab-group [(selectedIndex)]="selectedTabIndex">
+    <mat-tab label="Information">
+      <div class="tab-content">
+        <app-user-details-step
+          [loginId]="loginId"
+          [email]="email"
+          (userDetailsChange)="onUserDetailsSaved($event)">
+        </app-user-details-step>
+      </div>
+    </mat-tab>
+    <mat-tab label="Address" [disabled]="!isTab2Enabled">
+      <div class="tab-content">
+        <app-user-address-step
+          [(address)]="address"
+          [email]="email"
+          [userId]="userId">
+        </app-user-address-step>
+      </div>
+    </mat-tab>
+    <mat-tab label="Account verification" [disabled]="!isTab3Enabled">
+      <div class="tab-content">
+        <app-user-email-verification-step 
+          [userEmail]="email"
+          [userId]="userId">
+        </app-user-email-verification-step>
+        <div class="actions">
+          <button mat-raised-button color="primary" class="sign-in-btn">Sign In</button>
+          <div class="signup-link">
+            Don't Have an Account? <a mat-button color="accent" href="#">Sign up</a>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

@@ -1,0 +1,285 @@
+<app-navbar></app-navbar>
+<div class="dashboard-root">
+  <div class="dashboard-left">
+    <div class="filter-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Date Range</mat-label>
+        <mat-date-range-input [rangePicker]="picker" [(ngModel)]="selectedRange">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      <button mat-stroked-button color="primary" class="filter-btn">
+        <mat-icon>filter_alt</mat-icon>
+        Filters
+      </button>
+    </div>
+    <mat-card class="suite-panel">
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true" class="suite-header">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="suite-title">Treasury Operation and Income Monitoring System</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="suite-group">
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>New Todo</span>
+            </div>
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>chromium</span>
+            </div>
+            <div class="test-case-row failed">
+              <mat-icon color="warn">error</mat-icon>
+              <span>should clear text input field when an item is added</span>0
+              <span class="test-time">08s:042ms</span>
+            </div>
+            <div class="test-case-row failed">
+              <mat-icon color="warn">error</mat-icon>
+              <span>should allow me to add todo items</span>
+              <span class="test-time">08s:120ms</span>
+            </div>
+            <div class="test-case-row failed">
+              <mat-icon color="warn">error</mat-icon>
+              <span>should allow me to add todo items</span>
+              <span class="test-time">07s:389ms</span>
+            </div>
+            <div class="test-case-row failed">
+              <mat-icon color="warn">error</mat-icon>
+              <span>should clear text input field when an item is added</span>
+              <span class="test-time">07s:616ms</span>
+            </div>
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>Mobile Chrome</span>
+            </div>
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>Mark All As Completed</span>
+            </div>
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>Item</span>
+            </div>
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>Editing</span>
+            </div>
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>Counter</span>
+            </div>
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>Clear Completed Button</span>
+            </div>
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>Persistence</span>
+            </div>
+            <div class="suite-group-row">
+              <mat-icon class="group-icon" color="primary">fiber_manual_record</mat-icon>
+              <span>Routing</span>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="suite-header">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="suite-title">Business Permit and Licensing Tracking and Assessment System</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="suite-header">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="suite-title">Real Property Tax Administration System – Field Appraisal and Assessment Sheet</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  </div>
+  <div class="dashboard-right">
+    <div class="summary-cards-row">
+      <mat-card *ngFor="let item of summary" class="summary-card" [ngStyle]="{'background': item.color}">
+        <div class="summary-value">{{item.value}}</div>
+        <div class="summary-label">{{item.label}}</div>
+      </mat-card>
+    </div>
+    <mat-card class="suite-info-card">
+      <div class="suite-info-row">
+        <div>
+          <div class="suite-label">Transacation Rate</div>
+          <div class="suite-value">{{suite.successRate}}</div>
+        </div>
+        <div>
+          <div class="suite-label">Last Transaction</div>
+          <div class="suite-value">{{suite.lastTransaction}}</div>
+        </div>
+        <div>
+          <div class="suite-label">Type</div>
+          <div class="suite-value">{{suite.typeOfTransaction}}</div>
+        </div>
+        <div>
+          <div class="suite-label">Version</div>
+          <div class="suite-value">{{suite.version}}</div>
+        </div>
+      </div>
+      <div class="suite-info-row">
+        <div>
+          <div class="suite-label">Landmark</div>
+          <div class="suite-value">{{suite.munisipality}}</div>
+        </div>
+        <div>
+          <div class="suite-label">Department</div>
+          <div class="suite-value">{{suite.department}}</div>
+        </div>
+      </div>
+    </mat-card>
+    <div class="charts-row">
+      <mat-card class="chart-card">
+        <div class="chart-title">Summary Collections</div>
+        <google-chart
+          [type]="chartSummaryType"
+          [data]="chartSummaryData"
+          [options]="chartSummaryOptions"
+          [width]="220"
+          [height]="220">
+        </google-chart>
+      </mat-card>
+      <mat-card class="chart-card">
+        <div class="chart-title">Activity Tracking</div>
+        <google-chart
+          [type]="chartProjectsType"
+          [data]="chartProjectsData"
+          [options]="chartProjectsOptions"
+          [width]="220"
+          [height]="220">
+        </google-chart>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- <app-navbar></app-navbar>
+  <div class="sales-dashboard-container">
+    <mat-card class="dashboard-filters">
+      <div class="filter-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Module</mat-label>
+          <mat-select>
+            <mat-option value="1">RPTAS-FAASS</mat-option>
+            <mat-option value="2">BPLTAS</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Barangay</mat-label>
+          <mat-select>
+            <mat-option value="1">Bambang</mat-option>
+            <mat-option value="2">Antipona</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Interval</mat-label>
+          <mat-select>
+            <mat-option value="1">Daily</mat-option>
+            <mat-option value="2">Weekly</mat-option>
+            <mat-option value="3">Monthly</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date Range</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <section class="dashboard-summary">
+      <mat-card class="summary-card-payment">
+        <div class="summary-label">Total Payment Amount:(Php)</div>
+        <div class="summary-value">1,000</div>
+      </mat-card>
+      <mat-card class="summary-card-revenue">
+        <div class="summary-label">Sales Revenue (Php)</div>
+        <div class="summary-value">2,500</div>
+      </mat-card>
+      <mat-card class="summary-card-receipt">
+        <div class="summary-label">Total No. of Receipts</div>
+        <div class="summary-value">69</div>
+      </mat-card>
+      <mat-card class="summary-card-customer">
+        <div class="summary-label">Total No. of Customers</div>
+        <div class="summary-value">21</div>
+      </mat-card>
+      <mat-card class="summary-card-amount">
+        <div class="summary-label">Total Amount (Php)</div>
+        <div class="summary-value">3500</div>
+      </mat-card>
+    </section>
+
+    <section class="dashboard-main">
+      <div class="dashboard-left">
+        <mat-card class="dashboard-campaign">
+          <h3>TREASURY INSIGHTS</h3>
+          <table mat-table [dataSource]="campaignData" class="campaign-table styled-table">
+            <ng-container matColumnDef="promo">
+              <th mat-header-cell *matHeaderCellDef>Code</th>
+              <td mat-cell *matCellDef="let element"
+                  [ngStyle]="{'background': getCellColor('promo', element.promo)}">
+                {{element.promo}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="revenue">
+              <th mat-header-cell *matHeaderCellDef>Sales Revenue ($)</th>
+              <td mat-cell *matCellDef="let element"
+                  [ngStyle]="{'background': getCellColor('revenue', element.revenue)}">
+                {{element.revenue}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="discount">
+              <th mat-header-cell *matHeaderCellDef>Discount Amt ($)</th>
+              <td mat-cell *matCellDef="let element"
+                  [ngStyle]="{'background': getCellColor('discount', element.discount)}">
+                {{element.discount}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="buyers">
+              <th mat-header-cell *matHeaderCellDef>Total Buyers</th>
+              <td mat-cell *matCellDef="let element"
+                  [ngStyle]="{'background': getCellColor('buyers', element.buyers)}">
+                {{element.buyers}}
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="['promo', 'revenue', 'discount', 'buyers']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['promo', 'revenue', 'discount', 'buyers'];"></tr>
+          </table>
+          <div class="scatter-chart-placeholder">[Scatter Chart Here]</div>
+        </mat-card>
+        <mat-card class="dashboard-chart">
+          <h3>SALES/REVENUE INSIGHTS</h3>
+          <div class="chart-placeholder">[Bar/Line Chart Here]</div>
+        </mat-card>
+      </div>
+      <div class="dashboard-right">
+        <mat-card class="dashboard-geolocation">
+          <h3>GEOLOCATION INSIGHTS</h3>
+          <div class="map-placeholder">[Map Chart Here]</div>
+        </mat-card>
+        <mat-card class="dashboard-product-insights">
+          <h3>PRODUCT INSIGHTS</h3>
+          <div class="product-charts">
+            <div class="pie-chart-placeholder">[Pie Chart Here]</div>
+            <div class="bar-chart-placeholder">[Bar Chart Here]</div>
+          </div>
+        </mat-card>
+      </div>
+      
+    </section>
+  </div> -->

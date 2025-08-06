@@ -77,7 +77,7 @@ namespace rptasfaas.api.Controllers
 
             if (mCodeData != null)
             {
-                mCodeData.Id = data.Id;
+                mCodeData.TaxComputationId = data.TaxComputationId;
                 mCodeData.AssessmentId = data.AssessmentId;
                 mCodeData.TaxYear = data.TaxYear;
                 mCodeData.BasicTax = data.BasicTax;
