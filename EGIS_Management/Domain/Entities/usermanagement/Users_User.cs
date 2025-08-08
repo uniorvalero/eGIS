@@ -13,18 +13,16 @@ namespace Domain.Entities.usermanagement
     {
         [Key]
         public int Id { get; set; }
-        public string Firstname { get; set; } = string.Empty;
-        public string Middlename { get; set; } = string.Empty;
-        public string Lastname { get; set; } = string.Empty;
+        public string FirstName { get; set; } = string.Empty;
+        public string MiddleName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
         public string ContactNo { get; set; } = string.Empty;
         public int Age { get; set; }
-        public DateOnly BirthDaay { get; set; }
+        public DateOnly BirthDay { get; set; }
         public string Gender { get; set; }
         public string Status { get; set; }
-        public bool IsVerifed { get; set; } = false;
+        public bool IsVerified { get; set; } = false;
         public int LoginId { get; set; }
-        [NotMapped]
-        public Blob ProfilePic { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

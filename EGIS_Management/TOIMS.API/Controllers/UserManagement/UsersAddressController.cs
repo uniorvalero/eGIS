@@ -31,6 +31,14 @@ namespace TOIMS.API.Controllers.UserManagement
             return Ok(item);
         }
 
+        [HttpGet("address/{userId}")]
+        public async Task<IActionResult> GetByUserId(int userId)
+        {
+            var item = await _unitOfWork.UsersAddress.GetByUserId(userId);
+            if (item == null) return NotFound();
+            return Ok(item);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Users_Address entity)
         {

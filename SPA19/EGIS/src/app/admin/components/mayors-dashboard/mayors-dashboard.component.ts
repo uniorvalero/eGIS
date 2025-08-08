@@ -27,7 +27,6 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     MatInputModule,
     NavbarComponent,
     MatDatepickerModule,
-    ReactiveFormsModule,
     FormsModule
 ],
   providers: [provideNativeDateAdapter()],

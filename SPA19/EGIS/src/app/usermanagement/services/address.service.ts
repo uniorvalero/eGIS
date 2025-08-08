@@ -8,6 +8,9 @@ import { environment } from '../../environment/environment';
   providedIn: 'root'
 })
 export class AddressService {
+  getAddressById(addressId: any) {
+    throw new Error('Method not implemented.');
+  }
 
   readonly apibaseurl = environment.toimsApiBaseURL;
   constructor(private http: HttpClient) { }

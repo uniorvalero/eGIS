@@ -1,8 +1,8 @@
 export interface IMayor {
   id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
+  firstName?: string;
+  middleName?: string;
+  lastName?: string;
   contactNo?: string;
   age?: number;
   birthDate?: Date;
@@ -10,5 +10,4 @@ export interface IMayor {
   status?: string;
   isVerified?: boolean;
   loginId?: number;
-  profileImage?: Blob | string;
 }

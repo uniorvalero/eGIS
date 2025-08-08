@@ -31,12 +31,19 @@ namespace TOIMS.API.Controllers.UserManagement
             return Ok(item);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Users_Profile entity)
+        [HttpPost("Create")]
+        public async Task<IActionResult> Create([FromBody] int loginId)
         {
-            await _unitOfWork.UsersProfile.CreateAsync(entity);
+            Users_Profile users_Profile = new Users_Profile
+            {
+                UserId = 0,
+                UserRoleId = 0, 
+                AddressId = 0,
+                LoginId = loginId, 
+            };
+            await _unitOfWork.UsersProfile.CreateAsync(users_Profile);
             await _unitOfWork.CommitAsync();
-            return Ok(entity);
+            return Ok(users_Profile);
         }
 
         [HttpPut("{id}")]
