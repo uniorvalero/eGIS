@@ -29,7 +29,7 @@ router-outlet + * {
   font-weight: 600;
 }
 .suite-panel {
-  background: #fff;
+  background: transparent !important;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   padding: 0;
@@ -40,7 +40,8 @@ router-outlet + * {
   color: #fff;
 }
 .suite-group {
-  padding: 10px 0 0 0;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 .suite-group-row {
   display: flex;
@@ -49,6 +50,8 @@ router-outlet + * {
   padding: 4px 0 4px 16px;
   color: #2dbf7f;
   font-size: 0.98rem;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 .group-icon {
   font-size: 1rem;
@@ -214,6 +217,16 @@ router-outlet + * {
 
 .filter-btn mat-icon {
   font-size: 20px;
+}
+
+.vertical-line {
+  display: inline-block;
+  width: 3px;
+  height: 20px;
+  background: #4caf50; /* or your preferred color */
+  margin-right: 12px;
+  border-radius: 2px;
+  vertical-align: middle;
 }
 
 @media (max-width: 900px) {

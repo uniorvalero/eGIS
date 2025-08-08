@@ -32,16 +32,19 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class UserProfileComponent {
     userDetails: IUser = {
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    age: 0,
-    birthDate: new Date(),
-    gender: '',
-    status: '',
-    isVerified: false,
-    id: 0
-  };
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      age: 0,
+      birthDate: new Date(),
+      gender: '',
+      status: '',
+      isVerified: false,
+      id: 0,
+      contactNo: '',
+      loginId: 0,
+      profileImage: ''
+    };
   address: IAddress = {
     id: 0,
     addressLine1: '',
@@ -51,7 +54,8 @@ export class UserProfileComponent {
     countryId: 0,
     provinceId: 0,
     cityId: 0,
-    barangayId: 0
+    barangayId: 0,
+    userId: 0
   };
 
   constructor(private profileService: ProfileService,
@@ -59,28 +63,29 @@ export class UserProfileComponent {
               private addressService: AddressService
   ) {}
 
-  onSubmit() {
-  this.userService.createUser(this.userDetails).subscribe({
-    next: (userRes) => {
-      this.addressService.createAddress(this.address).subscribe({
-        next: (addrRes) => {
-          this.profileService.createUserProfile(userRes, addrRes).subscribe({
-            next: (profileRes) => {
-              // Handle successful profile creation
-            },
-            error: (err) => {
-              // Handle error in profile creation
-            }
-          });
-        },
-        error: (err) => {
-          // Error logic for address
-        }
-      });
-    },
-    error: (err) => {
-      // Error logic for user
-    }
-  });
-}
+  onSubmit() {}
+  // onSubmit() {
+  // this.userService.createUser(this.userDetails).subscribe({
+  //   next: (userRes) => {
+  //     this.addressService.createAddress(this.address).subscribe({
+  //       next: (addrRes) => {
+  //         this.profileService.createUserProfile(userRes, addrRes).subscribe({
+  //           next: (profileRes) => {
+  //             // Handle successful profile creation
+  //           },
+  //           error: (err) => {
+  //             // Handle error in profile creation
+  //           }
+  //         });
+  //       },
+  //       error: (err) => {
+  //         // Error logic for address
+  //       }
+  //     });
+  //   },
+  //   error: (err) => {
+  //     // Error logic for user
+  //   }
+  // });
+//}
 }

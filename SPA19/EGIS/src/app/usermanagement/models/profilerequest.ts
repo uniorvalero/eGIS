@@ -1,5 +1,7 @@
 export interface IProfileRequest {
-  password: string;
-  email: string;
-  otp: string;
+  id: number;
+  UserId?: number;
+  AddressId?: number;
+  LoginId?: number;
+  UserRoleId?: number;
 }

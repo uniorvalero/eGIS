@@ -34,11 +34,6 @@ export const routes: Routes = [
       import('./admin/components/mayors-photo-upload/mayors-photo-upload.component').then(m => m.MayorsPhotoUploadComponent),
   },
   {
-    path: 'mayorsprofile',
-    loadComponent: () =>
-      import('./admin/components/mayors-personal-info/mayors-personal-info.component').then(m => m.MayorsPersonalInfoComponent),
-  },
-  {
     path: 'signup',
     loadComponent: () =>
       import('./usermanagement/components/user-signup/user-signup.component').then(m => m.UserSignupComponent),
